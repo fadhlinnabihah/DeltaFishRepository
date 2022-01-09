@@ -76,7 +76,7 @@
                 
                 $rem = strtotime($duedate) - time();
                 $day = floor($rem / 86400);
-                $hr  = floor((($rem % 86400) / 3600)-7);
+                $hr  = floor(($rem % 86400) / 3600);
                 $min = floor(($rem % 3600) / 60);
                 $sec = ($rem % 60);
                 /*if($day) echo "$day Days ";
