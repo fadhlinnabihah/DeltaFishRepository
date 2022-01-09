@@ -99,6 +99,7 @@
                 <?php 
                 }
                 ?>
+               
         </div>
 
        <!-- Product Configuration -->

@@ -198,5 +198,15 @@ if (isset($_GET['edit'])) {
   }
 }
 
+$num = $conn->query("SELECT MAX(ID) AS pid FROM tbl_productsell_delta")->fetch()['pid'];
+
+if ($num){
+  $num = ltrim($num, 'O')+1;
+  $num = str_pad($num, STR_PAD_LEFT);
+}
+else{
+  $num = str_pad(STR_PAD_LEFT);
+}
+
 $conn = null;
 ?>
