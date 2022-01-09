@@ -38,7 +38,7 @@ if (isset($_POST['create'])) {
     if (isset($uploadStatus['status'])) {
       try {
 
-   $stmt = $conn->prepare("INSERT INTO tbl_productsell_delta(ID, NAME, PRICE, DESCRIPTION, STOCK, PICTURE) VALUES(:pid, :name, :price, :description, :stock, :image )");
+   $stmt = $conn->prepare("INSERT INTO tbl_productbid_delta(ID, NAME, PRICE, DESCRIPTION, STOCK, PICTURE) VALUES(:pid, :name, :price, :description, :stock, :image )");
 
 
       $stmt->bindParam(':pid', $pid, PDO::PARAM_INT);
@@ -87,7 +87,7 @@ if (isset($_POST['create'])) {
 if (isset($_POST['update'])) {
   // if ($_SESSION['ulevel'] == 'Admin')  {
     try {
-    $stmt = $conn->prepare("UPDATE tbl_productsell_delta SET ID = :pid,NAME = :name, PRICE = :price, DESCRIPTION = :description, STOCK = :stock
+    $stmt = $conn->prepare("UPDATE tbl_productbid_delta SET ID = :pid,NAME = :name, PRICE = :price, DESCRIPTION = :description, STOCK = :stock
         WHERE ID = :oldpid");
      
       $stmt->bindParam(':pid', $pid, PDO::PARAM_INT);
@@ -111,7 +111,7 @@ if (isset($_POST['update'])) {
       $flag  = uploadPhoto($_FILES['fileToUpload'], $_POST['pid']);
 
       if (isset($flag['status'])){
-        $stmt = $conn->prepare("UPDATE tbl_productsell_delta SET PICTURE = :image WHERE ID = :pid LIMIT 1");
+        $stmt = $conn->prepare("UPDATE tbl_productbid_delta SET PICTURE = :image WHERE ID = :pid LIMIT 1");
         $stmt->bindParam(':image', $flag['name']);
         $stmt->bindParam(':pid', $pid);
         $stmt->execute();
@@ -143,7 +143,7 @@ if (isset($_POST['update'])) {
   // }
 
   if (isset($_SESSION['error']))
-    header("LOCATION: {$_SERVER['REQUEST_URI']}");
+    header("LOCATION: bid_products.php");
   else
     header("Location: sellerhome.php");
   exit();
@@ -154,10 +154,10 @@ if (isset($_GET['delete'])) {
   // if ($_SESSION['ulevel'] == 'Admin')  {
     try {
       $pid = $_GET['delete'];
-      $query = $conn->query("SELECT PICTURE FROM tbl_productsell_delta WHERE ID = '{$pid}' LIMIT 1")->fetch(PDO::FETCH_ASSOC);
+      $query = $conn->query("SELECT PICTURE FROM tbl_productbid_delta WHERE ID = '{$pid}' LIMIT 1")->fetch(PDO::FETCH_ASSOC);
       if (isset($query['PICTURE'])) {
       // Delete Query
-        $stmt = $conn->prepare("DELETE FROM tbl_productsell_delta WHERE ID = :pid");
+        $stmt = $conn->prepare("DELETE FROM tbl_productbid_delta WHERE ID = :pid");
         $stmt->bindParam(':pid', $pid);
         $stmt->execute();
       // Delete Image
@@ -181,7 +181,7 @@ if (isset($_GET['edit'])) {
 
   try {
 
-    $stmt = $conn->prepare("SELECT * FROM tbl_productsell_delta WHERE ID = :productid");
+    $stmt = $conn->prepare("SELECT * FROM tbl_productbid_delta WHERE ID = :productid");
 
     $stmt->bindParam(':productid', $pid, PDO::PARAM_STR);
 

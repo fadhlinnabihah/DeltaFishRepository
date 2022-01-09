@@ -3,7 +3,7 @@ session_start();
 ?>
 
 <?php
-  include_once 'bid_products_crud2.php';
+  include_once 'bid_products_crud.php';
 ?>
 
 <!DOCTYPE html>
@@ -82,14 +82,6 @@ session_start();
           <input name="name" type="text" class="form-control" id="productname" placeholder="Product Name" value="<?php if(isset($_GET['edit'])) echo $editrow['NAME']; ?>" required>
         </div>
         </div>
- 
-
-        <div class="form-group">
-          <label for="productprice" class="col-sm-3 control-label">Price(RM)</label>
-          <div class="col-sm-9">
-          <input name="price" type="number" class="form-control" id="productprice" placeholder="Product Price" value="<?php if(isset($_GET['edit'])) echo $editrow['PRICE']; ?>" min="0.0" step="0.01" required>
-        </div>
-        </div>
 
         <div class="form-group">
           <label for="productdesc" class="col-sm-3 control-label">Description</label>
@@ -106,9 +98,9 @@ session_start();
         </div>
 
         <div class="form-group">
-          <label for="bidtime" class="col-sm-3 control-label">Set bidding time</label>
+          <label for="duedate" class="col-sm-3 control-label">Set bidding time</label>
           <div class="col-sm-9">
-          <input name="bidtime" type="time" class="form-control" id="bidtime" placeholder="00:00" value="<?php if(isset($_GET['edit'])) echo $editrow['BIDTIME']; ?>"  required>
+          <input name="duedate" type="datetime" class="form-control" id="duedate" placeholder="YYYY-MM-DD 00:00:00" value="<?php if(isset($_GET['edit'])) echo $editrow['DUEDATE']; ?>"  required>
         </div>
         </div>
         
@@ -145,7 +137,7 @@ session_start();
           <input type="hidden" name="oldpid" value="<?php echo $editrow['ID']; ?>">
           <button class="btn btn-default" type="submit" name="update"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Update</button>
           <?php } else { ?>
-          <button class="btn btn-default" type="submit" name="create"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create</button>
+          <button  onclick="return confirm('Are you sure to bid?');" class="btn btn-default" type="submit" name="create"><span class="glyphicon glyphicon-plus" aria-hidden="true" ></span> Create</button>
           <?php } ?>
           <button class="btn btn-default" type="reset"><span class="glyphicon glyphicon-erase" aria-hidden="true"></span> Clear</button>
         </div>
