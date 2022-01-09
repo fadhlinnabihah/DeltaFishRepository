@@ -72,33 +72,14 @@
 								&nbsp&nbsp Time Left to Bid: <span class='blue'>";?>
 								<?php
 								
+                /* To read the duedate of the product **/
 								$duedate = $readrow['DUEDATE'];
-                
-                $rem = strtotime($duedate) - time();
-                $day = floor($rem / 86400);
-                $hr  = floor(($rem % 86400) / 3600);
-                $min = floor(($rem % 3600) / 60);
-                $sec = ($rem % 60);
-                /*if($day) echo "$day Days ";
-                if($hr) echo "$hr Hours ";
-                if($min) echo "$min Minutes ";
-                if($sec) echo "$sec Seconds ";
-                echo "Remaining...";**/
-                
+                $rem = strtotime($duedate);
+                ?>
 
-                 if( $day < 0 && $hr < 0 && $sec < 0){
-                ?>
-                   <h2> <?php echo 'Bid closed'; ?><h2>
-                <?php
-                }
-                else{
-              ?> <h2> <?php echo $day . 'Days '?>
-                 <?php echo $hr . 'Hours '?>
-                 <?php echo $min . 'Minutes '?>
-                 <?php echo $sec . 'Seconds '?></h2>
-                <?php 
-                }
-                ?>
+                <!--To show the time in HTML-->
+                <span class='blue' id='time_left'></span>
+                
         </div>
 
        <!-- Product Configuration -->
@@ -130,8 +111,39 @@
       </div>
     </main>
 
-    <!-- Scripts -->
+    <!-- Scripts for the timer-->
+    <script type="text/javascript">
+      
+      //To set refresh every second
+      setInterval(myTimer, 1000);
+      var x= "<?php echo"$rem"?>" + "000";
+
+
+      function myTimer() {
+        /* get current date and due date to compare **/
+        var date = new Date().getTime();
+        var distance = (x) - (date);
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result in the element with id="demo"
+      document.getElementById("time_left").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+
+      // If the count down is finished, write some text 
+      if (distance < 0) 
+      {
+        clearInterval(x);
+        document.getElementById("time_left").innerHTML = "BID CLOSED";
+      }
+      }
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
     <script src="script.js" charset="utf-8"></script>
+    
+
   </body>
 </html>
