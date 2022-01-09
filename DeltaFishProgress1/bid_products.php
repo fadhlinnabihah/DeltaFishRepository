@@ -94,14 +94,14 @@ session_start();
         <div class="form-group">
           <label for="seller" class="col-sm-3 control-label">Seller</label>
           <div class="col-sm-9">
-          <input name="seller" type="text" class="form-control" id="seller" placeholder="Name seller" value="<?php if(isset($_GET['edit'])) echo $editrow['SELLER']; ?>"  required>
+          <input name="seller" type="text" class="form-control" id="seller" placeholder="Name seller" value="<?php if(isset($_GET['edit'])) echo $editrow['SELLER']; ?>"  hidden>
         </div>
         </div>
 
         <div class="form-group">
           <label for="duedate" class="col-sm-3 control-label">Set bidding time</label>
           <div class="col-sm-9">
-          <input name="duedate" type="datetime" class="form-control" id="duedate" placeholder="YYYY-MM-DD 00:00:00" value="<?php if(isset($_GET['edit'])) echo $editrow['DUEDATE']; ?>"  required>
+          <input name="duedate" type="datetime-local" class="form-control" id="duedate" placeholder="YYYY-MM-DD 00:00:00" value="<?php if(isset($_GET['edit'])) echo $editrow['DUEDATE']; ?>"  required>
         </div>
         </div>
         

@@ -40,12 +40,12 @@ if (isset($_POST['create'])) {
 
    $stmt = $conn->prepare("INSERT INTO tbl_productbid_delta(ID, NAME, DESCRIPTION, SELLER, DUEDATE, PICTURE) VALUES(:pid, :name, :description, :seller, :duedate, :image )");
 
-
+     
       $stmt->bindParam(':pid', $pid, PDO::PARAM_INT);
       $stmt->bindParam(':name', $name, PDO::PARAM_STR);
       $stmt->bindParam(':description', $description, PDO::PARAM_STR);
       $stmt->bindParam(':seller', $seller, PDO::PARAM_STR);
-      $stmt->bindParam(':duedate', $duedate, PDO::PARAM_INT);
+      $stmt->bindParam(':duedate', $duedate, PDO::PARAM_STR);
       $stmt->bindParam(':image', $uploadStatus['name']);
 
     $pid = $_POST['pid'];
@@ -94,7 +94,7 @@ if (isset($_POST['update'])) {
       $stmt->bindParam(':name', $name, PDO::PARAM_STR);
       $stmt->bindParam(':description', $description, PDO::PARAM_STR);
       $stmt->bindParam(':seller', $seller, PDO::PARAM_STR);
-      $stmt->bindParam(':duedate', $duedate, PDO::PARAM_INT);
+      $stmt->bindParam(':duedate', $duedate, PDO::PARAM_STR);
       $stmt->bindParam(':oldpid', $oldpid, PDO::PARAM_STR);
        
     $pid = $_POST['pid'];

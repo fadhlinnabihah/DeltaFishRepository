@@ -76,7 +76,7 @@
                 
                 $rem = strtotime($duedate) - time();
                 $day = floor($rem / 86400);
-                $hr  = floor(($rem % 86400) / 3600);
+                $hr  = floor((($rem % 86400) / 3600)-7);
                 $min = floor(($rem % 3600) / 60);
                 $sec = ($rem % 60);
                 /*if($day) echo "$day Days ";
@@ -88,14 +88,14 @@
 
                  if( $day < 0 && $hr < 0 && $sec < 0){
                 ?>
-                   <h2> <?php echo 'Bid closed'; ?><h2>
+                   <h3> <?php echo 'Bid closed'; ?><h3>
                 <?php
                 }
                 else{
-              ?> <h2> <?php echo $day . 'Days '?>
+              ?> <h3> <!-- <?php echo $day . 'Days '?> -->
                  <?php echo $hr . 'Hours '?>
                  <?php echo $min . 'Minutes '?>
-                 <?php echo $sec . 'Seconds '?></h2>
+                 <?php echo $sec . 'Seconds '?></h3>
                 <?php 
                 }
                 ?>
