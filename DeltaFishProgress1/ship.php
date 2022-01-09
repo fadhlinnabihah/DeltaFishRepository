@@ -1,10 +1,34 @@
-<!DOCTYPE html><html><head>
+<?php 
+ include 'db.php';
+ ?>
+
+<!DOCTYPE html>
+<html>
+<head>
 	<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 	<title>Home - DFOB</title>
 	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
 </head>
 
-<body><nav class="navbar navbar-light navbar-expand bg-light navigation-clean">
+<body>
+<?php 
+
+    try {
+       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+       $stmt = $conn->prepare("SELECT * FROM tbl_productsell_delta ");
+       $stmt->bindParam(':pid', $pid, PDO::PARAM_STR);
+      $stmt->execute();
+    $result = $stmt->fetchAll();
+      // $rowCount = $readrow ->fetchColumn();
+      // echo $readrow;
+    } catch (Exception $e) {
+      echo "Error: ". $e->getMessage();
+    }
+     $conn = null;
+    ?>
+
+	<nav class="navbar navbar-light navbar-expand bg-light navigation-clean">
 	<div class="container">
 		<a class="navbar-brand" href="#">DFOB</a>
 		<button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"></button>
@@ -14,10 +38,13 @@
 			<div class="container"><div class="row"><div class="col-xl-9 mx-auto position-relative">
 				<h1 class="mb-5">Shipping Page</h1></div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto position-relative">
-					<form><div class="row"><div class="col-12 col-md-3 offset-md-4 offset-xl-4">
+					<form>
+
+						<div class="row"><div class="col-12 col-md-3 offset-md-4 offset-xl-4">
 						<button class="btn btn-primary btn-lg" type="submit" style="margin: -19px;padding: 6px 16px;width: 208px;">Add New Shipment&nbsp;</button></div></div></form></div></div></div>
 					</header>
 					<section class="text-center bg-light features-icons">
+						
 						<div class="container"><div class="row"><div class="col-md-12" style="color: var(--bs-indigo);padding: -17px;margin: 0px;">
 							<a class="navbar-brand" href="#">Shipment -Order #101&nbsp;</a></div></div><div class="row">
 								<div class="col-md-6" style="padding: 61px;">
@@ -31,30 +58,36 @@
 									<a class="navbar-brand" href="#">Ship Date :</a>
 									<button class="btn btn-primary">Ship Items&nbsp;</button></div>
 									<div class="col-md-12 offset-md-6" style="color: var(--bs-indigo);padding: 51px;margin: -39px;">
-										<button class="btn btn-primary" style="margin: 26px;">Edit</button>
-										<button class="btn btn-primary" style="margin: 26px;">Delete</button>
+									<!-- 	<button class="btn btn-primary" style="margin: 26px;">Edit</button>
+										<button class="btn btn-primary" style="margin: 26px;">Delete</button> -->
 									</div></div></div>
+									
 									<div class="table-responsive" style="padding: 60px;margin: -41px;">
+										
+
 										<table class="table"><thead>
+											
 											<tr><th>Item&nbsp;</th>
 												<th>Price</th>
 												<th>Quantity</th>
 												<th>Total</th>
 											</tr></thead>
 											<tbody>
-												<tr><td>Gold Fish&nbsp;</td>
-													<td>Rm 420</td>
+												<?php foreach($result as $readrow) {?>
+												<tr><td><?php echo $readrow['NAME']; ?>  &nbsp;</td>
+													<td><?php echo $readrow['PRICE']; ?></td>
 													<td>3</td>
 													<td>Rm 1260</td>
 												</tr>
 												<tr></tr>
 												<tr></tr>
-												<tr>
-													<td>Nemo Fish&nbsp;</td>
-													<td>Rm 150</td>
+												<!-- <tr>
+													<td><?php echo $readrow['NAME']; ?>&nbsp;</td>
+													<td><?php echo $readrow['PRICE']; ?></td>
 													<td>1</td>
 													<td>Rm 150</td>
-												</tr>
+												</tr> -->
+												<?php }?>
 												<tr total="Rm 1410">
 													<td style="font-weight: bold;">Total&nbsp;</td>
 													<td></td>
@@ -66,38 +99,19 @@
 													<tr></tr>
 													<tr></tr>
 													<tr></tr>
-												</tbody></table></div></section>
+												</tbody>
+												
+											</table>
+
+										</div></section>
 												<section class="showcase"></section>
-												<footer class="bg-light footer">
-													<div class="container">
-														<div class="row">
-															<div class="col-lg-6 text-center text-lg-start my-auto h-100">
-																<ul class="list-inline mb-2">
-																	<li class="list-inline-item">
-																		<a href="#">Contact Details</a>
-																	</li>
-																	<li class="list-inline-item">
-																		<span>⋅</span>
-																	</li>
-																	<li class="list-inline-item">
-																		
-																	</li>
-																	<li class="list-inline-item"></li>
-																	<li class="list-inline-item"></li>
-																	<li class="list-inline-item">
-																		<span>⋅</span>
-																	</li>
-																	<li class="list-inline-item">
-																		<a href="#">Privacy Policy</a>
-																	</li>
-																</ul>
-																<p class="text-muted small mb-4 mb-lg-0">© Brand 2021. All Rights Reserved.</p>
-															</div></div>
-														</div>
-													</footer>
+											
 													<script src="assets/bootstrap/js/bootstrap.min.js">
 														//testing 
-													</script></body></html>
+													</script>
+												</body>
+
+	</html>												
 
 
 													
