@@ -23,6 +23,34 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+
+- Table structure for table `tbl_order_delta`
+--
+
+CREATE TABLE `tbl_order_delta` (
+  `fld_order_num` varchar(255) NOT NULL,
+  `fld_order_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `fld_seller_id` varchar(255) DEFAULT NULL,
+  `fld_customer_id` varchar(255) DEFAULT NULL,
+  `tbl_payment` varchar(255) NOT NULL,
+  `tbl_address` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_order_detail_delta`
+--
+
+CREATE TABLE `tbl_order_detail_delta` (
+  `fld_order_detail_num` varchar(255) NOT NULL,
+  `fld_order_num` varchar(255) NOT NULL,
+  `fld_product_num` varchar(255) NOT NULL,
+  `fld_order_detail_quantity` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `tbl_productbid_delta`
 --
