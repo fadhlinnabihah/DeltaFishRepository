@@ -223,6 +223,9 @@ if (isset($_GET['edit'])) {
   }
 }
 
+
+
+
 $num = $conn->query("SELECT MAX(ID) AS pid FROM tbl_productsell_delta")->fetch()['pid'];
 
 if ($num){

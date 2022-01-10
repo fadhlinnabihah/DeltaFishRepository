@@ -88,7 +88,9 @@
 
               <td>
                 <a href="product_detail_bid.php?pid=<?php echo $readrow['ID']; ?>" class="btn btn-warning btn-xs" role="button">Details</a>
-                <a href="sellerhome.php?delete1=<?php echo $readrow['ID']; ?>" onclick="return confirm('Are you sure to stop the bidding?');" class="btn btn-danger btn-xs" role="button">Stop</a>
+
+                
+                <!-- <a href="sellerhome.php?delete1=<?php echo $readrow['ID']; ?>" onclick="return confirm('Are you sure to stop the bidding?');" class="btn btn-danger btn-xs" role="button">Stop</a> -->
                 
               </td>
             </div> 

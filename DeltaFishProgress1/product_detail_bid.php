@@ -1,5 +1,6 @@
 <?php
   include 'db.php'
+
 ?>
 
 
@@ -34,7 +35,7 @@
     try {
       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("SELECT * FROM tbl_productbid_delta WHERE ID = :pid");
+      $stmt = $conn->prepare("SELECT * FROM tbl_productbid_delta WHERE ID = :pid");
       $stmt->bindParam(':pid', $pid, PDO::PARAM_STR);
       $pid = $_GET['pid'];
       $stmt->execute();
@@ -76,7 +77,7 @@
                 
                 $rem = strtotime($duedate) - time();
                 $day = floor($rem / 86400);
-                $hr  = floor(($rem % 86400) / 3600);
+                $hr  = floor((($rem % 86400) / 3600)-7);
                 $min = floor(($rem % 3600) / 60);
                 $sec = ($rem % 60);
                 /*if($day) echo "$day Days ";
@@ -119,14 +120,17 @@
           <div class="container">
    <div>
         <div>
-            <p class="pb-1 username">Amount bid</p> <input type="text" class=" name form-control mb-4" placeholder="RM">
+            <p class="pb-1 username">Amount bid</p> <input type="number" class=" name form-control mb-4" placeholder="RM" value="<?php if(isset($_GET['update'])) echo $editrow['HIGHESTBID']; ?>" min="0.0" step="0.01" required>
+
       </div>        
   </div>
   </div>
 
+   
           
         <div>
-          <a href="#" class="bid-btn">Bid Now</a>
+           <a href=".php?edit2=<?php echo $readrow['ID']; ?>" class="btn btn-success btn-xs" role="button"> BID NOW </a>
+          <!-- <a href="#" class="bid-btn">Bid Now</a> -->
         </div>
       </div>
     </main>
