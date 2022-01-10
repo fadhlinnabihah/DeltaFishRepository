@@ -141,7 +141,7 @@ if(isset($_GET["action"]))
 					<tr>
 						
 						<td colspan="4" align="right">
-      					<a href="payment.html" class="btn btn-info">Checkout</a></td>
+      					<a href="deliverytype.php" class="btn btn-info">Checkout</a></td>
 					</tr>
 					 
 					<?php
