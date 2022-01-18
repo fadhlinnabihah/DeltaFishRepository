@@ -68,12 +68,21 @@
           <p><?php echo $readrow['DESCRIPTION'] ?></p>
           <span><?php echo $readrow['SELLER'] ?></span>
 
+
                 <?php echo"</span><br /><br />
                 &nbsp&nbsp Time Left to Bid: <span class='blue'>";?>
                 <?php
                 
                 /* To read the duedate of the product **/
                 $duedate = $readrow['DUEDATE'];
+
+          			<?php echo"</span><br /><br />
+								&nbsp&nbsp Time Left to Bid: <span class='blue'>";?>
+								<?php
+								
+                /* To read the duedate of the product **/
+								$duedate = $readrow['DUEDATE'];
+
                 $rem = strtotime($duedate);
                 ?>
 
