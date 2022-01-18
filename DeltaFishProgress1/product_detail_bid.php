@@ -1,5 +1,5 @@
 <?php
-  include 'db.php'
+  include 'product_detail_bid_crud.php'
 ?>
 
 
@@ -108,7 +108,12 @@
           <div class="container">
    <div>
         <div>
-            <p class="pb-1 username">Amount bid</p> <input type="text" class=" name form-control mb-4" placeholder="RM">
+          <form method="POST" action="product_detail_bid.php">
+            <input type="hidden" name="oldpid" value="<?php echo $readrow['ID']; ?>">  
+            <p class="pb-1 username">Amount bid</p> 
+            <input type="text" class=" name form-control mb-4" placeholder="RM" name="highestbid">
+            <div class="form-group">
+               <button class="bid-btn" name="update">Bid Now</button>
       </div>        
   </div>
   </div>
