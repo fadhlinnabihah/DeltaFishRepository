@@ -71,7 +71,8 @@ session_start();
       <div class="form-group">
           <label for="productid" class="col-sm-3 control-label">ID</label>
           <div class="col-sm-9">
-          <input name="pid" type="text" class="form-control" id="productid" placeholder="Product ID" value="<?php if(isset($_GET['edit'])) echo $editrow['ID']; ?>" required >
+          <!-- <input name="pid" type="text" class="form-control" id="productid" placeholder="Product ID" value="<?php if(isset($_GET['edit'])) echo $editrow['ID']; ?>" required > -->
+           <input name="pid" type="text" class="form-control" value="<?php if(isset($_GET['edit'])) echo $editrow['ID']; else echo $num; ?>" required readonly>
         </div>
         </div>
 
