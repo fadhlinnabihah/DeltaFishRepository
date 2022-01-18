@@ -1,6 +1,5 @@
 <?php
   include 'db.php'
-
 ?>
 
 
@@ -35,7 +34,7 @@
     try {
       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $stmt = $conn->prepare("SELECT * FROM tbl_productbid_delta WHERE ID = :pid");
+        $stmt = $conn->prepare("SELECT * FROM tbl_productbid_delta WHERE ID = :pid");
       $stmt->bindParam(':pid', $pid, PDO::PARAM_STR);
       $pid = $_GET['pid'];
       $stmt->execute();
@@ -69,38 +68,18 @@
           <p><?php echo $readrow['DESCRIPTION'] ?></p>
           <span><?php echo $readrow['SELLER'] ?></span>
 
-          			<?php echo"</span><br /><br />
-								&nbsp&nbsp Time Left to Bid: <span class='blue'>";?>
-								<?php
-								
-								$duedate = $readrow['DUEDATE'];
-                
-                $rem = strtotime($duedate) - time();
-                $day = floor($rem / 86400);
-                $hr  = floor((($rem % 86400) / 3600)-7);
-                $min = floor(($rem % 3600) / 60);
-                $sec = ($rem % 60);
-                /*if($day) echo "$day Days ";
-                if($hr) echo "$hr Hours ";
-                if($min) echo "$min Minutes ";
-                if($sec) echo "$sec Seconds ";
-                echo "Remaining...";**/
-                
-
-                 if( $day < 0 && $hr < 0 && $sec < 0){
-                ?>
-                   <h3> <?php echo 'Bid closed'; ?><h3>
+                <?php echo"</span><br /><br />
+                &nbsp&nbsp Time Left to Bid: <span class='blue'>";?>
                 <?php
-                }
-                else{
-              ?> <h3> <!-- <?php echo $day . 'Days '?> -->
-                 <?php echo $hr . 'Hours '?>
-                 <?php echo $min . 'Minutes '?>
-                 <?php echo $sec . 'Seconds '?></h3>
-                <?php 
-                }
+                
+                /* To read the duedate of the product **/
+                $duedate = $readrow['DUEDATE'];
+                $rem = strtotime($duedate);
                 ?>
-               
+
+                <!--To show the time in HTML-->
+                <span class='blue' id='time_left'></span>
+                
         </div>
 
        <!-- Product Configuration -->
@@ -120,23 +99,51 @@
           <div class="container">
    <div>
         <div>
-            <p class="pb-1 username">Amount bid</p> <input type="number" class=" name form-control mb-4" placeholder="RM" value="<?php if(isset($_GET['update'])) echo $editrow['HIGHESTBID']; ?>" min="0.0" step="0.01" required>
-
+            <p class="pb-1 username">Amount bid</p> <input type="text" class=" name form-control mb-4" placeholder="RM">
       </div>        
   </div>
   </div>
 
-   
           
         <div>
-           <a href=".php?edit2=<?php echo $readrow['ID']; ?>" class="btn btn-success btn-xs" role="button"> BID NOW </a>
-          <!-- <a href="#" class="bid-btn">Bid Now</a> -->
+          <a href="#" class="bid-btn">Bid Now</a>
         </div>
       </div>
     </main>
 
-    <!-- Scripts -->
+    <!-- Scripts for the timer-->
+    <script type="text/javascript">
+      
+      //To set refresh every second
+      setInterval(myTimer, 1000);
+      var x= "<?php echo"$rem"?>" + "000";
+
+
+      function myTimer() {
+        /* get current date and due date to compare **/
+        var date = new Date().getTime();
+        var distance = (x) - (date);
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the result in the element with id="demo"
+      document.getElementById("time_left").innerHTML = days + "d " + hours + "h "
+      + minutes + "m " + seconds + "s ";
+
+      // If the count down is finished, write some text 
+      if (distance < 0) 
+      {
+        clearInterval(x);
+        document.getElementById("time_left").innerHTML = "BID CLOSED";
+      }
+      }
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
     <script src="script.js" charset="utf-8"></script>
+    
+
   </body>
 </html>
