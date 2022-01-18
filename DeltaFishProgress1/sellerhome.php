@@ -1,5 +1,7 @@
+
 <?php
-  include_once 'add_products_crud2.php';
+  include 'add_products_crud2.php';
+  
 ?>
 
 <!DOCTYPE html>
@@ -63,8 +65,8 @@
             <div class="col-md-3 d-flex align-items-stretch">
             <div class="card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); max-width: 300px;  padding: 16px;  text-align: center; font-family: arial; margin-bottom: 10px;">
 
-              <?php if(file_exists('pictures_sell/'. $readrow['PICTURE']) && isset($readrow['PICTURE'])){
-                $img = 'pictures_sell/'.$readrow['PICTURE'];
+              <?php if(file_exists('pictures_bid/'. $readrow['PICTURE']) && isset($readrow['PICTURE'])){
+                $img = 'pictures_bid/'.$readrow['PICTURE'];
                 echo '<td><img data-toggle="modal" data-target="#'.$readrow['ID'].'" width=200px height=200px; src="'.$img.'"></td>';
               }
               else{
@@ -86,7 +88,9 @@
 
               <td>
                 <a href="product_detail_bid.php?pid=<?php echo $readrow['ID']; ?>" class="btn btn-warning btn-xs" role="button">Details</a>
-                <a href="sellerhome.php?delete=<?php echo $readrow['ID']; ?>" onclick="return confirm('Are you sure to stop the bidding?');" class="btn btn-danger btn-xs" role="button">Stop</a>
+
+                
+                <a href="sellerhome.php?delete1=<?php echo $readrow['ID']; ?>" onclick="return confirm('Are you sure to stop the bidding?');" class="btn btn-danger btn-xs" role="button">Stop</a> 
                 
               </td>
             </div> 

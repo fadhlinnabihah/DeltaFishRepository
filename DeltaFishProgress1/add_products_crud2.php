@@ -175,6 +175,31 @@ if (isset($_GET['delete'])) {
   exit();
 }
 
+if (isset($_GET['delete1'])) {
+  // if ($_SESSION['ulevel'] == 'Admin')  {
+    try {
+      $pid = $_GET['delete1'];
+      $query = $conn->query("SELECT PICTURE FROM tbl_productbid_delta WHERE ID = '{$pid}' LIMIT 1")->fetch(PDO::FETCH_ASSOC);
+      if (isset($query['PICTURE'])) {
+      // Delete Query
+        $stmt = $conn->prepare("DELETE FROM tbl_productbid_delta WHERE ID = :pid");
+        $stmt->bindParam(':pid', $pid);
+        $stmt->execute();
+      // Delete Image
+        unlink("pictures_bid/{$query['PICTURE']}");
+      }
+    }
+    catch(PDOException $e)
+    {
+      $_SESSION['error'] = "Error while Deleting: " . $e->getMessage();
+    }
+  // } else {
+  //   $_SESSION['error'] = "Sorry, but you don't have permission to delete this product.";
+  // }
+  header("LOCATION: {$_SERVER['PHP_SELF']}");
+  exit();
+}
+
 
 //Edit
 if (isset($_GET['edit'])) {
@@ -196,6 +221,19 @@ if (isset($_GET['edit'])) {
   {
     echo "Error: " . $e->getMessage();
   }
+}
+
+
+
+
+$num = $conn->query("SELECT MAX(ID) AS pid FROM tbl_productsell_delta")->fetch()['pid'];
+
+if ($num){
+  $num = ltrim($num, 'O')+1;
+  $num = str_pad($num, STR_PAD_LEFT);
+}
+else{
+  $num = str_pad(STR_PAD_LEFT);
 }
 
 $conn = null;

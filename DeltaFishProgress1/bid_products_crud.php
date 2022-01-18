@@ -8,7 +8,7 @@ $extention = ['gif','jpg', 'jpeg',];
 function uploadPhoto($file, $id)
 {
   global $extention;
-  $target_dir = "pictures_sell/";
+  $target_dir = "pictures_bid/";
   $imageFileType = strtolower(pathinfo(basename($file["name"]), PATHINFO_EXTENSION));
   
   $newfilename = "{$id}.{$imageFileType}";
@@ -38,21 +38,21 @@ if (isset($_POST['create'])) {
     if (isset($uploadStatus['status'])) {
       try {
 
-   $stmt = $conn->prepare("INSERT INTO tbl_productbid_delta(ID, NAME, PRICE, DESCRIPTION, STOCK, PICTURE) VALUES(:pid, :name, :price, :description, :stock, :image )");
+   $stmt = $conn->prepare("INSERT INTO tbl_productbid_delta(ID, NAME, DESCRIPTION, SELLER, DUEDATE, PICTURE) VALUES(:pid, :name, :description, :seller, :duedate, :image )");
 
-
+     
       $stmt->bindParam(':pid', $pid, PDO::PARAM_INT);
       $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-      $stmt->bindParam(':price', $price, PDO::PARAM_INT);
       $stmt->bindParam(':description', $description, PDO::PARAM_STR);
-      $stmt->bindParam(':stock', $stock, PDO::PARAM_INT);
+      $stmt->bindParam(':seller', $seller, PDO::PARAM_STR);
+      $stmt->bindParam(':duedate', $duedate, PDO::PARAM_STR);
       $stmt->bindParam(':image', $uploadStatus['name']);
 
     $pid = $_POST['pid'];
     $name = $_POST['name'];
-    $price = $_POST['price'];
     $description =  $_POST['description'];
-    $stock = $_POST['stock'];
+    $seller = $_POST['seller'];
+    $duedate = $_POST['duedate'];
 
     $stmt->execute();
       }
@@ -87,22 +87,21 @@ if (isset($_POST['create'])) {
 if (isset($_POST['update'])) {
   // if ($_SESSION['ulevel'] == 'Admin')  {
     try {
-    $stmt = $conn->prepare("UPDATE tbl_productbid_delta SET ID = :pid,NAME = :name, PRICE = :price, DESCRIPTION = :description, STOCK = :stock
+    $stmt = $conn->prepare("UPDATE tbl_productbid_delta SET ID = :pid,NAME = :name, DESCRIPTION = :description, SELLER = :seller, DUEDATE = :duedate
         WHERE ID = :oldpid");
      
       $stmt->bindParam(':pid', $pid, PDO::PARAM_INT);
       $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-      $stmt->bindParam(':price', $price, PDO::PARAM_INT);
       $stmt->bindParam(':description', $description, PDO::PARAM_STR);
-      $stmt->bindParam(':stock', $stock, PDO::PARAM_INT);
+      $stmt->bindParam(':seller', $seller, PDO::PARAM_STR);
+      $stmt->bindParam(':duedate', $duedate, PDO::PARAM_STR);
       $stmt->bindParam(':oldpid', $oldpid, PDO::PARAM_STR);
        
     $pid = $_POST['pid'];
     $name = $_POST['name'];
-    $price = $_POST['price'];
     $description =  $_POST['description'];
-    $stock = $_POST['stock'];
-    $oldpid = $_POST['oldpid'];
+     $seller = $_POST['seller'];
+    $duedate = $_POST['duedate'];
 
     $stmt->execute();
 
@@ -117,7 +116,7 @@ if (isset($_POST['update'])) {
         $stmt->execute();
         //kt product.php line 138
         if(pathinfo(basename($_POST['filename']), PATHINFO_EXTENSION)!=$flag['ext'])
-          unlink("pictures_sell/{$_POST['filename']}");
+          unlink("pictures_bid/{$_POST['filename']}");
       } elseif ($flag != 4) {
         if ($flag == 0)
           $_SESSION['error'] = "Please make sure the file uploaded is an image.";
@@ -161,7 +160,7 @@ if (isset($_GET['delete'])) {
         $stmt->bindParam(':pid', $pid);
         $stmt->execute();
       // Delete Image
-        unlink("pictures_sell/{$query['PICTURE']}");
+        unlink("pictures_bid/{$query['PICTURE']}");
       }
     }
     catch(PDOException $e)
@@ -196,6 +195,17 @@ if (isset($_GET['edit'])) {
   {
     echo "Error: " . $e->getMessage();
   }
+}
+
+
+$num = $conn->query("SELECT MAX(ID) AS pid FROM tbl_productbid_delta")->fetch()['pid'];
+
+if ($num){
+  $num = ltrim($num, 'O')+1;
+  $num = str_pad($num, STR_PAD_LEFT);
+}
+else{
+  $num = str_pad(STR_PAD_LEFT);
 }
 
 $conn = null;

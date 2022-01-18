@@ -71,7 +71,8 @@ session_start();
       <div class="form-group">
           <label for="productid" class="col-sm-3 control-label">ID</label>
           <div class="col-sm-9">
-          <input name="pid" type="text" class="form-control" id="productid" placeholder="Product ID" value="<?php if(isset($_GET['edit'])) echo $editrow['ID']; ?>" required >
+          <!-- <input name="pid" type="text" class="form-control" id="productid" placeholder="Product ID" value="<?php if(isset($_GET['edit'])) echo $editrow['ID']; ?>" required > -->
+          <input name="pid" type="text" class="form-control" value="<?php if(isset($_GET['edit'])) echo $editrow['ID']; else echo $num; ?>" required readonly>
         </div>
         </div>
 
@@ -91,22 +92,22 @@ session_start();
         </div>
 
         <div class="form-group">
-          <label for="productstock" class="col-sm-3 control-label">Stock</label>
+          <label for="seller" class="col-sm-3 control-label">Seller</label>
           <div class="col-sm-9">
-          <input name="stock" type="number" class="form-control" id="productstock" placeholder="Product Stock" value="<?php if(isset($_GET['edit'])) echo $editrow['STOCK']; ?>"  required>
+          <input name="seller" type="text" class="form-control" id="seller" placeholder="Name seller" value="<?php if(isset($_GET['edit'])) echo $editrow['SELLER']; ?>"  hidden readonly>
         </div>
         </div>
 
         <div class="form-group">
           <label for="duedate" class="col-sm-3 control-label">Set bidding time</label>
           <div class="col-sm-9">
-          <input name="duedate" type="datetime" class="form-control" id="duedate" placeholder="YYYY-MM-DD 00:00:00" value="<?php if(isset($_GET['edit'])) echo $editrow['DUEDATE']; ?>"  required>
+          <input name="duedate" type="datetime-local" class="form-control" id="duedate" placeholder="YYYY-MM-DD 00:00:00" value="<?php if(isset($_GET['edit'])) echo $editrow['DUEDATE']; ?>"  required>
         </div>
         </div>
         
         <div class="col-sm-offset-3 col-sm-9" >
           <div class="thumbnail dark-1">
-            <img src="pictures_sell/<?php echo(isset($_GET['edit']) ? $editrow['PICTURE'] : '') ?>"
+            <img src="pictures_bid/<?php echo(isset($_GET['edit']) ? $editrow['PICTURE'] : '') ?>"
             onerror="this.onerror=null;this.src='nophoto.jpg';" id="productPhoto"
             alt="Product Image" style="width: 180px;">
             <div class="caption text-center">
