@@ -23,6 +23,34 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+
+- Table structure for table `tbl_order_delta`
+--
+
+CREATE TABLE `tbl_order_delta` (
+  `fld_order_num` varchar(255) NOT NULL,
+  `fld_order_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `fld_seller_id` varchar(255) DEFAULT NULL,
+  `fld_customer_id` varchar(255) DEFAULT NULL,
+  `tbl_payment` varchar(255) NOT NULL,
+  `tbl_address` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_order_detail_delta`
+--
+
+CREATE TABLE `tbl_order_detail_delta` (
+  `fld_order_detail_num` varchar(255) NOT NULL,
+  `fld_order_num` varchar(255) NOT NULL,
+  `fld_product_num` varchar(255) NOT NULL,
+  `fld_order_detail_quantity` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
 --
 -- Table structure for table `tbl_productbid_delta`
 --
@@ -147,3 +175,7 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+ALTER TABLE `tbl_order_delta` CHANGE `fld_seller_id` `fld_seller_user` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL, CHANGE `fld_customer_id` `fld_customer_user` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL; 
+
+ALTER TABLE `tbl_user_delta` ADD `ADDRESS` VARCHAR(255) NULL DEFAULT NULL AFTER `BANKNAME`; 
