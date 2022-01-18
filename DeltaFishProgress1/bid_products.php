@@ -94,7 +94,7 @@ session_start();
         <div class="form-group">
           <label for="seller" class="col-sm-3 control-label">Seller</label>
           <div class="col-sm-9">
-          <input name="seller" type="text" class="form-control" id="seller" placeholder="Name seller" value="<?php if(isset($_GET['edit'])) echo $editrow['SELLER']; ?>"  hidden>
+          <input name="seller" type="text" class="form-control" id="seller" placeholder="Name seller" value="<?php if(isset($_GET['edit'])) echo $editrow['SELLER']; ?>"  hidden readonly>
         </div>
         </div>
 
