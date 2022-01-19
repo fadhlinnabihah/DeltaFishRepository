@@ -85,18 +85,25 @@ session_start();
         </div>
 
         <div class="form-group">
+          <label for="startingprice" class="col-sm-3 control-label">Starting Price(RM)</label>
+          <div class="col-sm-9">
+          <input name="highestbid" type="number" class="form-control" id="startingprice" placeholder="Starting Price" value="<?php if(isset($_GET['edit'])) echo $editrow['HIGHESTBID']; ?>" min="0.0" step="0.01" required>
+        </div>
+        </div>
+
+        <div class="form-group">
           <label for="productdesc" class="col-sm-3 control-label">Description</label>
           <div class="col-sm-9">
           <input name="description" type="text" class="form-control" id="productdesc" placeholder="Product Description" value="<?php if(isset($_GET['edit'])) echo $editrow['DESCRIPTION']; ?>" required>
         </div>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="seller" class="col-sm-3 control-label">Seller</label>
           <div class="col-sm-9">
           <input name="seller" type="text" class="form-control" id="seller" placeholder="Name seller" value="<?php if(isset($_GET['edit'])) echo $editrow['SELLER']; ?>"  hidden readonly>
         </div>
-        </div>
+        </div> -->
 
         <div class="form-group">
           <label for="duedate" class="col-sm-3 control-label">Set bidding time</label>

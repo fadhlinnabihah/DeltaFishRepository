@@ -38,11 +38,12 @@ if (isset($_POST['create'])) {
     if (isset($uploadStatus['status'])) {
       try {
 
-   $stmt = $conn->prepare("INSERT INTO tbl_productbid_delta(ID, NAME, DESCRIPTION, SELLER, DUEDATE, PICTURE) VALUES(:pid, :name, :description, :seller, :duedate, :image )");
+   $stmt = $conn->prepare("INSERT INTO tbl_productbid_delta(ID, NAME, HIGHESTBID, DESCRIPTION, SELLER, DUEDATE, PICTURE) VALUES(:pid, :name, :highestbid, :description, :seller, :duedate, :image )");
 
      
       $stmt->bindParam(':pid', $pid, PDO::PARAM_INT);
       $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+      $stmt->bindParam(':highestbid', $highestbid, PDO::PARAM_INT);
       $stmt->bindParam(':description', $description, PDO::PARAM_STR);
       $stmt->bindParam(':seller', $seller, PDO::PARAM_STR);
       $stmt->bindParam(':duedate', $duedate, PDO::PARAM_STR);
@@ -50,6 +51,7 @@ if (isset($_POST['create'])) {
 
     $pid = $_POST['pid'];
     $name = $_POST['name'];
+    $highestbid = $_POST['highestbid'];
     $description =  $_POST['description'];
     $seller = $_POST['seller'];
     $duedate = $_POST['duedate'];
@@ -87,11 +89,12 @@ if (isset($_POST['create'])) {
 if (isset($_POST['update'])) {
   // if ($_SESSION['ulevel'] == 'Admin')  {
     try {
-    $stmt = $conn->prepare("UPDATE tbl_productbid_delta SET ID = :pid,NAME = :name, DESCRIPTION = :description, SELLER = :seller, DUEDATE = :duedate
+    $stmt = $conn->prepare("UPDATE tbl_productbid_delta SET ID = :pid,NAME = :name, HIGHESTBID= :highestbid, DESCRIPTION = :description, SELLER = :seller, DUEDATE = :duedate
         WHERE ID = :oldpid");
      
       $stmt->bindParam(':pid', $pid, PDO::PARAM_INT);
       $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+       $stmt->bindParam(':highestbid', $highestbid, PDO::PARAM_INT);
       $stmt->bindParam(':description', $description, PDO::PARAM_STR);
       $stmt->bindParam(':seller', $seller, PDO::PARAM_STR);
       $stmt->bindParam(':duedate', $duedate, PDO::PARAM_STR);
@@ -99,6 +102,7 @@ if (isset($_POST['update'])) {
        
     $pid = $_POST['pid'];
     $name = $_POST['name'];
+     $highestbid = $_POST['highestbid'];
     $description =  $_POST['description'];
      $seller = $_POST['seller'];
     $duedate = $_POST['duedate'];
