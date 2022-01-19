@@ -154,8 +154,8 @@
 
       <div class="buttons">
     
-    <a href="br_pr.php"><button class="btn-hover color-2">Buy</button>
-    <a href="br_pr_bid.php"><button class="btn-hover color-9">Bid</button>
+    <a href="br_pr.php"><button class="btn-hover color-2">Buy</button></a>
+    <a href="br_pr_bid.php"><button class="btn-hover color-9">Bid</button></a>
    
 </div>
     
@@ -293,10 +293,10 @@
  
     <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-      <nav>
-          <!-- <ul class="pagination"> -->
+      <nav>-->
+        
           
-          <?php
+         <!--  <?php
            try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -309,7 +309,7 @@
                 echo "Error: " . $e->getMessage();
           }
           $total_pages = ceil($total_records / $per_page);
-          ?>
+          ?> -->
           <!-- <?php if ($page==1) { ?> -->
            <!--  <li class="disabled"><span aria-hidden="true">«</span></li>
           <?php } else { ?>
@@ -329,7 +329,7 @@
             <li><a href="br_pr_bid.php?page=<?php echo $page+1 ?>" aria-label="Previous"><span aria-hidden="true">»</span></a></li>
           <?php } ?>
         </ul>
-      </nav> -->
+      </nav> 
     </div> -->
     
  

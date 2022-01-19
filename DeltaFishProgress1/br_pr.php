@@ -161,8 +161,8 @@
 
       <div class="buttons">
     
-    <a href="br_pr.php"><button class="btn-hover color-2">Buy</button>
-    <a href="br_pr_bid.php"><button class="btn-hover color-9">Bid</button>
+    <a href="br_pr.php"><button class="btn-hover color-2">Buy</button> </a>
+    <a href="br_pr_bid.php"><button class="btn-hover color-9">Bid</button></a>
    
 </div>
     </div>
