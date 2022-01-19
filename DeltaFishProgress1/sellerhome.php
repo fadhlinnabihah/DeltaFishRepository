@@ -78,19 +78,13 @@
               <p><?php echo $readrow['DUEDATE']; ?></p>
               <p><h2><?php echo 'RM'.$readrow['HIGHESTBID']; ?><h2></p>
               
-<!-- 
-              <div id="<?php echo $readrow['ID']?>" class="modal fade"  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-body">
-                  <img src="<?php echo $img ?>" class="img-responsive">
-                </div>
-              </div> -->
 
 
               <td>
                 <a href="product_detail_bid.php?pid=<?php echo $readrow['ID']; ?>" class="btn btn-warning btn-xs" role="button">Details</a>
 
                 
-                <a href="sellerhome.php?delete1=<?php echo $readrow['ID']; ?>" onclick="return confirm('Are you sure to stop the bidding?');" class="btn btn-danger btn-xs" role="button">Stop</a> 
+                <a href="sellerhome.php?delete1=<?php echo $readrow['ID']; ?>" onclick="return confirm('Are you sure to delete the bidding?');" class="btn btn-danger btn-xs" role="button">Delete</a> 
                 
               </td>
             </div> 
@@ -170,11 +164,6 @@
       </div>
         </div>
      
-
-
-
-    
-
  
 
             <br><br><br><br><br><br><br><br>
@@ -193,22 +182,7 @@
   <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
     
-  <script type="application/javascript">
-  var loadFile = function (event) {
-    var reader = new FileReader();
-    reader.onload = function () {
-      var output = document.getElementById('productPhoto');
-      output.src = reader.result;
-    };
-    reader.readAsDataURL(event.target.files[0]);
-    document.getElementById('productImageTitle').innerText = event.target.files[0]['name'];
-  };
 
-  $(document).ready(function () {
-    $("#productlist").DataTable({
-    "lengthMenu": [[5, 20, 50, -1], [5, 20, 50, "All"]]
-  });
-  });
 </script>
 <!-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js%22%3E"></script> -->
     </body>

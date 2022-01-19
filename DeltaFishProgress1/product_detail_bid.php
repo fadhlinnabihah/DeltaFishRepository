@@ -76,13 +76,6 @@
                 /* To read the duedate of the product **/
                 $duedate = $readrow['DUEDATE'];
 
-          			<?php echo"</span><br /><br />
-								&nbsp&nbsp Time Left to Bid: <span class='blue'>";?>
-								<?php
-								
-                /* To read the duedate of the product **/
-								$duedate = $readrow['DUEDATE'];
-
                 $rem = strtotime($duedate);
                 ?>
 
@@ -94,9 +87,6 @@
        <!-- Product Configuration -->
         <div class="product-configuration">
           
-          
-
-         
 
         <!-- Product Pricing -->
         <div class="product-price">
@@ -111,17 +101,17 @@
           <form method="POST" action="product_detail_bid.php">
             <input type="hidden" name="oldpid" value="<?php echo $readrow['ID']; ?>">  
             <p class="pb-1 username">Amount bid</p> 
-            <input type="text" class=" name form-control mb-4" placeholder="RM" name="highestbid">
+           
+            <input type="number" class=" name form-control mb-4" placeholder="RM" name="highestbid" min="<?php echo $readrow['HIGHESTBID'] ?>" >
             <div class="form-group">
-               <button class="bid-btn" name="update">Bid Now</button>
+
+               <center><button class="bid-btn" name="update">Bid Now</button></center>
       </div>        
   </div>
   </div>
 
           
-        <div>
-          <a href="#" class="bid-btn">Bid Now</a>
-        </div>
+        
       </div>
     </main>
 
@@ -139,7 +129,7 @@
         var distance = (x) - (date);
 
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)-7);
         var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 

@@ -21,8 +21,19 @@ if (isset($_POST['update'])) {
     $oldpid = $_POST['oldpid'];
 
     $highestbid = $_POST['highestbid'];
+
+    // if($_POST['highestbid'] <= $highestbid)
+    //     {
+    //         echo "You need to enter more";
+    //     }
+    // else
+    //     {
+    //             echo "Succesfully bid";
+             $stmt->execute();
+    //      }
+              
      
-    $stmt->execute();
+    
  
 
 
@@ -31,7 +42,7 @@ if (isset($_POST['update'])) {
             $_SESSION['error'] = "Update Error *beep* *boop* :Update Error *beep* *boop* :" . $e->getMessage();
         }
 
-        header("Location: br_pr.php");
+        header("Location: br_pr_bid.php");
 
     exit();
 }

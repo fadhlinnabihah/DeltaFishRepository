@@ -160,12 +160,70 @@
 </div>
     
   </center>
-  </      
-    <!-- Need to change later -->
+
+
+    <div class="row">
+
+      <div class="container">
+        <div class="page-header">
+          <h2>Bidding Product List</h2>
+        </div>
+
+            
+          <?php
+          try {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $stmt = $conn->prepare("SELECT * FROM tbl_productbid_delta WHERE DUEDATE >= NOW()");
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+          }
+          catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+          } ?>
+            
+          <?php
+          foreach($result as $readrow) {
+              ?>
+            <div class="col-md-3 d-flex align-items-stretch">
+            <div class="card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); max-width: 300px;  padding: 16px;  text-align: center; font-family: arial; margin-bottom: 10px;">
+
+              <?php if(file_exists('pictures_bid/'. $readrow['PICTURE']) && isset($readrow['PICTURE'])){
+                $img = 'pictures_bid/'.$readrow['PICTURE'];
+                echo '<td><img data-toggle="modal" data-target="#'.$readrow['ID'].'" width=200px height=200px; src="'.$img.'"></td>';
+              }
+              else{
+                $img = 'nophoto.jpg';
+                echo '<td><img width=200px%; data-toggle="modal" data-target="#'.$readrow['ID'].'" src="nophoto.jpg"'.'></td>';
+              } ?>
+              
+              <p><?php echo $readrow['NAME']; ?></p>
+              <p><?php echo $readrow['SELLER']; ?></p>
+              <p><h2><?php echo 'RM'.$readrow['HIGHESTBID']; ?><h2></p>
+              
+
+
+              <td>
+                <a href="product_detail_bid.php?pid=<?php echo $readrow['ID']; ?>" class="btn btn-warning btn-xs" role="button">Details</a>
+
+                
+            
+                
+              </td>
+            </div> 
+          </div>
+          
+            <?php
+          }
+          $conn = null;
+          ?>
+            </div>
+      </div>
+        </div>
 
 
 
-      <table class="table table-bordered">
+      <!-- <table class="table table-bordered">
         <tr style="background: #89CFF0;color: #fff;">
           <th>Picture</th> 
           <th>Name</th>
@@ -272,7 +330,7 @@
           <?php } ?>
         </ul>
       </nav> -->
-    </div>
+    </div> -->
     
  
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

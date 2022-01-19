@@ -166,22 +166,7 @@ session_start();
   <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
     
-  <script type="application/javascript">
-  var loadFile = function (event) {
-    var reader = new FileReader();
-    reader.onload = function () {
-      var output = document.getElementById('productPhoto');
-      output.src = reader.result;
-    };
-    reader.readAsDataURL(event.target.files[0]);
-    document.getElementById('productImageTitle').innerText = event.target.files[0]['name'];
-  };
 
-  $(document).ready(function () {
-    $("#productlist").DataTable({
-    "lengthMenu": [[5, 20, 50, -1], [5, 20, 50, "All"]]
-  });
-  });
 </script>
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js%22%3E"></script>
 
