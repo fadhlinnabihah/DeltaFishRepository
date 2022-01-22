@@ -1,31 +1,33 @@
-<!--<?php
-/*  include_once 'database.php';
+<?php
+  include 'db.php';
 
-if (!isset($_SESSION['loggedin']))
-    header("LOCATION: login.php");
+
 
 ?>
 <?php
     try {
+      //ada dua quary, satu untuk data buyer, satu untuk data seller
       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $stmt = $conn->prepare("SELECT * FROM tbl_orders_a174777, tbl_staffs_a174777,
-        tbl_customers_a174777, tbl_orders_details_a174777 WHERE
-        tbl_orders_a174777.fld_staff_num = tbl_staffs_a174777.fld_staff_num AND
-        tbl_orders_a174777.fld_customer_num = tbl_customers_a174777.fld_customer_num AND
-        tbl_orders_a174777.fld_order_num = tbl_orders_details_a174777.fld_order_num AND
-        tbl_orders_a174777.fld_order_num = :oid");
+      $stmt = $conn->prepare("SELECT * FROM tbl_order_delta, tbl_user_delta, tbl_order_detail_delta, tbl_productsell_delta WHERE
+        tbl_order_delta.fld_seller_user = tbl_user_delta.USERNAME AND
+        tbl_order_delta.fld_order_num = tbl_order_detail_delta.fld_order_num AND
+        tbl_order_delta.fld_order_num = :oid ; 
+        SELECT * FROM  tbl_user_delta, tbl_order_delta WHERE tbl_order_delta.fld_customer_user = tbl_user_delta.USERNAME AND
+        tbl_order_delta.fld_order_num = :oid" );
       $stmt->bindParam(':oid', $oid, PDO::PARAM_STR);
       $oid = $_GET['oid'];
       $stmt->execute();
       $readrow = $stmt->fetch(PDO::FETCH_ASSOC);
+      $stmt->nextRowset();
+      $readrow2 = $stmt->fetch(PDO::FETCH_ASSOC);
       }
     catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-    $conn = null;*/
+    $conn = null;
 ?>
--->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,8 +38,7 @@ if (!isset($_SESSION['loggedin']))
   <title>Invoice</title>
   <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!--<link rel="shortcut icon" type="image/jpg" href="logo.jpg" />-->
-
+    <link rel="shortcut icon" type="image/png" href="deltafish_logo.png" /> 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -46,43 +47,40 @@ if (!isset($_SESSION['loggedin']))
     <![endif]-->
 </head>
 <body>
-
-
+ 
 
 <div class="text-center">
-  <h1 class="text-center">INVOICE</h1>
-  <h5>Order: O5603f03a9349f0.39900158<?php// echo $readrow['fld_order_num'] ?></h5>
-  <h5>Date: 2021-11-12 01:35:54<?php// echo $readrow['fld_order_date'] ?></h5>
+  <br>
+    <img src="deltafish_logo.png" width="50%" height="50%">
 </div>
-
+<div class="text-center">
+  <h1>INVOICE</h1>
+  <h5>Order: <?php echo $readrow['fld_order_num'] ?></h5>
+  <h5>Date: <?php echo $readrow['fld_order_date'] ?></h5>
+</div>
 <hr>
+
 <div class="row">
   <div class="col-xs-5">
     <div class="panel panel-default">
-      <div class="panel-heading text-center">
-        <h4>From: SELLER</h4>
+      <div class="panel-heading">
+        <h4>From: <?php echo $readrow['fld_seller_user'] ?></h4>
       </div>
-      <div class="panel-body text-center">
+      <div class="panel-body">
         <p>
-        Lot 01-10, Level 1, East Wing <br>
-        Berjaya Times Square <br>
-        56100 <br>
-        Kuala Lumpur <br>
+        <?php echo $readrow['ADDRESS'] ?>  
         </p>
       </div>
     </div>
   </div>
     <div class="col-xs-5 col-xs-offset-2 text-right">
         <div class="panel panel-default">
-            <div class="panel-heading text-center">
-              <h4>To : BUYER<?//php echo $readrow['fld_customer_fname']." ".$readrow['fld_customer_lname'] ?></h4>
+            <div class="panel-heading">
+              <h4>To : <?php echo $readrow2['fld_customer_user'] ?></h4>
             </div>
-            <div class="panel-body text-center">
+            <div class="panel-body">
         <p>
-        No.69 Jalan Melur <br>
-        Tmn Nirwana <br>
-        56100 <br>
-        Kuala Lumpur <br>
+        <?php echo $readrow2['ADDRESS'] ?>  
         </p>
             </div>
         </div>
@@ -97,35 +95,86 @@ if (!isset($_SESSION['loggedin']))
     <th class="text-right">Price(RM)/Unit</th>
     <th class="text-right">Total(RM)</th>
   </tr>
+  <?php
+  $grandtotal = 0;
+  $counter = 1;
+  try {
+    ////ada dua quary, satu untuk data bid, satu untuk data biasa
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $stmt = $conn->prepare("SELECT * FROM tbl_order_detail_delta,
+        tbl_productsell_delta WHERE 
+        tbl_order_detail_delta.fld_product_num = tbl_productsell_delta.NAME AND
+        fld_order_num = :oid ; SELECT * FROM tbl_order_detail_delta, tbl_productbid_delta WHERE tbl_order_detail_delta.fld_product_num = tbl_productbid_delta.NAME AND fld_order_num = :oid");
+    $stmt->bindParam(':oid', $oid, PDO::PARAM_STR);
+      $oid = $_GET['oid'];
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    $count= $stmt->fetchColumn();
+    $stmt->nextRowset();
+    $result2 = $stmt->fetchAll();
+  }
+  catch(PDOException $e){
+        echo "Error: " . $e->getMessage();
+  }
+  ?>
+  
+  <?php
+  print $count;
+  //digunakan untuk mengenal pasti sistem perlu memaparkan yang produk bid atau produk biasa 
+  if($result){
+  foreach($result as $detailrow) {
+  ?>
   <tr>
-    <td>1</td>
-    <td>Gold Fish&nbsp;</td>
-    <td class="text-right">3</td>
-    <td class="text-right">420</td>
-    <td class="text-right">1260</td>
+    <td><?php echo $counter; ?></td>
+    <td><?php echo $detailrow['NAME']; ?></td>
+    <td class="text-right"><?php echo $detailrow['fld_order_detail_quantity']; ?></td>
+    <td class="text-right"><?php echo $detailrow['PRICE']; ?></td>
+    <td class="text-right"><?php echo $detailrow['PRICE']*$detailrow['fld_order_detail_quantity']; ?></td>
   </tr>
-  <tr>
-    <td>2</td>
-    <td>Nemo Fish&nbsp;</td>
-    <td class="text-right">1</td>
-    <td class="text-right">150</td>
-    <td class="text-right">150</td>
-  </tr>
+  <?php
+    $grandtotal = $grandtotal + $detailrow['PRICE']*$detailrow['fld_order_detail_quantity'];
+    $counter++;
+  } // while
+  ?>
   <tr>
     <td colspan="4" class="text-right">Grand Total</td>
-    <td class="text-right">1310<?//php echo $grandtotal ?></td>
+    <td class="text-right"><?php echo $grandtotal ?></td>
   </tr>
 </table>
- 
+<?php
+}
+else{
+  foreach($result2 as $detailrow) {
+  ?>
+<tr>
+    <td><?php echo $counter; ?></td>
+    <td><?php echo $detailrow['NAME']; ?></td>
+    <td class="text-right">1</td>
+    <td class="text-right"><?php echo $detailrow['HIGHESTBID']; ?></td>
+    <td class="text-right"><?php echo $detailrow['HIGHESTBID']; ?></td>
+  </tr>
+  <?php
+    $grandtotal = $grandtotal + $detailrow['HIGHESTBID'];
+    $counter++;
+  } // while
+  ?>
+  <tr>
+    <td colspan="4" class="text-right">Grand Total</td>
+    <td class="text-right"><?php echo $grandtotal ?></td>
+  </tr>
+</table>
+<?php
+}
+?> 
 <div class="row">
   <div class="col-xs-5">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4>Payment & Shipping</h4>
+        <h4>Payment</h4>
       </div>
       <div class="panel-body">
-        <p>Payment method: Online Banking</p>
-        <p>Shipping method: Cash-on-delivery (COD)</p>  
+        <p>Payment method: <?php echo $readrow['fld_payment'] ?></p>
       </div>
     </div>
     </div>
@@ -136,7 +185,7 @@ if (!isset($_SESSION['loggedin']))
           <h4>Contact Details</h4>
         </div>
         <div class="panel-body">
-          <p> Phone number: 0193748526<?//php echo $readrow['fld_staff_fname']." ".$readrow['fld_staff_lname'] ?> </p>
+          <p> Phone number: <?php echo $readrow['PHONE'] ?></p>
           <p><br></p>
         </div>
       </div>
