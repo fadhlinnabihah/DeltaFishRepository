@@ -4,6 +4,9 @@ include_once 'db.php';
 if (!isset($_SESSION['loggedin']))
     header("LOCATION: login.php");
 
+if(isset($_SESSION['user']['BANKNO']) &&  isset($_SESSION['user']['BANKNAME']))
+    header("LOCATION: sellerhome.php");
+
 
 // $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 // $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
