@@ -27,7 +27,7 @@
                 <div class="col-md-12">
                     <div class="col-12 create">
 
-            <a href="sellerverification.php">
+            <a href="successpickup.php">
             <input type="button" name="seller" value="Cash" id="seller" class="btn btn-primary py-3 "><?php if (isset($_GET['edit'])) { ?>
                     <div class="align-items-center"> <a href="">
                         <?php } ?></div></a>
@@ -35,7 +35,7 @@
                         <br>
                 <div class="col-md-12">
                     <div class="col-12 create">
-                        <a href="buyerhome.php">
+                        <a href="successdeliew.php">
                         <input type="button" name="buyer" value="e-Wallet" id="buyer"  class="btn btn-primary py-3 "><?php if (isset($_GET['edit'])) { ?>
                     <div class="align-items-center">
                         <?php } ?>
@@ -44,7 +44,7 @@
                 <br>
                 <div class="col-md-12">
                     <div class="col-12 create">
-                        <a href="buyerhome.php">
+                        <a href="successdeliob.php">
                         <input type="button" name="buyer" value="Online Banking" id="buyer"  class="btn btn-primary py-3 "><?php if (isset($_GET['edit'])) { ?>
                     <div class="align-items-center">
                         <?php } ?>
