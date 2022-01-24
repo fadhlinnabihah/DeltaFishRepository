@@ -28,7 +28,7 @@
            color: #ffffff;
         }
         .table{
-          background-color: #ffffff;
+          background-color: #74E1F5;
         }
 
     </style>

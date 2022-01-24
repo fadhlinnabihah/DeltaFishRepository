@@ -131,6 +131,9 @@ echo <<<EOT
 						<span>$num_items_in_cart</span>
 					</a>
                 </div>
+                <nav>
+                <a href="logout.php">Logout</a>
+                </nav>
             </div>
         </header>
 
