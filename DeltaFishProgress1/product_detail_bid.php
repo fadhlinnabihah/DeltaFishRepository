@@ -126,7 +126,7 @@
       function myTimer() {
         /* get current date and due date to compare **/
         var date = new Date().getTime();
-        var distance = (x) - (date);
+        var distance = (x) - (date)- "25200000";
 
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
         var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));

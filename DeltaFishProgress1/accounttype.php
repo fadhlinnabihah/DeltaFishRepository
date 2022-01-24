@@ -35,7 +35,7 @@
 
                 <div class="col-md-6">
                     <div class="col-12 create">
-                        <a href="buyerhome.php">
+                        <a href="index.php?page=buyerhome">
                         <input type="button" name="buyer" value="Buyer" id="buyer"  class="btn btn-primary py-3 "><?php if (isset($_GET['edit'])) { ?>
                     <div class="d-flex align-items-center justify-content-between">
                         <?php } ?>

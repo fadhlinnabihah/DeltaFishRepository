@@ -95,7 +95,7 @@ include_once 'index.php';
                    <div id="bannerContent">
                        <h1>Welcome to DFOBB</h1>
                        <p>Delta Fish Online Buying & Bidding</p>
-                       <a href="br_pr.php" class="btn btn-danger">Shop Now</a>
+                       <a href="index.php?page=br_pr" class="btn btn-danger">Shop Now</a>
                    </div>
                    </center>
                </div>

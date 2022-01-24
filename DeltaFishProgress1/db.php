@@ -146,3 +146,56 @@ EOT;
 }
 
 ?>
+<!-- @@ -0,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Tourney:wght@700&display=swap');
+*{
+	/*font-family: 'Tourney', cursive;*/
+}
+html{
+	scroll-behavior: smooth;
+}
+body{
+	
+}
+ 
+.navbar{
+	background:#ABB2B9;
+	border: none;
+	border-radius: 0px;
+	margin-bottom: 10px;
+}
+
+.page-header{
+	margin-top: 0px;
+}
+
+.navbar-brand{
+	margin: 5px 0px;
+	font-size: 30px;
+}
+
+.nav li a{
+	color: black;
+  	text-decoration: none;
+  	font-size: 17px;
+  	font-weight: 500;
+  	padding: 10px 10px;
+  	margin: 10px 5px;
+	border-radius: 9px;
+	letter-spacing: 1px;
+	transition: all 0.3s ease;
+}
+
+
+#bs-example-navbar-collapse-1 ul li a:hover{
+	color: black;
+	background:#ffffff;
+	box-shadow:  0 0 10px #EAECEE, 0 0 40px #EAECEE, 0 0 80px #EAECEE;
+}
+
+#role{
+
+	font-size: 15px;
+
+}
+ -->
