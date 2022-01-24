@@ -461,11 +461,11 @@ footer {
                         <br>
                         <a href="index.php?page=cart&remove=<?=$product['ID']?>" class="remove">Remove</a>
                     </td>
-                    <td class="price">&dollar;<?=$product['PRICE']?></td>
+                    <td class="price">RM <?=$product['PRICE']?></td>
                     <td class="quantity">
                         <input type="number" name="quantity-<?=$product['ID']?>" value="<?=$products_in_cart[$product['ID']]?>" min="1" max="<?=$product['STOCK']?>" placeholder="Quantity" required>
                     </td>
-                    <td class="price">&dollar;<?=$product['PRICE'] * $products_in_cart[$product['ID']]?></td>
+                    <td class="price">RM <?=$product['PRICE'] * $products_in_cart[$product['ID']]?></td>
                 </tr>
                 <?php endforeach; ?>
                 <?php endif; ?>
@@ -473,7 +473,7 @@ footer {
         </table>
         <div class="subtotal">
             <span class="text">Subtotal</span>
-            <span class="price">&dollar;<?=$subtotal?></span>
+            <span class="price">RM <?=$subtotal?></span>
         </div>
         <div class="buttons">
             <input type="submit" value="Update" name="update">

@@ -280,7 +280,7 @@ include_once 'index.php';
        
         
         <td>
-          <a href="index.php?page=products_detail_sell&id=<?=$readrow['ID']?>" class="btn btn-warning btn-xs" role="button" >Details</a>
+          <a href="index.php?page=products_detail_sell&pid=<?=$readrow['ID']?>" class="btn btn-warning btn-xs" role="button" >Details</a>
           
         </td>
       </div>

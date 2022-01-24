@@ -96,9 +96,9 @@
     try {
       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $stmt = $conn->prepare("SELECT * FROM tbl_productsell_delta WHERE ID = :id");
-      $stmt->bindParam(':id', $id, PDO::PARAM_STR);
-      $id = $_GET['id'];
+      $stmt = $conn->prepare("SELECT * FROM tbl_productsell_delta WHERE ID = :pid");
+      $stmt->bindParam(':pid', $pid, PDO::PARAM_STR);
+      $pid = $_GET['pid'];
       $stmt->execute();
       $readrow = $stmt->fetch(PDO::FETCH_ASSOC);
       }
