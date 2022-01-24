@@ -27,7 +27,7 @@
             ?></div>
             <div class="container">
                 <div class="jumbotron">
-                    <h1>Hi Seller!</h1>
+                    <h1>Hi <?php echo $_SESSION['user']['USERNAME']?>!</h1>
                     <p>Edit and add all your product here.</p>
                     <div class="col-md-6" style="float: right;">
                     <p><a href="add_products.php" role="button" class="btn btn-primary btn-block" style="border-radius: 12px;  box-shadow: 0 13px 17px 0 rgba(0,0,0,0.25), 0 18px 51px 0 rgba(0,0,0,0.20); ">Add Product</a></p>
