@@ -58,16 +58,76 @@ if (isset($_POST['update']) && isset($_SESSION['cart'])) {
     header('location: index.php?page=cart');
     exit;
 }
-
-// Send the user to the place order page if they click the Place Order button, also the cart should not be empty
-if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-    header('Location: index.php?page=placeorder');
-    exit;
-}
 // Check the session variable for products in cart
 $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 $products = array();
 $subtotal = 0.00;
+$cidu = $_SESSION['user']['USERNAME'];
+$seller='';
+// Send the user to the place order page if they click the Place Order button, also the cart should not be empty
+if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+    // There are products in the cart so we need to select those products from the database
+    // Products in cart array to question mark string array, we need the SQL statement to include IN (?,?,?,...etc)
+    $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
+    $stmt = $pdo->prepare('SELECT * FROM tbl_productsell_delta WHERE id IN (' . $array_to_question_marks . ')');
+    // We only need the array keys, not the values, the keys are the id's of the products
+    $stmt->execute(array_keys($products_in_cart));
+    // Fetch the products from the database and return the result as an Array
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // Calculate the subtotal
+    foreach ($products as $product) {
+        if($product['SELLER'] != $seller){
+            try {
+                $stmt = $conn->prepare("INSERT INTO tbl_order_delta(fld_order_num, fld_seller_user,fld_customer_user) VALUES(:oid, :sid, :cid)");
+               
+                $stmt->bindParam(':oid', $oid, PDO::PARAM_STR);
+                $stmt->bindParam(':sid', $sid, PDO::PARAM_STR);
+                $stmt->bindParam(':cid', $cid, PDO::PARAM_STR);
+                   
+                $oid = uniqid('O', true);
+                $soid = $oid;
+                $sid = $product['SELLER'];
+                $cid = $cidu;
+                 
+                $stmt->execute();
+                }
+             
+              catch(PDOException $e)
+              {
+                  echo "Error: " . $e->getMessage();
+              }
+            $seller=$product['SELLER']; 
+        }
+
+        try {
+                $stmt = $conn->prepare("INSERT INTO tbl_order_detail_delta( fld_order_detail_num, fld_order_num, fld_product_num, fld_order_detail_quantity) VALUES(:odid, :oid, :name, :quantity)");
+               
+                $stmt->bindParam(':odid', $odid, PDO::PARAM_STR);
+                $stmt->bindParam(':oid', $soid, PDO::PARAM_STR);
+                $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+                $stmt->bindParam(':quantity', $quantity, PDO::PARAM_STR);
+                   
+                $odid = uniqid('D', true);
+                $soid = $oid;
+                $name = $product['NAME'];
+                $quantity = $products_in_cart[$product['ID']];
+                 
+                $stmt->execute();
+                }
+             
+              catch(PDOException $e)
+              {
+                  echo "Error: " . $e->getMessage();
+              }
+       
+    }
+    
+    
+    header('Location: index.php?page=placeorder');
+    exit;
+}
+
+
 // If there are products in cart
 if ($products_in_cart) {
     // There are products in the cart so we need to select those products from the database
@@ -79,9 +139,8 @@ if ($products_in_cart) {
     // Fetch the products from the database and return the result as an Array
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // Calculate the subtotal
-    foreach ($products as $product) {
-        $subtotal += (float)$product['PRICE'] * (int)$products_in_cart[$product['ID']];
-    }
+    foreach ($products as $product) { 
+    $subtotal += (float)$product['PRICE'] * (int)$products_in_cart[$product['ID']];    
 }
 
 ?>
