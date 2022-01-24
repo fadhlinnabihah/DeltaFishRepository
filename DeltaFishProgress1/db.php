@@ -1,13 +1,13 @@
 <?php
-$servername = 'localhost';
-$username = 'root';
-$password = '';
+$servername = 'lrgs.ftsm.ukm.my';
+$username = 'a174777';
+$password = 'largeblackbird';
 $dbname = 'a174777';
 function pdo_connect_mysql() {
     // Update the details below with your MySQL details
-    $DATABASE_HOST = 'localhost';
-    $DATABASE_USER = 'root';
-    $DATABASE_PASS = '';
+    $DATABASE_HOST = 'lrgs.ftsm.ukm.my';
+    $DATABASE_USER = 'a174777';
+    $DATABASE_PASS = 'largeblackbird';
     $DATABASE_NAME = 'a174777';
     try {
     	return new PDO('mysql:host=' . $DATABASE_HOST . ';dbname=' . $DATABASE_NAME . ';charset=utf8', $DATABASE_USER, $DATABASE_PASS);
