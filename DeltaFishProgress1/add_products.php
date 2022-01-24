@@ -101,6 +101,7 @@
           <label for="productstock" class="col-sm-3 control-label">Stock</label>
           <div class="col-sm-9">
           <input name="stock" type="number" class="form-control" id="productstock" placeholder="Product Stock" value="<?php if(isset($_GET['edit'])) echo $editrow['STOCK']; ?>"  required>
+          <input type="hidden" name="seller" value="<?php echo $_SESSION['user']['USERNAME']?>">
         </div>
         </div>
         
