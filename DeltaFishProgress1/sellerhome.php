@@ -148,7 +148,7 @@
 
 
               <td>
-                <a href="products_detail_sell.php?pid=<?php echo $readrow['ID']; ?>" class="btn btn-warning btn-xs" role="button">Details</a>
+                <a href="index.php?page=products_detail_sell&pid=<?php echo $readrow['ID']; ?>" class="btn btn-warning btn-xs" role="button">Details</a>
                 <a href="add_products.php?edit=<?php echo $readrow['ID']; ?>" class="btn btn-success btn-xs" role="button"> Edit </a>
                 <a href="sellerhome.php?delete=<?php echo $readrow['ID']; ?>" onclick="return confirm('Are you sure to delete?');" class="btn btn-danger btn-xs" role="button">Delete</a>
                 
