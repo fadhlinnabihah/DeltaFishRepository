@@ -1,11 +1,8 @@
 <?php
-//session_start();
-include_once 'signup.php';
-//if(isset($_SESSION['signup'])){
-  //header("location: mainpage.php");
-  //die();
-  //}
- ?>
+include_once 'db.php';
+if (!isset($_SESSION['loggedin']))
+    header("LOCATION: login.php");
+?>
 
 <!Doctype HTML>
 <html>
@@ -31,26 +28,25 @@ include_once 'signup.php';
 </div> -->
 
 <div id="main">
-
 	<div class="head">
 <p style="font-size:30px;color: white;">Dashboard</p>
 </div>
 	
 	<div class="col-div-3">
 		<div class="box">
-			<p>67<br/><span>Customers</span></p>
+      <p>0<br/><span>Customers</span></p>
 			<i class="fa fa-users box-icon"></i>
 		</div>
 	</div>
 	<div class="col-div-3">
 		<div class="box">
-			<p>88<br/><span>Products</span></p>
+			<p>0<br/><span>Products</span></p>
 			<i class="fa fa-list box-icon"></i>
 		</div>
 	</div>
 	<div class="col-div-3">
 		<div class="box">
-			<p>78<br/><span>Orders</span></p>
+			<p>0<br/><span>Orders</span></p>
 			<i class="fa fa-shopping-bag box-icon"></i>
 		</div>
 	</div>
@@ -59,7 +55,7 @@ include_once 'signup.php';
 	<div class="col-div-8">
 		<div class="box-8">
 		<div class="content-box">
-			<p>Top Products </p>
+			<p>Top Products</p>
 			<br/>
 			<table>
   <tr>
@@ -113,7 +109,7 @@ include_once 'signup.php';
 </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
   $(".nav").click(function(){
@@ -139,7 +135,7 @@ $(".nav2").click(function(){
       $(".nav2").css('display','none');
  });
 
-</script>
+</script> -->
 
 </body>
 
