@@ -1,5 +1,5 @@
 <?php 
- include_once 'shipFunction.php';
+ include_once 'db.php';
  // include_once 'CartPage.php';
  ?>
 
@@ -29,6 +29,7 @@
 						<div class="row">
 							<div class="col-12 col-md-3 offset-md-4 offset-xl-4">
 						<!-- <button class="btn btn-primary btn-lg" type="submit" style="margin: -19px;padding: 6px 16px;width: 208px;">Add New Shipment&nbsp;</button> -->
+						<!-- <button class="btn btn-primary btn-lg" type="submit" style="margin: -19px;padding: 6px 16px;width: 208px;">Add New Shipment&nbsp;</button> -->
 					</div>
 				</div>
 				</form></div>
@@ -44,9 +45,9 @@
     try {
       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("SELECT * FROM tbl_order_detail_delta WHERE fld_order_detail_num = :pid");
-      $stmt->bindParam(':pid', $pid, PDO::PARAM_STR);
-      // $pid = $_GET['pid'];
+        $stmt = $conn->prepare("SELECT * FROM tbl_order_delta, tbl_order_detail_delta WHERE tbl_order_delta.fld_order_num = tbl_order_detail_delta. fld_order_num AND fld_customer_user = :customer");
+            $stmt->bindParam(':customer', $customer, PDO::PARAM_STR);
+            $customer = $_SESSION['user']['USERNAME'];
       $stmt->execute();
       $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
       }

@@ -1,6 +1,7 @@
 <?php 
 /* code by webdevtrick ( https://webdevtrick.com ) */
 include_once 'db.php';
+include_once 'CartFunction.php';
 session_start();
 $connect = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -107,6 +108,8 @@ if(isset($_GET["action"]))
 			<h3>Order Details</h3>
 			<div class="table-responsive">
 				<table class="table table-bordered">
+					<form action="CartPage.php" method ="post" class="form-horizontal"> 
+
 					<tr>
 						<th width="40%">Item Name</th>
 						<th width="10%">Quantity</th>
@@ -135,14 +138,18 @@ if(isset($_GET["action"]))
 					<tr>
 						<td colspan="3" align="right">Total</td>
 						<td align="right">RM <?php echo number_format($total, 2); ?></td>
+						<?php if(isset($_GET['edit'])) echo $editrow['fld_order_detail_quantity']; ?>
 						<td></td>
 						
 					</tr>
 					<tr>
 						
 						<td colspan="4" align="right">
-      					<a href="deliverytype.php" class="btn btn-info">Checkout</a></td>
+						<input type="submit" name="cart" value="Checkout"class="btn btn-primary py-3 ">  
+					 										
+      					<!-- <a href="paymenttype.php" class="btn btn-info">Checkout</a></td> -->
 					</tr>
+					</form>
 					 
 					<?php
 					}
