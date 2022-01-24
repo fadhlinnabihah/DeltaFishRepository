@@ -37,7 +37,7 @@
             <div class="col-12 create">
                 
                 <div> 
-                    <a href="invoicedeliveryew.php">
+                    <a href="ship.php">
                     <input type="button" name="create" value="Generate Invoice"class="btn btn-primary py-3 ">  
                     <?php if (isset($_GET['edit'])) { ?>
                     <div class="d-flex align-items-center justify-content-between">

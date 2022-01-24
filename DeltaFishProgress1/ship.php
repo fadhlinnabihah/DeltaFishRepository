@@ -1,6 +1,8 @@
 <?php 
  include_once 'db.php';
  // include_once 'CartPage.php';
+ if (!isset($_SESSION['loggedin']))
+    header("LOCATION: login.php");
  ?>
 
 <!DOCTYPE html>
@@ -45,7 +47,7 @@
     try {
       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("SELECT * FROM tbl_order_delta, tbl_order_detail_delta WHERE tbl_order_delta.fld_order_num = tbl_order_detail_delta. fld_order_num AND fld_customer_user = :customer");
+        $stmt = $conn->prepare("SELECT * FROM tbl_order_delta, tbl_order_detail_delta, tbl_productsell_delta WHERE tbl_order_delta.fld_order_num = tbl_order_detail_delta.fld_order_num AND tbl_productsell_delta.NAME = tbl_order_detail_delta.fld_product_num AND fld_customer_user = :customer");
             $stmt->bindParam(':customer', $customer, PDO::PARAM_STR);
             $customer = $_SESSION['user']['USERNAME'];
       $stmt->execute();
@@ -68,43 +70,39 @@
 												<th></th>
 											</tr>	
 											<?php
-											
+												$total =0;
 											 foreach($result as $readrow) {
-											 		$total =0 
+											 		$total += (float)$readrow['PRICE']*(int)$readrow['fld_order_detail_quantity'];
 											 		?>
 										</thead>
 											<tbody>
-											
-												<tr><td> &nbsp;</td>
-													<td></td>
-													<td>3</td>
-													<td></td>
+																	
 												</tr>
-												<tr></tr>
-												<tr></tr>
+												
 												<tr>
-													td><?php echo $readrow['fld_order_detail_num']; ?></td>
+													<td><?php echo $readrow['fld_order_detail_num']; ?></td>
 													<td><?php echo $readrow['fld_order_num']; ?></td>
 													<td><?php echo $readrow['fld_product_num']; ?>&nbsp;</td>
-													<td><?php echo $readrow['fld_order_detail-quantity']; ?></td>
-													<td></td>
-													<td> </td>
+													<td><?php echo $readrow['fld_order_detail_quantity']; ?></td>
+													<td><a role="button" type="submit" class="align-items-center" href ="invoice.php?oid=<?php echo $readrow['fld_order_num']; ?>">Invoice</a></td>
+												
 												</tr>												
-												<tr total="Rm 1410">
-													<td style="font-weight: bold;">Total&nbsp;</td>
-													<td></td>
-													<td></td>
-													<td style="font-weight: bold;">Rm 1410</td></tr>
+											
+												<!-- 	<td style="font-weight: bold;">Total&nbsp;</td> -->
+												<!-- 	<td></td>
+													<td></td> -->
+													<!-- <td style="font-weight: bold;">Rm 1410</td></tr> -->
+												<!-- 	<tr></tr>
 													<tr></tr>
 													<tr></tr>
 													<tr></tr>
-													<tr></tr>
-													<tr></tr>
-													<tr></tr>
+													<tr></tr> -->
+													<!-- <tr></tr> -->
 												</tbody>
 										<?php }$conn = null;?>		
 											</table> 
-
+											 <h2><span class="text">Subtotal</span></h2>
+           						 <h1><span class="price">RM <?=$total?></span></h1>
 										</div>
 									</section>
 												<section class="showcase"></section>
