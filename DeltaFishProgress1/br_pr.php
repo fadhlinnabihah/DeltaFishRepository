@@ -254,7 +254,7 @@ include_once 'index.php';
       foreach($result as $readrow) {
       ?> 
       <div class="col-md-3 d-flex align-items-stretch" >
-            <div class="card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); max-width: 300px;  padding: 16px;  text-align: center; font-family: arial; margin-bottom: 10px; background-color: #9ae5f2;">   
+            <div class="card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); max-width: 300px;  padding: 16px;  text-align: center; font-family: arial; margin-bottom: 10px; background-color: #FFFFFF;">   
       
         <?php if(file_exists('pictures_sell/'. $readrow['PICTURE'])){
                 $img = 'pictures_sell/'.$readrow['PICTURE'];

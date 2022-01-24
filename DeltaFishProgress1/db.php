@@ -1,4 +1,5 @@
 <?php
+session_start();
 $servername = 'lrgs.ftsm.ukm.my';
 $username = 'a174777';
 $password = 'largeblackbird';
