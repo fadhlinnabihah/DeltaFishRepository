@@ -78,7 +78,7 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
     foreach ($products as $product) {
         if($product['SELLER'] != $seller){
             try {
-                $stmt = $conn->prepare("INSERT INTO tbl_order_delta(fld_order_num, fld_seller_user,fld_customer_user) VALUES(:oid, :sid, :cid)");
+                $stmt = $db->prepare("INSERT INTO tbl_order_delta(fld_order_num, fld_seller_user,fld_customer_user) VALUES(:oid, :sid, :cid)");
                
                 $stmt->bindParam(':oid', $oid, PDO::PARAM_STR);
                 $stmt->bindParam(':sid', $sid, PDO::PARAM_STR);
@@ -100,7 +100,7 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
         }
 
         try {
-                $stmt = $conn->prepare("INSERT INTO tbl_order_detail_delta( fld_order_detail_num, fld_order_num, fld_product_num, fld_order_detail_quantity) VALUES(:odid, :oid, :name, :quantity)");
+                $stmt = $db->prepare("INSERT INTO tbl_order_detail_delta( fld_order_detail_num, fld_order_num, fld_product_num, fld_order_detail_quantity) VALUES(:odid, :oid, :name, :quantity)");
                
                 $stmt->bindParam(':odid', $odid, PDO::PARAM_STR);
                 $stmt->bindParam(':oid', $soid, PDO::PARAM_STR);
@@ -123,7 +123,7 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
     }
     
     
-    header('Location: index.php?page=placeorder');
+    header('Location: deliverytype.php');
     exit;
 }
 
@@ -141,6 +141,7 @@ if ($products_in_cart) {
     // Calculate the subtotal
     foreach ($products as $product) { 
     $subtotal += (float)$product['PRICE'] * (int)$products_in_cart[$product['ID']];    
+    }
 }
 
 ?>
