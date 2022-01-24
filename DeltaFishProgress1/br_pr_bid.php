@@ -154,7 +154,7 @@
 
       <div class="buttons">
     
-    <a href="br_pr.php"><button class="btn-hover color-2">Buy</button></a>
+    <a href="index.php?page=br_pr"><button class="btn-hover color-2">Buy</button></a>
     <a href="br_pr_bid.php"><button class="btn-hover color-9">Bid</button></a>
    
 </div>
@@ -185,8 +185,8 @@
           <?php
           foreach($result as $readrow) {
               ?>
-            <div class="col-md-3 d-flex align-items-stretch">
-            <div class="card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); max-width: 300px;  padding: 16px;  text-align: center; font-family: arial; margin-bottom: 10px;">
+          <div class="col-md-3 d-flex align-items-stretch" >
+            <div class="card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); max-width: 300px;  padding: 16px;  text-align: center; font-family: arial; margin-bottom: 10px; background-color: #9ae5f2;">   
 
               <?php if(file_exists('pictures_bid/'. $readrow['PICTURE']) && isset($readrow['PICTURE'])){
                 $img = 'pictures_bid/'.$readrow['PICTURE'];
@@ -220,118 +220,7 @@
             </div>
       </div>
         </div>
-
-
-
-      <!-- <table class="table table-bordered">
-        <tr style="background: #89CFF0;color: #fff;">
-          <th>Picture</th> 
-          <th>Name</th>
-
-          <th>Seller</th>
-          <th>Current Bid</th>
-          <th></th>         
-      </tr>
       
-       <?php
-      // Read
-      $per_page = 10;
-      if (isset($_GET["page"]))
-        $page = $_GET["page"];
-      else
-        $page = 1;
-      $start_from = ($page-1) * $per_page;
-      try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("select * from tbl_productbid_delta LIMIT $start_from, $per_page"); 
-        $stmt->execute();
-        $result = $stmt->fetchAll();
-      }
-      catch(PDOException $e){
-            echo "Error: " . $e->getMessage();
-      }
-      foreach($result as $readrow) {
-      ?>    
-      <tr>
-        <?php if(file_exists('pictures_bid/'. $readrow['PICTURE'])){
-                $img = 'pictures_bid/'.$readrow['PICTURE'];
-                 echo  '<td><img class="circular--square" data-toggle="modal" data-target="#'.$readrow['PICTURE'].'" width=150px; src="pictures_bid/'.$readrow['PICTURE'].'"></td>';
-              }
-              else{
-                $img = 'pictures/nophoto.jpg';
-                echo '<td><img class="circular--square" width=70%; data-toggle="modal" data-target="#'.$readrow['PICTURE'].'" src="pictures/nophoto.jpg"'.'></td>';
-                
-              }?>
-
-              <div id="<?php echo $readrow['ID']?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-             
-                </div>
-              </div>
-
-        
-
-        <td><?php echo $readrow['NAME']; ?></td>
-        <td><?php echo $readrow['SELLER']; ?></td>
-        <td><?php echo $readrow['HIGHESTBID']; ?></td>
-         
-       
-        
-        <td>
-          <a href="product_detail_bid.php?pid=<?php echo $readrow['ID']; ?>" class="btn btn-warning btn-xs" role="button" ">Details</a>
-          
-              </td>
-         
-      </tr>
-      <?php
-      }
-      $conn = null;
-      ?>
-     
-
-
- 
-    <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-      <nav>-->
-        
-          
-         <!--  <?php
-           try {
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT * FROM tbl_productbid_delta");
-            $stmt->execute();
-            $result = $stmt->fetchAll();
-            $total_records = count($result);
-          }
-          catch(PDOException $e){
-                echo "Error: " . $e->getMessage();
-          }
-          $total_pages = ceil($total_records / $per_page);
-          ?> -->
-          <!-- <?php if ($page==1) { ?> -->
-           <!--  <li class="disabled"><span aria-hidden="true">«</span></li>
-          <?php } else { ?>
-            <li><a href="br_pr_bid.php?page=<?php echo $page-1 ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-          
-          <?php
-          }
-          // for ($i=1; $i<=$total_pages; $i++)
-          //   if ($i == $page)
-          //     echo "<li class=\"active\"><a href=\"products.php?page=$i\">$i</a></li>";
-          //   else
-          //     echo "<li><a href=\"br_pr_bid.php?page=$i\">$i</a></li>";
-          ?> -->
-          <!-- <?php if ($page==$total_pages) { ?>
-            <li class="disabled"><span aria-hidden="true">»</span></li>
-          <?php } else { ?>
-            <li><a href="br_pr_bid.php?page=<?php echo $page+1 ?>" aria-label="Previous"><span aria-hidden="true">»</span></a></li>
-          <?php } ?>
-        </ul>
-      </nav> 
-    </div> -->
-    
  
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

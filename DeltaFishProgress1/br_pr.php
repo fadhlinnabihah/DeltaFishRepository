@@ -1,6 +1,9 @@
 <?php
-  include 'db.php'
+// Include functions and connect to the database using PDO MySQL
+include_once 'index.php';
+
 ?>
+
 
 
 <html>
@@ -11,9 +14,10 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>Delta Fish  : Products</title>
   <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
     <link rel="shortcut icon" type="image/jpg" href="logo.jpg" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css"/>
+    <link rel="stylesheet" href="css/style3.css" type="text/css">
      <style type="text/css">
         
         input[type="file"] {
@@ -137,7 +141,70 @@
   font-weight: bold;
 }
 
-
+      header {
+        border-bottom: 1px solid #EEEEEE;
+      }
+      header .content-wrapper {
+        display: flex;
+      }
+      header h1 {
+        display: flex;
+        flex-grow: 1;
+        flex-basis: 0;
+        font-size: 20px;
+        margin: 0;
+        padding: 24px 0;
+      }
+      header nav {
+        display: flex;
+        flex-grow: 1;
+        flex-basis: 0;
+        justify-content: center;
+        align-items: center;
+      }
+      header nav a {
+        text-decoration: none;
+        color: #555555;
+        padding: 10px 10px;
+        margin: 0 10px;
+      }
+      header nav a:hover {
+        border-bottom: 1px solid #aaa;
+      }
+      header .link-icons {
+        display: flex;
+        flex-grow: 1;
+        flex-basis: 0;
+        justify-content: flex-end;
+        align-items: center;
+        position: relative;
+      }
+      header .link-icons a {
+        text-decoration: none;
+        color: #394352;
+        padding: 0 10px;
+      }
+      header .link-icons a:hover {
+        color: #4e5c70;
+      }
+      header .link-icons a i {
+        font-size: 18px;
+      }
+      header .link-icons a span {
+        display: inline-block;
+        text-align: center;
+        background-color: #63748e;
+        border-radius: 50%;
+        color: #FFFFFF;
+        font-size: 12px;
+        line-height: 16px;
+        width: 16px;
+        height: 16px;
+        font-weight: bold;
+        position: absolute;
+        top: 22px;
+        right: 0;
+      }
 
 
 
@@ -151,6 +218,7 @@
     <![endif]-->
 </head>
 <body>
+<?=template_header('br_pr')?>  
 <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
       <div class="page-header">
@@ -161,7 +229,7 @@
 
       <div class="buttons">
     
-    <a href="br_pr.php"><button class="btn-hover color-2">Buy</button> </a>
+    <a href="index.php?page=br_pr"><button class="btn-hover color-2">Buy</button> </a>
     <a href="br_pr_bid.php"><button class="btn-hover color-9">Bid</button></a>
    
 </div>
@@ -171,28 +239,12 @@
 
 
 
-      <table class="table table-bordered">
-        <tr style="background: #89CFF0;color: #fff;">
-          <th>Picture</th> 
-          <th>Name</th>
-
-          <th>Seller</th>
-          <th>Price</th> 
-          <th></th>         
-      </tr>
       
        <?php
-      // Read
-      $per_page = 10;
-      if (isset($_GET["page"]))
-        $page = $_GET["page"];
-      else
-        $page = 1;
-      $start_from = ($page-1) * $per_page;
       try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("select * from tbl_productsell_delta LIMIT $start_from, $per_page"); 
+        $stmt = $conn->prepare("select * from tbl_productsell_delta"); 
         $stmt->execute();
         $result = $stmt->fetchAll();
       }
@@ -200,8 +252,10 @@
             echo "Error: " . $e->getMessage();
       }
       foreach($result as $readrow) {
-      ?>    
-      <tr>
+      ?> 
+      <div class="col-md-3 d-flex align-items-stretch" >
+            <div class="card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); max-width: 300px;  padding: 16px;  text-align: center; font-family: arial; margin-bottom: 10px; background-color: #9ae5f2;">   
+      
         <?php if(file_exists('pictures_sell/'. $readrow['PICTURE'])){
                 $img = 'pictures_sell/'.$readrow['PICTURE'];
                  echo  '<td><img class="circular--square" data-toggle="modal" data-target="#'.$readrow['PICTURE'].'" width=150px; src="pictures_sell/'.$readrow['PICTURE'].'"></td>';
@@ -215,22 +269,24 @@
               <div id="<?php echo $readrow['ID']?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
              
                 </div>
-              </div>
+              
 
         
 
-        <td><?php echo $readrow['NAME']; ?></td>
-        <td><?php echo $readrow['SELLER']; ?></td>
-        <td><?php echo $readrow['PRICE']; ?></td>
+        <p><?php echo $readrow['NAME']; ?></p>
+        <p><?php echo $readrow['SELLER']; ?></p>
+        <p><?php echo $readrow['PRICE']; ?></p>
         
        
         
         <td>
-          <a href="products_detail_sell.php?pid=<?php echo $readrow['ID']; ?>" class="btn btn-warning btn-xs" role="button" >Details</a>
+          <a href="index.php?page=products_detail_sell&id=<?=$readrow['ID']?>" class="btn btn-warning btn-xs" role="button" >Details</a>
           
-              </td>
-         
-      </tr>
+        </td>
+      </div>
+    </div>
+     
+      
       <?php
       }
       $conn = null;
@@ -244,47 +300,7 @@
 
 
     -->
-  </table>
-    <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-      <nav>
-          <!-- <ul class="pagination"> -->
-          <!--
-          <?php
-           try {
-            $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT * FROM tbl_products_a174777_pt2");
-            $stmt->execute();
-            $result = $stmt->fetchAll();
-            $total_records = count($result);
-          }
-          catch(PDOException $e){
-                echo "Error: " . $e->getMessage();
-          }
-          $total_pages = ceil($total_records / $per_page);
-          ?>
-          <?php if ($page==1) { ?>
-            <li class="disabled"><span aria-hidden="true">«</span></li>
-          <?php } else { ?>
-            <li><a href="products.php?page=<?php echo $page-1 ?>" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-          -->
-          <?php
-          }
-          for ($i=1; $i<=$total_pages; $i++)
-            if ($i == $page)
-              echo "<li class=\"active\"><a href=\"br_pr.php?page=$i\">$i</a></li>";
-            else
-              echo "<li><a href=\"br_pr.php?page=$i\">$i</a></li>";
-          ?>
-          <?php if ($page==$total_pages) { ?>
-            <li class="disabled"><span aria-hidden="true">»</span></li>
-          <?php } else { ?>
-            <li><a href="br_pr.php?page=<?php echo $page+1 ?>" aria-label="Previous"><span aria-hidden="true">»</span></a></li>
-          <?php } ?>
-        </ul>
-      </nav>
-    </div>
+
     
  
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
