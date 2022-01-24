@@ -39,7 +39,7 @@
 <body>
     <div>
             <?php
-                require 'header2.php';
+                require 'header.php';
             ?>
           </div>
    

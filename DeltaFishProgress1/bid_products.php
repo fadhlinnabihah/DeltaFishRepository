@@ -22,7 +22,7 @@
         color: #ffffff;
       }
       .bg-1{
-        background-image:url('https://i.gifer.com/g32L.gif');
+        background-color: #74E1F5;
     }
 
     

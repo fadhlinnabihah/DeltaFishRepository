@@ -1,7 +1,7 @@
 
 <link rel="shortcut icon" type="image/x-icon" href="logo.ico"/>
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="style3.css" rel="stylesheet">
+<link href="css/style3.css" rel="stylesheet">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <nav class="navbar navbar-default">

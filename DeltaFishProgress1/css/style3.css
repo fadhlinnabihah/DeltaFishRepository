@@ -1,7 +1,24 @@
 .navbar{
-    color: #7666FA;
+    color: white;
     background-color: #7666FA; 
     margin-bottom: 0px;
+}
+
+.nav li a{
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 10px 10px;
+    margin: 10px 5px;
+    border-radius: 9px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+#bs-example-navbar-collapse-1 ul li a:hover{
+    color: black;
+    background:#ffffff;
+    box-shadow:  0 0 10px #EAECEE, 0 0 40px #EAECEE, 0 0 80px #EAECEE;
 }
 
 #bannerImage{
@@ -9,7 +26,7 @@
     padding-bottom:50px;
     margin-bottom: 20px;
     text-align:center;
-    color:#fff;
+    color:black;
     background-color: #74E1F5;
     background-size:cover;
 }
