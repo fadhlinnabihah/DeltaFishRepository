@@ -9,40 +9,16 @@ require_once "db.php";
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if (isset($_POST['login_btn'])) {
-    $UserID = htmlspecialchars($_POST['username']);
-     $Pass = $_POST['pass'];
-    $stmt = $conn->prepare("SELECT * FROM tbl_user_delta WHERE (USERNAME = :user) LIMIT 1");
-     $stmt->bindParam(':user', $UserID);
-        $stmt->execute();
-         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user['PASS'] == $Pass) {
-      echo "<script>
-      alert('Successfully Login!');
-      window.location.href='accounttype.php';
-      </script>";
-    // header("Location: accounttype.php");
-    }else{
-      echo "<script>
-      alert('Invalid Password!');
-      window.location.href='login.php';
-      </script>";
-        // header("LOCATION: login.php");
-    }
-    
-
-}
-
-if (isset($_POST['username'], $_POST['password'])) {
+if (isset($_POST['username'], $_POST['pass'])) {
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = $_POST['pass'];
 
     if (empty($username) || empty($password)) {
         $_SESSION['error'] = 'Please fill in the blanks.';
     } else {
-        $stmt = $db->prepare("SELECT * FROM tbl_staffs_a174777_pt2 WHERE (USERNAME = :username)");
-        $stmt->bindParam(':email', $username);
+        $stmt = $db->prepare("SELECT * FROM tbl_user_delta WHERE (USERNAME = :username)");
+        $stmt->bindParam(':username', $username);
 
         $stmt->execute();
 
@@ -73,35 +49,7 @@ if (isset($_POST['username'], $_POST['password'])) {
 if (isset($_SESSION['loggedin']))
 header("LOCATION: accounttype.php");
 
-// if (isset($_POST['login_btn'])) {
-//     $UserID = htmlspecialchars($_POST['username']);
-//     $Pass = $_POST['pass'];
 
-//     if (empty($UserID) || empty($Pass)) {
-//        $_SESSION['error'] = "Please fill in the blanks.";
-//     } else {
-//         $stmt = $conn->prepare("SELECT * FROM tbl_tbl_user_delta WHERE (USERNAME = :user) LIMIT 1");
-//         $stmt->bindParam(':user', $UserID);
-
-//         $stmt->execute();
-//         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-//         if ($user['pass'] == $Pass) {
-//           unset($user['pass']);
-//           // $_SESSION['loggedin'] = true;
-//           // $_SESSION['user'] = $user;
-
-//           header("LOCATION: home.php");
-//           exit();
-//         } else {
-//             echo "Invalid Login. Please try again with correct email and password.";
-//           // $_SESSION['error'] = "Invalid login. Please try again with correct email and password.";
-//         }
-//     }
-
-//     // header("LOCATION: " . $_SERVER['REQUEST_URI']);
-//     // exit();
-// }
 
 
 
@@ -167,8 +115,10 @@ header("LOCATION: accounttype.php");
                 <div> <a href="register.php" class="btn btn-primary">Register</a></div>
             </small>
         </div>
+        
         <div class="row px-md-4 px-1 m-0">
             <div class="col-12">
+                <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
                 <div>
                     <p class="pb-1 username">Username</p> <input type="text" class=" name form-control mb-4" name="username" id="username" placeholder="Username" value="<?php if(isset($_GET['edit'])) echo $editrow['USERNAME']; ?>" required>
                 </div>
@@ -180,10 +130,14 @@ header("LOCATION: accounttype.php");
                         <input  type="submit" name="login_btn" value="LOGIN" class="btn btn-primary"/> 
 
                               <?php if (isset($_GET['edit'])) {?>
-                                <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center justify-content-between"></div>
                              <?php } ?>  
                     </div>                    
                 </div>
+            </div>
+        </form>
+        </div>
+ 
                 <p><a href="ForgotPassword.php">Forgot Password ?</a></p> 
             </div>
         </div>

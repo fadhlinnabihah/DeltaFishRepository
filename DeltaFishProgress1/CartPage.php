@@ -1,7 +1,10 @@
 <?php 
 /* code by webdevtrick ( https://webdevtrick.com ) */
 include_once 'db.php';
-session_start();
+
+if (!isset($_SESSION['loggedin']))
+    header("LOCATION: login.php");
+
 $connect = mysqli_connect($servername, $username, $password, $dbname);
 
 if(isset($_POST["add_to_cart"]))

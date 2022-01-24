@@ -1,6 +1,4 @@
-<?php 
-session_start();
-?>
+
 
 <?php
   include_once 'bid_products_crud.php';

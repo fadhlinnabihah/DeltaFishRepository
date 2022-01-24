@@ -1,7 +1,3 @@
-<?php 
-session_start();
-?>
-
 <?php
   include_once 'add_products_crud2.php';
 ?>

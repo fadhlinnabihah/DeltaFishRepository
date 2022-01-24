@@ -1,9 +1,16 @@
 <?php
 session_start();
+
 $servername = 'lrgs.ftsm.ukm.my';
 $username = 'a174777';
 $password = 'largeblackbird';
 $dbname = 'a174777';
+
+$db = null; 
+
+$db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 function pdo_connect_mysql() {
     // Update the details below with your MySQL details
     $DATABASE_HOST = 'lrgs.ftsm.ukm.my';

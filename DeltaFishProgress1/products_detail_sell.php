@@ -1,6 +1,9 @@
 <?php
   include_once 'index.php';
 
+if (!isset($_SESSION['loggedin']))
+    header("LOCATION: login.php");
+
 
 ?>
 

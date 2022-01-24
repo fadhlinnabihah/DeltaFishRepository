@@ -1,6 +1,8 @@
 <?php
-  include 'db.php';
-
+include_once 'db.php';
+if (!isset($_SESSION['loggedin']))
+    header("LOCATION: login.php");
+?>
 
 
 ?>

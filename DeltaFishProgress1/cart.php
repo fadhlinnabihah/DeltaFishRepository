@@ -1,5 +1,7 @@
 <?php
 include_once 'index.php';
+if (!isset($_SESSION['loggedin']))
+    header("LOCATION: login.php");
 ?>
 <?php
 // If the user clicked the add to cart button on the product page we can check for the form data
