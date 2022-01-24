@@ -15,11 +15,11 @@
     >
     <!-- <link rel="shortcut icon" type="image/x-icon" href="logo1.ico"/> untuk logo -->
   <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="css/style3.css" type="text/css">
     <style type="text/css">
       .page-header{
-        color: #ffffff;
+        color: black;
       }
       .bg-1{
         background-color: #74E1F5;
@@ -27,7 +27,7 @@
 
     
         .form-group {
-           color: #ffffff;
+           color: black;
         }
         .table{
           background-color: #ffffff;

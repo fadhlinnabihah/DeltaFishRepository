@@ -14,6 +14,10 @@ if (!isset($_SESSION['loggedin']))
 
 
 <body>
+  <div>
+            <?php
+                require 'header.php';
+            ?></div>
 	
 <!-- 	<div id="mySidenav" class="sidenav">
 	<p class="logo"><span>Delta</span> Fish</p>
@@ -137,6 +141,15 @@ $(".nav2").click(function(){
 
 </script> -->
 
+            <br><br><br><br><br><br><br><br>
+           <footer class="footer">
+               <div class="container">
+               <center>
+                   <p>Copyright &copy DFOBB. All Rights Reserved. | Contact Us: +05 4099 9999</p>
+                   <p>This website is developed by Delta Group</p>
+               </center>
+               </div>
+           </footer>
 </body>
 
 

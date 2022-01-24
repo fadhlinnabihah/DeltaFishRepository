@@ -19,7 +19,7 @@
             
     <style type="text/css">
       .page-header{
-        color: #ffffff;
+        color: black;
       }
       .bg-1{
         background-color:  #74E1F5;
@@ -27,7 +27,7 @@
 
     
         .form-group {
-           color: #ffffff;
+           color: black;
         }
         .table{
           background-color: #74E1F5;
