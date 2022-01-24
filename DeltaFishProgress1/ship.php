@@ -43,7 +43,7 @@
 
     							<!-- <p class="pb-1 address">Address</p> <input type="text" class=" name form-control mb-4" name="address" id="address" placeholder="Address" value="<?php if(isset($_GET['edit'])) echo $editrow['tbl_address']; ?>" required> -->
     						</div></div>
-    						
+
     						<!-- <div><p class="pb-1 address">Enter Your Name </p> <input type="text" class=" name form-control mb-4" name="name" id="name" placeholder="Name" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_seller_user']; ?>" required></div> -->
     						
     						<div><p class="pb-1 address">Enter your Name </p> <input type="text" class=" name form-control mb-4" name="customer" id="customerName" placeholder="Customer Name" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_customer_user']; ?>" required></div>
