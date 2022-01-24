@@ -20,18 +20,19 @@ if (!isset($_SESSION['loggedin']))
 <body><div class="container pt-4 pb-5">
     <div class="text-1"></div>
     <div class="text-2"></div>
-    
+    <br>
         <div class="text-center pt-3">
             <p class="display-7 fw-bold">Choose<span class="ps-1"> delivery method</span></p> <small class="d-flex align-items-center justify-content-center mb-3">
 
             </small>
         </div>
+<br>
 
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-12 create">
 
-            <a href="deliverydetail.php">
+            <a href="delivery.php">
             <input type="button" name="seller" value="Delivery" id="seller" class="btn btn-primary py-3 "><?php if (isset($_GET['edit'])) { ?>
                     <div class="align-items-center"> <a href="">
                         <?php } ?></div></a>
@@ -39,22 +40,13 @@ if (!isset($_SESSION['loggedin']))
                         <br>
                 <div class="col-md-12">
                     <div class="col-12 create">
-                        <a href="pickupdetail.php">
+                        <a href="pickup.php">
                         <input type="button" name="buyer" value="Pickup" id="buyer"  class="btn btn-primary py-3 "><?php if (isset($_GET['edit'])) { ?>
                     <div class="align-items-center">
                         <?php } ?>
                 </div></a>
 
                 <br>
-                <div class="col-md-12">
-                    <div class="col-12 create">
-                        <a href="deliverydetail.php">
-                        <input type="button" name="buyer" value="COD (Cash On Delivery)" id="buyer"  class="btn btn-primary py-3 "><?php if (isset($_GET['edit'])) { ?>
-                    <div class="align-items-center">
-                        <?php } ?>
-                </div></a>
-
-
             </div>
             </div>
 
