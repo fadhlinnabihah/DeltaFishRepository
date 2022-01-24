@@ -51,7 +51,9 @@
           try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT * FROM tbl_productbid_delta");
+            $stmt = $conn->prepare("SELECT * FROM tbl_productbid_delta WHERE SELLER = :seller");
+            $stmt->bindParam(':seller', $seller, PDO::PARAM_STR);
+            $seller = $_SESSION['user']['USERNAME'];
             $stmt->execute();
             $result = $stmt->fetchAll();
           }
@@ -113,7 +115,9 @@
           try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT * FROM tbl_productsell_delta");
+            $stmt = $conn->prepare("SELECT * FROM tbl_productsell_delta WHERE SELLER = :seller");
+            $stmt->bindParam(':seller', $seller, PDO::PARAM_STR);
+            $seller = $_SESSION['user']['USERNAME'];
             $stmt->execute();
             $result = $stmt->fetchAll();
           }
