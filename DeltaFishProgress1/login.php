@@ -34,6 +34,44 @@ if (isset($_POST['login_btn'])) {
 
 }
 
+if (isset($_POST['username'], $_POST['password'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    if (empty($username) || empty($password)) {
+        $_SESSION['error'] = 'Please fill in the blanks.';
+    } else {
+        $stmt = $db->prepare("SELECT * FROM tbl_staffs_a174777_pt2 WHERE (USERNAME = :username)");
+        $stmt->bindParam(':email', $username);
+
+        $stmt->execute();
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (isset($user['USERNAME'])) {
+            if ($user['PASS'] == $password) {
+                unset($user['PASS']);
+                $_SESSION['loggedin'] = true;
+                $_SESSION['user'] = $user;
+                echo "<script>
+                alert('Successfully Login!');
+                </script>";
+                header("LOCATION: accounttype.php");
+                exit();
+            } else {
+                $_SESSION['error'] = 'Invalid login credentials. Please try again.';
+            }
+        } else {
+            $_SESSION['error'] = 'No account found.';
+        }
+    }
+
+    header("LOCATION: " . $_SERVER['REQUEST_URI']);
+    exit();
+}
+
+if (isset($_SESSION['loggedin']))
+header("LOCATION: accounttype.php");
 
 // if (isset($_POST['login_btn'])) {
 //     $UserID = htmlspecialchars($_POST['username']);
