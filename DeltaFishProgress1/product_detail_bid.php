@@ -94,6 +94,7 @@
           <h2> RM <?php echo $readrow['HIGHESTBID'] ?></h2>
         </center>
         </div>
+        <div> <h5> Current Bidder: <?php echo $readrow['HIGHESTBIDDER'] ?></h5></div>
         <div class="form__group field">
           <div class="container">
    <div>
@@ -103,6 +104,8 @@
             <p class="pb-1 username">Amount bid</p> 
            
             <input type="number" class=" name form-control mb-4" placeholder="RM" name="highestbid" min="<?php echo $readrow['HIGHESTBID'] ?>" >
+            <!-- get seller name -->
+          <input type="hidden" name="highestbidder" value="<?php echo $_SESSION['user']['USERNAME']?>">
             <div class="form-group">
 
                <center><button class="bid-btn" name="update">Bid Now</button></center>
@@ -110,9 +113,13 @@
   </div>
   </div>
 
+
           
         
       </div>
+      <br>
+      <div> <h6>Terms & condition: </h6>
+      <p>Seller will contact you, if you are the winner and the current bidder after bid closed.</p></div>
     </main>
 
     <!-- Scripts for the timer-->

@@ -1,6 +1,9 @@
 <?php
 
 include_once 'db.php';
+  
+if (!isset($_SESSION['loggedin']))
+    header("LOCATION: login.php");
 
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -38,7 +41,7 @@ if (isset($_POST['create'])) {
     if (isset($uploadStatus['status'])) {
       try {
 
-   $stmt = $conn->prepare("INSERT INTO tbl_productsell_delta(ID, NAME, PRICE, DESCRIPTION, STOCK, PICTURE) VALUES(:pid, :name, :price, :description, :stock, :image )");
+   $stmt = $conn->prepare("INSERT INTO tbl_productsell_delta(ID, NAME, PRICE, DESCRIPTION, STOCK, PICTURE, SELLER) VALUES(:pid, :name, :price, :description, :stock, :image, :seller )");
 
 
       $stmt->bindParam(':pid', $pid, PDO::PARAM_INT);
@@ -47,12 +50,14 @@ if (isset($_POST['create'])) {
       $stmt->bindParam(':description', $description, PDO::PARAM_STR);
       $stmt->bindParam(':stock', $stock, PDO::PARAM_INT);
       $stmt->bindParam(':image', $uploadStatus['name']);
+      $stmt->bindParam(':seller', $seller, PDO::PARAM_STR);
 
     $pid = $_POST['pid'];
     $name = $_POST['name'];
     $price = $_POST['price'];
     $description =  $_POST['description'];
     $stock = $_POST['stock'];
+    $seller= $_POST['seller'];
 
     $stmt->execute();
       }

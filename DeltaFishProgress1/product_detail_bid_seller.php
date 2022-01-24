@@ -91,24 +91,13 @@
         <!-- Product Pricing -->
         <div class="product-price">
           <center>
-          <h2> RM <?php echo $readrow['HIGHESTBID'] ?></h2>
-        </center>
-        </div>
-        <!-- <div class="form__group field">
-          <div class="container">
-   <div>
-        <div>
-          <form method="POST" action="product_detail_bid.php">
-            <input type="hidden" name="oldpid" value="<?php echo $readrow['ID']; ?>">  
-            <p class="pb-1 username">Amount bid</p> 
-           
-            <input type="number" class=" name form-control mb-4" placeholder="RM" name="highestbid" min="<?php echo $readrow['HIGHESTBID'] ?>" >
-            <div class="form-group">
+          <h3>Highest Bid: RM <?php echo $readrow['HIGHESTBID'] ?></h3>
 
-               <center><button class="bid-btn" name="update">Bid Now</button></center>
-      </div>        
-  </div>
-  </div> -->
+        </center>
+
+        </div>
+        <div> <h3> Bidder name: <?php echo $readrow['HIGHESTBIDDER'] ?></h3></div>
+        
 
           
         
