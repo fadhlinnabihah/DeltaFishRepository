@@ -131,6 +131,7 @@ if (!isset($_SESSION['loggedin']))
           <span>Fish</span>
           <h1 class="name"><?=$readrow['NAME']?></h1>
           <p>"<?=$readrow['DESCRIPTION']?>"</p>
+          <h3>Quantity: <?=$readrow['STOCK']?></h3>
           <span class="seller"><?=$readrow['SELLER']?></span>
         </div>
 
@@ -145,7 +146,7 @@ if (!isset($_SESSION['loggedin']))
         </div>
          <div>
          <form action="index.php?page=cart" method="post">
-            <input type="number" name="quantity" value="1" min="1" max="<?=$readrow['STOCK']?>" placeholder="Quantity" required>
+            <input type="number" name="quantity" value="1" min="1" max="<?=$readrow['STOCK']?>" placeholder="Quantity"  required>
             <input type="hidden" name="product_id" value="<?=$readrow['ID']?>">
             <input type="submit" value="Add To Cart">
           </div> 
