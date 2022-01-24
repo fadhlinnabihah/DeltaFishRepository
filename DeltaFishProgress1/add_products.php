@@ -16,6 +16,7 @@
   <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style3.css" type="text/css">
+            
     <style type="text/css">
       .page-header{
         color: #ffffff;
