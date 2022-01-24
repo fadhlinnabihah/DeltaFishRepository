@@ -37,36 +37,7 @@
 					</header>
 					<section class="text-center bg-light features-icons">
 						
-						<div class="container"><div class="row"><div class="col-md-12" style="color: var(--bs-indigo);padding: -17px;margin: 0px;">
-						<form action="ship.php" method ="post" class="form-horizontal"> 
-							<div>
-
-    							<!-- <p class="pb-1 address">Address</p> <input type="text" class=" name form-control mb-4" name="address" id="address" placeholder="Address" value="<?php if(isset($_GET['edit'])) echo $editrow['tbl_address']; ?>" required> -->
-    						</div></div>
-
-    						<!-- <div><p class="pb-1 address">Enter Your Name </p> <input type="text" class=" name form-control mb-4" name="name" id="name" placeholder="Name" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_seller_user']; ?>" required></div> -->
-    						
-    						<div><p class="pb-1 address">Enter your Name </p> <input type="text" class=" name form-control mb-4" name="customer" id="customerName" placeholder="Customer Name" value="<?php if(isset($_GET['edit'])) echo $editrow['fld_customer_user']; ?>" required></div>
-
-    						 <div class="col-12">Choose your payment option : <select type="payment" class="form-control mb-4" name="payment" id="payment" required>
-    						 
-                <option value="" selected>Select</option>
-                <option value="Cash On Delivery" <?php if(isset($_GET['edit'])) if($editrow['fld_payment']=="Cash On Delivery") echo "selected"; ?>>Cash On Delivery</option>
-                <option value="Pickup"  <?php if(isset($_GET['edit'])) if($editrow['fld_payment']=="Pickup") echo "selected"; ?>>Pickup</option>
-                <option value="Delivery"  <?php if(isset($_GET['edit'])) if($editrow['fld_payment']=="Delivery") echo "selected"; ?>>Delivery</option>
-        				</div>
-        				<input type="submit" name="pay" value="Update Payment Detail"class="btn btn-primary py-3 ">  
-        				<!-- <input type="submit" name="pay" value="Update Payment Detail"class="btn btn-primary py-3 ">   -->
-							</div>
-						</form>   										
-    						
-							<!-- <a class="navbar-brand" href="#">Shipment -Order #&nbsp;</a> -->
-					
-					</div>
-					<div class="row">
-
-								</div>
-							</div> 
+						
 								  <?php
 								   // $total =0 
 
@@ -88,6 +59,7 @@
 												
 										<table class="table"><thead>										 				
 											<tr>
+												<th>Order Details ID</th>
 												<th>Order ID</th>
 												<th>Product Code&nbsp;</th>
 												<!-- <th>Price</th> -->
@@ -110,6 +82,7 @@
 												<tr></tr>
 												<tr></tr>
 												<tr>
+													td><?php echo $readrow['fld_order_detail_num']; ?></td>
 													<td><?php echo $readrow['fld_order_num']; ?></td>
 													<td><?php echo $readrow['fld_product_num']; ?>&nbsp;</td>
 													<td><?php echo $readrow['fld_order_detail-quantity']; ?></td>
