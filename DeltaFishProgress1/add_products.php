@@ -1,5 +1,6 @@
 <?php
   include_once 'add_products_crud2.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@
         color: #ffffff;
       }
       .bg-1{
-        background-image:url('https://i.gifer.com/g32L.gif');
+        background-color:  #74E1F5;
     }
 
     
@@ -37,7 +38,7 @@
 <body>
     <div>
             <?php
-                require 'header.php';
+                require 'header2.php';
             ?>
           </div>
    
