@@ -8,12 +8,12 @@
 if (isset($_POST['pay'])) {   
   try {    
       // Prepare the SQL statement
-      $stmt = $conn->prepare("INSERT INTO tbl_order_delta(tbl_payment,tbl_address) VALUES (:payment, :address)");
+      $stmt = $conn->prepare("INSERT INTO tbl_order_delta(fld_seller_user,fld_customer_user,fld_payment) VALUES (:seller,:customer,:payment)");
      
       // Bind the parameters
       $stmt->bindParam(':payment', $payment, PDO::PARAM_STR);
-      $stmt->bindParam(':address', $address, PDO::PARAM_STR);
-      // $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+      $stmt->bindParam(':seller', $seller, PDO::PARAM_STR);
+      $stmt->bindParam(':customer', $customer, PDO::PARAM_STR);
       // $stmt->bindParam(':phone', $phone, PDO::PARAM_STR);    
       // $stmt->bindParam(':email', $email, PDO::PARAM_STR);
       // $stmt->bindParam(':fpassq', $fpassq, PDO::PARAM_STR);
@@ -21,8 +21,8 @@ if (isset($_POST['pay'])) {
       
       
       $payment = $_POST['payment'];
-      $address = $_POST['address'];
-      // $name = $_POST['name'];
+      $seller = $_POST['name'];
+      $customer = $_POST['customer'];
       // $phone = $_POST['phone'];
       // $email = $_POST['email'];
       // $fpassq = $_POST['fpassq'];
@@ -32,26 +32,7 @@ if (isset($_POST['pay'])) {
       alert('Payment Updated!');
       window.location.href='ship.php';
       </script>";
-      /*$count = $stmt->rowCount();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    if($count > 0){
-      session_start();
-       $_SESSION["username"]=$result['username'];
-      echo "<script>
-      alert('Username already taken!');
-      window.location.href='register.php';
-      </script>";
-      //header("location:register.php");
-
-    }else{
-      
-      echo "<script>
-      alert('Successfully Register!');
-      window.location.href='login.php';
-      </script>";
-    }*/
-     
-   
+       
     }
  
     catch(PDOException $e)
