@@ -116,7 +116,7 @@
     try {
       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("SELECT * FROM tbl_order_delta, tbl_order_detail_delta, tbl_productsell_delta WHERE tbl_order_delta.fld_order_num = tbl_order_detail_delta.fld_order_num AND tbl_productsell_delta.NAME = tbl_order_detail_delta.fld_product_num AND fld_customer_user = :customer");
+        $stmt = $conn->prepare("SELECT * , count(tbl_order_detail_delta.fld_order_detail_num) FROM tbl_order_delta, tbl_order_detail_delta, tbl_productsell_delta WHERE tbl_order_delta.fld_order_num = tbl_order_detail_delta.fld_order_num AND tbl_productsell_delta.NAME = tbl_order_detail_delta.fld_product_num AND fld_customer_user = :customer GROUP BY  tbl_order_detail_delta.fld_order_num");
             $stmt->bindParam(':customer', $customer, PDO::PARAM_STR);
             $customer = $_SESSION['user']['USERNAME'];
       $stmt->execute();
@@ -131,17 +131,19 @@
 												
 										<table class="table"><thead>										 				
 											<tr>
-												<th>Order Details ID</th>
+												<th>Number of Items</th>
 												<th>Order ID</th>
-												<th>Product Code&nbsp;</th>
 												<!-- <th>Price</th> -->
-												<th>Quantity</th>
+												<th>Total</th>
 												<th></th>
 											</tr>	
 											<?php
 												$total =0;
+												$subtotal = 0;
 											 foreach($result as $readrow) {
+											 		$subtotal += (float)$readrow['PRICE']*(int)$readrow['fld_order_detail_quantity'];
 											 		$total += (float)$readrow['PRICE']*(int)$readrow['fld_order_detail_quantity'];
+											 		$orderid=$readrow['fld_order_num'] ?? 'default value'; 
 											 		?>
 										</thead>
 											<tbody>
@@ -149,14 +151,13 @@
 												</tr>
 												
 												<tr>
-													<td><?php echo $readrow['fld_order_detail_num']; ?></td>
+													<td><?php echo $readrow['count(tbl_order_detail_delta.fld_order_detail_num)']; ?></td>
 													<td><?php echo $readrow['fld_order_num']; ?></td>
-													<td><?php echo $readrow['fld_product_num']; ?>&nbsp;</td>
-													<td><?php echo $readrow['fld_order_detail_quantity']; ?></td>
-													<td><a role="button" type="submit" class="align-items-center" href ="invoice.php?oid=<?php echo $readrow['fld_order_num']; ?>">Invoice</a></td>
+													<td><?php echo $subtotal; ?></td>
+													<td><a role="button" type="submit" class="align-items-center" href ="invoice.php?oid=<?php echo $orderid; ?>">Invoice</a></td>
 												
 												</tr>												
-											
+											 		<?php $subtotal = 0; ?>
 												<!-- 	<td style="font-weight: bold;">Total&nbsp;</td> -->
 												<!-- 	<td></td>
 													<td></td> -->
@@ -170,7 +171,7 @@
 												</tbody>
 										<?php }$conn = null;?>		
 											</table> 
-											 <h2><span class="text">Subtotal</span></h2>
+											 <h2><span class="text">Total Transaction</span></h2>
            						 <h1><span class="price">RM <?=$total?></span></h1>
 										</div>
 									</section>

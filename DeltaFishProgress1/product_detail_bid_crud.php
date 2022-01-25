@@ -49,11 +49,11 @@ if (isset($_POST['update'])) {
 
         }
      if (isset($_SESSION['error'])) {
-        header("LOCATION: br_pr_bid.php");
+        header("LOCATION: product_detail_bid.php?pid=$oldpid");
       
       }
 
-        header("Location: br_pr_bid.php");
+        header("Location: product_detail_bid.php?pid=$oldpid");
 
     exit();
 }
