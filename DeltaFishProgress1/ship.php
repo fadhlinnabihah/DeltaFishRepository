@@ -15,21 +15,15 @@
 
 <body>
 
-
-	<nav class="navbar navbar-light navbar-expand bg-light navigation-clean">
-	<div class="container">
-		<a class="navbar-brand" href="#">DFOB</a>
-		<button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"></button>
-		<div class="collapse navbar-collapse" id="navcol-1"></div></div></nav>
 		<header class="text-center text-white masthead" style="background:url('assets/img/bg-masthead.jpg')no-repeat center center;background-size:cover;">
-			<div class="overlay" style="padding: -4px;margin: 2px;"></div>
+			<div class="overlay" style="padding: -1px;margin: 1px;"></div>
 			<div class="container"><div class="row"><div class="col-xl-9 mx-auto position-relative">
 				<h1 class="mb-5">Shipping Page</h1></div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto position-relative">
 					<form>
-						<?php echo date("d.m.Y")."<br>";?>
+					<h3><?php echo date("d.m.Y")."<br>";?></h3>	
 						<div class="row">
-							<div class="col-12 col-md-3 offset-md-4 offset-xl-4">
+							<div class="col-6 col-md-3 offset-md-4 offset-xl-4">
 						<!-- <button class="btn btn-primary btn-lg" type="submit" style="margin: -19px;padding: 6px 16px;width: 208px;">Add New Shipment&nbsp;</button> -->
 						<!-- <button class="btn btn-primary btn-lg" type="submit" style="margin: -19px;padding: 6px 16px;width: 208px;">Add New Shipment&nbsp;</button> -->
 					</div>
