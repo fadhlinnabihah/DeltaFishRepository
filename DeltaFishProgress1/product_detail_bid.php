@@ -26,6 +26,89 @@
               padding: 30px 10px;
               justify-content: center;
             }
+            header {
+              border-bottom: 1px solid #EEEEEE;
+              background-color: #FFFFFF;
+          }
+          header .content-wrapper {
+              display: flex;
+          }
+          header h1 {
+              display: flex;
+              flex-grow: 1;
+              flex-basis: 0;
+              font-size: 20px;
+              margin: 0;
+              padding: 24px 0;
+              background-color: #FFFFFF;
+          }
+          header nav {
+              display: flex;
+              flex-grow: 1;
+              flex-basis: 0;
+              justify-content: center;
+              align-items: center;
+              background-color: #FFFFFF;
+          }
+          header nav a {
+              text-decoration: none;
+              color: #555555;
+              padding: 10px 10px;
+              margin: 0 10px;
+              background-color: #FFFFFF;
+          }
+          header nav a:hover {
+              border-bottom: 1px solid #aaa;
+          }
+          header .link-icons {
+              display: flex;
+              flex-grow: 1;
+              flex-basis: 0;
+              justify-content: flex-end;
+              align-items: center;
+              position: relative;
+          }
+          header .link-icons a {
+              text-decoration: none;
+              color: #394352;
+              padding: 0 10px;
+          }
+          header .link-icons a:hover {
+              color: #4e5c70;
+          }
+          header .link-icons a i {
+              font-size: 18px;
+          }
+          header .link-icons a span {
+              display: inline-block;
+              text-align: center;
+              background-color: #63748e;
+              border-radius: 50%;
+              color: #FFFFFF;
+              font-size: 12px;
+              line-height: 16px;
+              width: 16px;
+              height: 16px;
+              font-weight: bold;
+              position: absolute;
+              top: 22px;
+              right: 0;
+          }    
+          footer{
+                background-color: #FFFFFF;
+                color:#555555;
+                font-size:14px;
+                font-weight:bold;
+                padding:0px;    
+                bottom:0;
+            }
+            .footer { 
+                background-color: #FFFFFF;
+                position: absolute; 
+                bottom:0; 
+                right:0;
+                left:0;
+            }
     </style>
   </head>
 

@@ -7,13 +7,15 @@ if (!isset($_SESSION['loggedin']))
 
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
+    <?=template_header('br_pr')?>  
+  <link rel="shortcut icon" type="image/png" href="deltafish_logo.png" /> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Product Detail</title>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
@@ -24,11 +26,12 @@ if (!isset($_SESSION['loggedin']))
     <style >
        body {
               background-color: #74E1F5;
-              padding: 30px 10px;
+              padding: 0px 0px;
               justify-content: center;
             }
         header {
               border-bottom: 1px solid #EEEEEE;
+              background-color: #FFFFFF;
           }
           header .content-wrapper {
               display: flex;
@@ -40,6 +43,7 @@ if (!isset($_SESSION['loggedin']))
               font-size: 20px;
               margin: 0;
               padding: 24px 0;
+              background-color: #FFFFFF;
           }
           header nav {
               display: flex;
@@ -47,12 +51,14 @@ if (!isset($_SESSION['loggedin']))
               flex-basis: 0;
               justify-content: center;
               align-items: center;
+              background-color: #FFFFFF;
           }
           header nav a {
               text-decoration: none;
               color: #555555;
               padding: 10px 10px;
               margin: 0 10px;
+              background-color: #FFFFFF;
           }
           header nav a:hover {
               border-bottom: 1px solid #aaa;
@@ -91,9 +97,28 @@ if (!isset($_SESSION['loggedin']))
               top: 22px;
               right: 0;
           }    
+          footer{
+                background-color: #FFFFFF;
+                color:#555555;
+                font-size:14px;
+                font-weight:bold;
+                margin-bottom: auto;
+                padding:0px;    
+                bottom:0;
+            }
+            .footer { 
+                background-color: #FFFFFF;
+                position: absolute; 
+                bottom:0; 
+                right:0;
+                left:0;
+            }
+            main{
+              max-width: 100%;
+            }
     </style>
   </head>
-  <?=template_header('products_detail_sell')?>  
+  
   <body>
     <?php
     try {
@@ -150,13 +175,28 @@ if (!isset($_SESSION['loggedin']))
             <input type="hidden" name="product_id" value="<?=$readrow['ID']?>">
             <input type="submit" value="Add To Cart">
           </div> 
+          <br><br><br>
           </form>
         </div>
       </div>
+    </div>
+      
     </main>
+<footer class="footer"> 
+               
+               <center>
+                   <p>Copyright &copy DFOBB. All Rights Reserved. </p>
+                   <p>This website is developed by Delta Group</p>
+               </center>
+               
+           </footer>
+
+    
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
-    <script src="script.js" charset="utf-8"></script>
+    <script src="script.js" charset="utf-8">
+      
+    </script>
   </body>
 </html>
