@@ -234,13 +234,13 @@ if (!isset($_SESSION['loggedin']))
 </div>
 </div>
 
-
+<center><h2>Bidding Product List</h2></center> 
     <div class="row">
 
       <div class="container">
-        <div class="page-header">
-          <h2>Bidding Product List</h2>
-        </div>
+        
+         
+        
 
             
           <?php

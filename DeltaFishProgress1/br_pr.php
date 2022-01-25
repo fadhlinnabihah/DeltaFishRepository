@@ -233,7 +233,7 @@ if (!isset($_SESSION['loggedin']))
 </center>    
 
     </div>
-    <!-- Need to change later -->
+    <center><h2> Product List</h2></center> 
 
 
 
@@ -252,11 +252,11 @@ if (!isset($_SESSION['loggedin']))
       foreach($result as $readrow) {
       ?> 
       <div class="col-md-3 d-flex align-items-stretch" >
-            <div class="card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); max-width: 300px;  padding: 16px;  text-align: center; font-family: arial; margin-bottom: 10px; background-color: #9ae5f2;">   
+            <div class="card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); max-width: 300px;  padding: 16px;  text-align: center; font-family: arial; margin-bottom: 10px; background-color: white;">   
       
         <?php if(file_exists('pictures_sell/'. $readrow['PICTURE'])){
                 $img = 'pictures_sell/'.$readrow['PICTURE'];
-                 echo  '<td><img class="circular--square" data-toggle="modal" data-target="#'.$readrow['PICTURE'].'" width=150px; src="pictures_sell/'.$readrow['PICTURE'].'"></td>';
+                 echo  '<td><img class="circular--square" data-toggle="modal" data-target="#'.$readrow['PICTURE'].'" width=200px height=200px; src="pictures_sell/'.$readrow['PICTURE'].'"></td>';
               }
               else{
                 $img = 'pictures/nophoto.jpg';
