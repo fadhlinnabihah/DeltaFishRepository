@@ -147,6 +147,8 @@ if (!isset($_SESSION['loggedin']))
 
       header {
         border-bottom: 1px solid #EEEEEE;
+        background-color: #FFFFFF;
+
       }
       header .content-wrapper {
         display: flex;
@@ -159,6 +161,7 @@ if (!isset($_SESSION['loggedin']))
         font-size: 20px;
         margin: 0;
         padding: 24px 0;
+        background-color: #FFFFFF;
       }
       header nav {
         display: flex;
@@ -166,12 +169,13 @@ if (!isset($_SESSION['loggedin']))
         flex-basis: 0;
         justify-content: center;
         align-items: center;
+        background-color: #FFFFFF;
       }
       header nav a {
         text-decoration: none;
         color: #555555;
         padding: 10px 10px;
-        margin: 0 10px;
+        background-color: #FFFFFF;
       }
       header nav a:hover {
         border-bottom: 1px solid #aaa;
