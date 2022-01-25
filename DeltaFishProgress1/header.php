@@ -30,7 +30,7 @@
       <ul class="nav navbar-nav navbar-right">
       
       <li><a href="sellerhome.php">Products</a></li>
-      <li><a href="ship.php">Shipping</a></li>
+      <li><a href="shipSeller.php">Shipping</a></li>
       <li><a href="logout.php">Logout</a><li>
     </ul>
         
