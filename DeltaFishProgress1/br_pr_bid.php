@@ -253,7 +253,7 @@ if (!isset($_SESSION['loggedin']))
             
             $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $stmt = $conn->prepare("SELECT * FROM tbl_productbid_delta WHERE DUEDATE >= NOW()-INTERVAL 5 MINUTE");
+            $stmt = $conn->prepare("SELECT * FROM tbl_productbid_delta WHERE DUEDATE >= NOW()-INTERVAL 15 MINUTE");
             $stmt->execute();
             $result = $stmt->fetchAll();
           }
