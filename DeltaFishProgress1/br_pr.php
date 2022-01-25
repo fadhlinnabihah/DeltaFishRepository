@@ -138,8 +138,8 @@ if (!isset($_SESSION['loggedin']))
     box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
 }
 .btn-hover.color-9 {
-    background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
-    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+    background-image: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
+    box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
 }
 .thick {
   font-weight: bold;
@@ -224,7 +224,7 @@ if (!isset($_SESSION['loggedin']))
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
       <div class="page-header">
       <center>
-        <h2 class="thick">BROWSE PRODUCT</h2>
+        <h2 style="color: white;" class="thick">BROWSE PRODUCT</h2>
       
       
 
@@ -237,7 +237,7 @@ if (!isset($_SESSION['loggedin']))
 </center>    
 
     </div>
-    <center><h2> Product List</h2></center> 
+    <center><h2 style="color: white;" class="thick"> Product List</h2></center> 
 
 
 

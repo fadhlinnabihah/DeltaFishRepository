@@ -132,8 +132,8 @@ if (!isset($_SESSION['loggedin']))
     box-shadow: 0 4px 15px 0 rgba(229, 66, 10, 0.75);
 }
 .btn-hover.color-9 {
-    background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
-    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+    background-image: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
+    box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
 }
 .thick {
   font-weight: bold;
@@ -223,7 +223,7 @@ if (!isset($_SESSION['loggedin']))
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
       <div class="page-header">
       <center>
-        <h2 class="thick">BROWSE PRODUCT</h2>
+        <h2 class="thick"; style="color: white;">BROWSE PRODUCT</h2>
       
       
 
@@ -239,7 +239,7 @@ if (!isset($_SESSION['loggedin']))
 </div>
 </div>
 
-<center><h2>Bidding Product List</h2></center> 
+<center><h2 class="thick" style="color: white;">Bidding Product List</h2></center> 
     <div class="row">
 
       <div class="container">
@@ -265,7 +265,7 @@ if (!isset($_SESSION['loggedin']))
           foreach($result as $readrow) {
               ?>
           <div class="col-md-3 d-flex align-items-stretch" >
-            <div class="card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); max-width: 300px;  padding: 16px;  text-align: center; font-family: arial; margin-bottom: 10px; background-color: #FFFFFF;">   
+            <div class="card" style=" box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); max-width: 300px;  padding: 16px;  text-align: center; font-family: arial; margin-bottom: 10px; background-color: white;">   
 
               <?php if(file_exists('pictures_bid/'. $readrow['PICTURE']) && isset($readrow['PICTURE'])){
                 $img = 'pictures_bid/'.$readrow['PICTURE'];
@@ -305,7 +305,11 @@ if (!isset($_SESSION['loggedin']))
    <footer class="footer"> 
                
                <center>
+<<<<<<< Updated upstream
                    <p>Copyright &copy DFOBB. All Rights Reserved. </p>
+=======
+                   <p>Copyright &copy DFOBB. All Rights Reserved.</p>
+>>>>>>> Stashed changes
                    <p>This website is developed by Delta Group</p>
                </center>
                

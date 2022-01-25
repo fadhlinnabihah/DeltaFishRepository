@@ -185,7 +185,7 @@
            <footer class="footer" style="padding-top: 0rem;padding-bottom: 0rem;">
                
                <center>
-                   <p>Copyright &copy DFOBB. All Rights Reserved. | Contact Us: +05 4099 9999</p>
+                   <p>Copyright &copy DFOBB. All Rights Reserved.</p>
                    <p>This website is developed by Delta Group</p>
                </center>
                
