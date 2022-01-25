@@ -5,28 +5,32 @@ if (!isset($_SESSION['loggedin']))
     header("LOCATION: login.php");
 
 if(isset($_SESSION['user']['BANKNO']) &&  isset($_SESSION['user']['BANKNAME']))
-    header("LOCATION: sellerhome.php");
-
+    header("LOCATION: dashboardseller.php");
 
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if (isset($_POST['submit_btn'])) {
-    $stmt = $conn->prepare("INSERT INTO tbl_user_delta(BANKNO, BANKNAME) VALUES (:bankno, :bankname)");
+if (isset($_POST['update'])) {
+    try{
+    $stmt = $conn->prepare("UPDATE tbl_user_delta SET BANKNO = :bankno, BANKNAME = :bankname WHERE USERNAME = :user");
 
     $stmt->bindParam(':bankno', $bankno, PDO::PARAM_INT);
     $stmt->bindParam(':bankname', $bankname, PDO::PARAM_STR);
+    $stmt->bindParam(':user', $user, PDO::PARAM_STR);
 
+    $bankno = $_POST['bankno'];
+    $bankname = $_POST['bankname'];
+    $user = $_SESSION['user']['USERNAME'];
 
-     $bankno = $_POST['bankno'];
-      $bankname = $_POST['bankname'];
+    $stmt->execute();
+    }catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+}
 
-       $stmt->execute();
+    header('Location: dashboardseller.php');
+    exit;
 
-       echo "<script>
-      alert('Successfully Register!');
-      window.location.href='login.php';
-      </script>";
 
 ?>
 
@@ -54,7 +58,7 @@ if (isset($_POST['submit_btn'])) {
         </div>
 
 
-<form action="sellerverification.php" method ="post" class="form-horizontal">
+<form action="sellerverification.php" method ="post" class="form-horizontal" enctype="multipart/form-data">
         <div class="row px-md-4 px-1 m-0">
             <div class="col-12">
                 <div>Bank Account Number
@@ -66,8 +70,8 @@ if (isset($_POST['submit_btn'])) {
 
             <div class="col-12 create">
                 
-                <a href="sellerhome.php">
-            <input type="button" name="seller" value="Submit" id="seller" class="btn btn-primary py-3 "><?php if (isset($_GET['edit'])) { ?>
+                
+            <input type="submit" name="update" value="Submit" id="update" class="btn btn-primary py-3 "><?php if (isset($_GET['edit'])) { ?>
                     <div class="d-flex align-items-center justify-content-between"> <a href="">
                         <?php } ?></div></a>
 
