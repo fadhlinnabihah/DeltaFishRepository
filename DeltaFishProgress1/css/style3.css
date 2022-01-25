@@ -46,8 +46,8 @@
 }
 
 footer{
-    background-color: #7666FA;
-    color:#f2f2f2;
+    background-color: #FFFFFF;
+    color:#555555;
     font-size:14px;
     font-weight:bold;
     padding:10px;    
@@ -60,7 +60,7 @@ html {
 } 
 
 .footer { 
-    background-color: #7666FA;
+    background-color: #FFFFFF;
     position: absolute; 
     bottom:0; 
     right:0;

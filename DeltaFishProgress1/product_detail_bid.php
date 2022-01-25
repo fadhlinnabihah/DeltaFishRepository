@@ -119,8 +119,8 @@
         
       </div>
       <br>
-      <div> <h6>Terms & condition: </h6>
-      <p>Seller will contact you, if you are the winner and the current bidder after bid closed.</p></div>
+    
+     
     </main>
 
     <!-- Scripts for the timer-->

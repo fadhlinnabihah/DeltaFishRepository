@@ -1,11 +1,34 @@
 <?php
-//session_start();
-include_once 'signup.php';
-//if(isset($_SESSION['signup'])){
-  //header("location: mainpage.php");
-  //die();
-  //}
- ?>
+include_once 'db.php';
+if (!isset($_SESSION['loggedin']))
+    header("LOCATION: login.php");
+
+
+  $totalproduct=0;
+   try {
+      //ada dua quary, satu untuk data buyer, satu untuk data seller
+      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $stmt = $conn->prepare("SELECT DISTINCT fld_customer_user, fld_seller_user FROM tbl_order_delta WHERE fld_seller_user = :sid ; SELECT * FROM tbl_productsell_delta WHERE SELLER = :sid ; SELECT * FROM tbl_productbid_delta WHERE SELLER = :sid ; SELECT fld_order_num FROM tbl_order_delta WHERE fld_seller_user = :sid ");
+      $stmt->bindParam(':sid', $sid, PDO::PARAM_STR);
+      $sid = $_SESSION['user']['USERNAME'];
+      $stmt->execute();
+      $rowcount = $stmt->rowCount();
+      $readrow = $stmt->fetch(PDO::FETCH_ASSOC);
+      $stmt->nextRowset();
+      $rowcount2 = $stmt->rowCount();
+      $totalproduct += (int)$rowcount2;
+      $stmt->nextRowset();
+      $rowcount3 = $stmt->rowCount();
+      $totalproduct += (int)$rowcount3;
+      $stmt->nextRowset();
+      $rowcount4 = $stmt->rowCount();
+      }
+    catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+    $conn = null;
+?>
 
 <!Doctype HTML>
 <html>
@@ -17,6 +40,10 @@ include_once 'signup.php';
 
 
 <body>
+  <div>
+            <?php
+                require 'header.php';
+            ?></div>
 	
 <!-- 	<div id="mySidenav" class="sidenav">
 	<p class="logo"><span>Delta</span> Fish</p>
@@ -31,32 +58,25 @@ include_once 'signup.php';
 </div> -->
 
 <div id="main">
-
 	<div class="head">
 <p style="font-size:30px;color: white;">Dashboard</p>
 </div>
 	
 	<div class="col-div-3">
 		<div class="box">
-			<p>67<br/><span>Pending Orders</span></p>
-			<i class="fa fa-tasks box-icon"></i>
+      <p><?php echo $rowcount?><br/><span>Customers</span></p>
+			<i class="fa fa-users box-icon"></i>
 		</div>
 	</div>
 	<div class="col-div-3">
 		<div class="box">
-			<p>88<br/><span>Bidding in Progress</span></p>
-			<i class="fa fa-bar-chart box-icon"></i>
+			<p><?php echo $totalproduct?><br/><span>Products</span></p>
+			<i class="fa fa-list box-icon"></i>
 		</div>
 	</div>
 	<div class="col-div-3">
 		<div class="box">
-			<p>99<br/><span>Products in Cart</span></p>
-			<i class="fa fa-cart-plus box-icon"></i>
-		</div>
-	</div>
-	<div class="col-div-3">
-		<div class="box">
-			<p>78<br/><span>Complete Orders</span></p>
+			<p><?php echo $rowcount4?><br/><span>Orders</span></p>
 			<i class="fa fa-shopping-bag box-icon"></i>
 		</div>
 	</div>
@@ -65,28 +85,28 @@ include_once 'signup.php';
 	<div class="col-div-8">
 		<div class="box-8">
 		<div class="content-box">
-			<p>Top Bidding </p>
+			<p>Top Products</p>
 			<br/>
 			<table>
   <tr>
     <th>Product Name</th>
-    <th>Latest Bidding Price</th>
+    <th>Product Type</th>
   </tr>
   <tr>
     <td>Guppy</td>
-    <td>RM500</td>
+    <td>Bidding</td>
   </tr>
   <tr>
     <td>Siakap</td>
-    <td>RM250</td>
+    <td>Selling</td>
   </tr>
   <tr>
     <td>Keli</td>
-    <td>RM350</td>
+    <td>Selling</td>
   </tr>
   <tr>
     <td>Exotic Arowana</td>
-    <td>RM250</td>
+    <td>Bidding</td>
   </tr>
   
   
@@ -98,7 +118,7 @@ include_once 'signup.php';
 	<div class="col-div-4">
 		<div class="box-4">
 		<div class="content-box">
-			<p>Total Shopping </p>
+			<p>Total Sale </p>
 
 			<div class="circle-wrap">
     <div class="circle">
@@ -119,7 +139,7 @@ include_once 'signup.php';
 </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
   $(".nav").click(function(){
@@ -145,8 +165,17 @@ $(".nav2").click(function(){
       $(".nav2").css('display','none');
  });
 
-</script>
+</script> -->
 
+            <br><br><br><br><br><br><br><br>
+           <footer class="footer">
+               <div class="container">
+               <center>
+                   <p>Copyright &copy DFOBB. All Rights Reserved. | Contact Us: +05 4099 9999</p>
+                   <p>This website is developed by Delta Group</p>
+               </center>
+               </div>
+           </footer>
 </body>
 
 
