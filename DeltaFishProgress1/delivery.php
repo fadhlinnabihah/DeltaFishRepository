@@ -91,8 +91,8 @@
           <div class="col-sm-9">
           <select name="deli_time" class="form-control" id="deli_time" value="<?php if(isset($_GET['edit'])) echo $editrow['DELI_TIME']; ?>"  required>
             <option value="">--- Choose your preferred delivery time---</option>
-            <option value="during working hours">Deliver during working hours</option>
-            <option value="any time">Deliver any time </option>
+            <option value="During working hours">Deliver during working hours</option>
+            <option value="Any time">Deliver any time </option>
 </select>
         </div>
         </div>
@@ -102,9 +102,9 @@
           <div class="col-sm-9">
           <select name="payment" class="form-control" id="payment" value="<?php if(isset($_GET['edit'])) echo $editrow['PAYMENT']; ?>"  required>
             <option value="">--- Choose your payment method---</option>
-            <option value="ob">Online Banking</option>
-            <option value="ew">e-Wallet</option>
-            <option value="c">Cash</option>
+            <option value="Online Banking">Online Banking</option>
+            <option value="e-Wallet">e-Wallet</option>
+            <option value="Cash">Cash</option>
 </select>
         </div>
         </div>

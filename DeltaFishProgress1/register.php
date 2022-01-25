@@ -62,7 +62,7 @@ include_once 'signup.php';
             </select>
         </div>
 
-        <div class="col-12">Forgot Password Answer<input type="text" class="form-control mb-4" name="fpass" id="fpass" placeholder="answer" value="<?php if(isset($_GET['edit'])) echo $editrow['FPASS']; ?>" required></div>
+        <div class="col-12">Forgot Password Answer<input type="text" class="form-control mb-4" name="fpass" id="fpass" placeholder="Answer" value="<?php if(isset($_GET['edit'])) echo $editrow['FPASS']; ?>" required></div>
 
             
 

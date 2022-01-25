@@ -43,7 +43,7 @@ if (isset($_POST['create'])) {
         $_SESSION['error'] = "Error while Creating: " . $e->getMessage();
       }
       unset($_SESSION['orderid']);
-      header('Location: deliverytype.php');
+      header('Location: success.php');
     exit;
 }
 
