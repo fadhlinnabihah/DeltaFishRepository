@@ -8,22 +8,97 @@
 <!DOCTYPE html>
 <html>
 <head>
+	 <link rel="shortcut icon" type="image/png" href="deltafish_logo.png" /> 
+        <?=template_header('shipping')?>    
 	<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 	<title>Home - DFOB</title>
 	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+
+	 <style type="text/css">
+            header {
+              border-bottom: 1px solid #EEEEEE;
+            }
+            header .content-wrapper {
+              display: flex;
+            }
+            header h1 {
+              display: flex;
+              flex-grow: 1;
+              flex-basis: 0;
+              font-size: 20px;
+              margin: 0;
+              padding: 24px 0;
+            }
+            header nav {
+              display: flex;
+              /*flex-grow: 1;*/
+              flex-basis: 0;
+              justify-content: center;
+              align-items: center;
+            }
+            header nav a {
+              text-decoration: none;
+              color: #555555;
+              padding: 10px 10px;
+              margin: 0 10px;
+            }
+            header nav a:hover {
+              border-bottom: 1px solid #aaa;
+            }
+            header .link-icons {
+              display: flex;
+              flex-grow: 1;
+              flex-basis: 0;
+              justify-content: flex-end;
+              align-items: center;
+              position: relative;
+            }
+            header .link-icons a {
+              text-decoration: none;
+              color: #394352;
+              padding: 0 10px;
+            }
+            header .link-icons a:hover {
+              color: #4e5c70;
+            }
+            header .link-icons a i {
+              font-size: 18px;
+            }
+            header .link-icons a span {
+              display: inline-block;
+              text-align: center;
+              background-color: #63748e;
+              border-radius: 50%;
+              color: #FFFFFF;
+              font-size: 12px;
+              line-height: 16px;
+              width: 16px;
+              height: 16px;
+              font-weight: bold;
+              position: absolute;
+              top: 22px;
+              right: 0;
+            }
+        </style>
 </head>
 
 <body>
 
+
+	<nav class="navbar navbar-light navbar-expand bg-light navigation-clean">
+	<div class="container">
+		
+		<button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"></button>
+		<div class="collapse navbar-collapse" id="navcol-1"></div></div></nav>
 		<header class="text-center text-white masthead" style="background:url('assets/img/bg-masthead.jpg')no-repeat center center;background-size:cover;">
-			<div class="overlay" style="padding: -1px;margin: 1px;"></div>
+			<div class="overlay" style="padding: -4px;margin: 2px;"></div>
 			<div class="container"><div class="row"><div class="col-xl-9 mx-auto position-relative">
-				<h1 class="mb-5">Shipping Page</h1></div>
+				<center class="mb-5" style="font-size: xx-large;">Shipping Page</center></div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto position-relative">
 					<form>
-					<h3><?php echo date("d.m.Y")."<br>";?></h3>	
+						<?php echo date("d.m.Y")."<br>";?>
 						<div class="row">
-							<div class="col-6 col-md-3 offset-md-4 offset-xl-4">
+							<div class="col-12 col-md-3 offset-md-4 offset-xl-4">
 						<!-- <button class="btn btn-primary btn-lg" type="submit" style="margin: -19px;padding: 6px 16px;width: 208px;">Add New Shipment&nbsp;</button> -->
 						<!-- <button class="btn btn-primary btn-lg" type="submit" style="margin: -19px;padding: 6px 16px;width: 208px;">Add New Shipment&nbsp;</button> -->
 					</div>
@@ -104,6 +179,16 @@
 													<script src="assets/bootstrap/js/bootstrap.min.js">
 														//testing 
 													</script>
+
+
+           <footer class="footer" style="padding-top: 0rem;padding-bottom: 0rem;">
+               
+               <center>
+                   <p>Copyright &copy DFOBB. All Rights Reserved. | Contact Us: +05 4099 9999</p>
+                   <p>This website is developed by Delta Group</p>
+               </center>
+               
+           </footer>
 												</body>
 	</html>												
 
