@@ -15,7 +15,7 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" href="dashboardseller.php">DFOBB</a> 
+      <span><a class="navbar-brand" href="dashboardseller.php">DFOBB</a></span>
      <!--  <a class="navbar-brand" id="role" href="#" style="color: white;"><?php echo $_SESSION["ulevel"]." || ".$_SESSION["name"] ; ?></a>  -->
        
     </div>
