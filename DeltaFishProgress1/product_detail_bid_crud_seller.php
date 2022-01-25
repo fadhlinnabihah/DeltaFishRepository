@@ -45,7 +45,7 @@ if (isset($_POST['update'])) {
             $_SESSION['error'] = "Update Error *beep* *boop* :Update Error *beep* *boop* :" . $e->getMessage();
         }
 
-        header("Location: br_pr_bid.php");
+        header("Location: product_detail_bid_seller.php?pid=$oldpid");
 
     exit();
 }
