@@ -76,7 +76,6 @@ if (!isset($_SESSION['loggedin']))
               text-align: center;
               background-color: #63748e;
               border-radius: 50%;
-              color: #FFFFFF;
               font-size: 12px;
               line-height: 16px;
               width: 16px;
@@ -85,6 +84,42 @@ if (!isset($_SESSION['loggedin']))
               position: absolute;
               top: 22px;
               right: 0;
+            }
+            footer{
+                background-color: #FFFFFF;
+                color:#555555;
+                font-size:14px;
+                font-weight:bold;
+                padding:10px;    
+                bottom:0;
+            }
+            .footer { 
+                background-color: #FFFFFF;
+                position: absolute; 
+                bottom:0; 
+                right:0;
+                left:0;
+            }
+            #bannerImage{
+                padding-top:75px;
+                padding-bottom:50px;
+                margin-bottom: 20px;
+                text-align:center;
+                color:lightgrey;
+                background:url(img/wallpaper.jpg);
+                background-size:cover;
+            }
+
+            #bannerContent{
+                position:relative;
+                color: #FFFFFF;
+                padding-top:6%;
+                padding-bottom:6%;
+                margin-top:12%;
+                margin-bottom:12%;
+                background-color:rgba(0,0,0,0.7);
+                background-blend-mode: screen;
+                max-width:660px;
             }
         </style>
     </head>
@@ -107,7 +142,7 @@ if (!isset($_SESSION['loggedin']))
            <footer class="footer"> 
                <div class="container">
                <center>
-                   <p>Copyright &copy DFOBB. All Rights Reserved. | Contact Us: +05 40000 00000</p>
+                   <p>Copyright &copy DFOBB. All Rights Reserved.</p>
                    <p>This website is developed by Delta Group</p>
                </center>
                </div>

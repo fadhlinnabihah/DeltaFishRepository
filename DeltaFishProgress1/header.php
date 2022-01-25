@@ -15,7 +15,7 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" href="dashboardseller.php">DFOBB</a> 
+      <span><a class="navbar-brand" href="dashboardseller.php">DFOBB</a></span>
      <!--  <a class="navbar-brand" id="role" href="#" style="color: white;"><?php echo $_SESSION["ulevel"]." || ".$_SESSION["name"] ; ?></a>  -->
        
     </div>
@@ -30,7 +30,7 @@
       <ul class="nav navbar-nav navbar-right">
       
       <li><a href="sellerhome.php">Products</a></li>
-      <li><a href="ship.php">Shipping</a></li>
+      <li><a href="shipSeller.php">Shipping</a></li>
       <li><a href="logout.php">Logout</a><li>
     </ul>
         

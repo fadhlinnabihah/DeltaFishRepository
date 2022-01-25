@@ -11,7 +11,7 @@
 	 <link rel="shortcut icon" type="image/png" href="deltafish_logo.png" /> 
         <?=template_header('shipping')?>    
 	<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-	<title>Home - DFOBB</title>
+	<title>Home - DFOB</title>
 	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
 
 	 <style type="text/css">
@@ -116,9 +116,9 @@
     try {
       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("SELECT * , count(tbl_order_detail_delta.fld_order_detail_num) FROM tbl_order_delta, tbl_order_detail_delta, tbl_productsell_delta WHERE tbl_order_delta.fld_order_num = tbl_order_detail_delta.fld_order_num AND tbl_productsell_delta.NAME = tbl_order_detail_delta.fld_product_num AND fld_customer_user = :customer GROUP BY  tbl_order_detail_delta.fld_order_num");
-            $stmt->bindParam(':customer', $customer, PDO::PARAM_STR);
-            $customer = $_SESSION['user']['USERNAME'];
+        $stmt = $conn->prepare("SELECT * , count(tbl_order_detail_delta.fld_order_detail_num) FROM tbl_order_delta, tbl_order_detail_delta, tbl_productsell_delta WHERE tbl_order_delta.fld_order_num = tbl_order_detail_delta.fld_order_num AND tbl_productsell_delta.NAME = tbl_order_detail_delta.fld_product_num AND fld_seller_user = :seller GROUP BY  tbl_order_detail_delta.fld_order_num");
+            $stmt->bindParam(':seller', $seller, PDO::PARAM_STR);
+            $seller = $_SESSION['user']['USERNAME'];
       $stmt->execute();
       $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
       }
