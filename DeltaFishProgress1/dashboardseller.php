@@ -2,6 +2,32 @@
 include_once 'db.php';
 if (!isset($_SESSION['loggedin']))
     header("LOCATION: login.php");
+
+
+  $totalproduct=0;
+   try {
+      //ada dua quary, satu untuk data buyer, satu untuk data seller
+      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $stmt = $conn->prepare("SELECT DISTINCT fld_customer_user, fld_seller_user FROM tbl_order_delta WHERE fld_seller_user = :sid ; SELECT * FROM tbl_productsell_delta WHERE SELLER = :sid ; SELECT * FROM tbl_productbid_delta WHERE SELLER = :sid ; SELECT fld_order_num FROM tbl_order_delta WHERE fld_seller_user = :sid ");
+      $stmt->bindParam(':sid', $sid, PDO::PARAM_STR);
+      $sid = $_SESSION['user']['USERNAME'];
+      $stmt->execute();
+      $rowcount = $stmt->rowCount();
+      $readrow = $stmt->fetch(PDO::FETCH_ASSOC);
+      $stmt->nextRowset();
+      $rowcount2 = $stmt->rowCount();
+      $totalproduct += (int)$rowcount2;
+      $stmt->nextRowset();
+      $rowcount3 = $stmt->rowCount();
+      $totalproduct += (int)$rowcount3;
+      $stmt->nextRowset();
+      $rowcount4 = $stmt->rowCount();
+      }
+    catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+    $conn = null;
 ?>
 
 <!Doctype HTML>
@@ -38,19 +64,19 @@ if (!isset($_SESSION['loggedin']))
 	
 	<div class="col-div-3">
 		<div class="box">
-      <p>0<br/><span>Customers</span></p>
+      <p><?php echo $rowcount?><br/><span>Customers</span></p>
 			<i class="fa fa-users box-icon"></i>
 		</div>
 	</div>
 	<div class="col-div-3">
 		<div class="box">
-			<p>0<br/><span>Products</span></p>
+			<p><?php echo $totalproduct?><br/><span>Products</span></p>
 			<i class="fa fa-list box-icon"></i>
 		</div>
 	</div>
 	<div class="col-div-3">
 		<div class="box">
-			<p>0<br/><span>Orders</span></p>
+			<p><?php echo $rowcount4?><br/><span>Orders</span></p>
 			<i class="fa fa-shopping-bag box-icon"></i>
 		</div>
 	</div>
