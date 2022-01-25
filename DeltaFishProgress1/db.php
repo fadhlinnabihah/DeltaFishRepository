@@ -11,6 +11,8 @@ $db = null;
 $db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+$_SESSION['orderid'] = array();
+
 function pdo_connect_mysql() {
     // Update the details below with your MySQL details
     $DATABASE_HOST = 'lrgs.ftsm.ukm.my';
