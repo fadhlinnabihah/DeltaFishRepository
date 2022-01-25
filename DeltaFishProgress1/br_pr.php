@@ -11,13 +11,15 @@ if (!isset($_SESSION['loggedin']))
 <html>
 <head>
   <meta charset="utf-8">
+  <?=template_header('br_pr')?>  
+  <link rel="shortcut icon" type="image/png" href="deltafish_logo.png" /> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>Delta Fish  : Products</title>
   <!-- Bootstrap -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css">
-    <link rel="shortcut icon" type="image/jpg" href="logo.jpg" />
+     
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css"/>
     <link rel="stylesheet" href="css/style3.css" type="text/css">
      <style type="text/css">
@@ -32,7 +34,7 @@ if (!isset($_SESSION['loggedin']))
 
          body {
           background-color: #74E1F5;
-          padding: 30px 10px;
+          padding: 0px 0px;
           justify-content: center;
         }
         .container { 
@@ -148,6 +150,7 @@ if (!isset($_SESSION['loggedin']))
       }
       header .content-wrapper {
         display: flex;
+
       }
       header h1 {
         display: flex;
@@ -159,7 +162,7 @@ if (!isset($_SESSION['loggedin']))
       }
       header nav {
         display: flex;
-        flex-grow: 1;
+        /*flex-grow: 1;*/
         flex-basis: 0;
         justify-content: center;
         align-items: center;
@@ -209,15 +212,10 @@ if (!isset($_SESSION['loggedin']))
       }
 
 </style>
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    
 </head>
 <body>
-<?=template_header('br_pr')?>  
+
 <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
       <div class="page-header">
@@ -231,9 +229,10 @@ if (!isset($_SESSION['loggedin']))
     <a href="index.php?page=br_pr"><button class="btn-hover color-2">Buy</button> </a>
     <a href="br_pr_bid.php"><button class="btn-hover color-9">Bid</button></a>
    
-</div>
+</div>  
+</center>    
+
     </div>
-  </center>    
     <!-- Need to change later -->
 
 
@@ -290,16 +289,19 @@ if (!isset($_SESSION['loggedin']))
       }
       $conn = null;
       ?>
-     
+     </div>
+   </div>
 
 
-     <!--
-            
-
-
-
-    -->
-
+            <br><br><br><br><br><br><br><br>
+   <footer class="footer"> 
+               
+               <center>
+                   <p>Copyright &copy DFOBB. All Rights Reserved. | Contact Us: +05 40000 00000</p>
+                   <p>This website is developed by Delta Group</p>
+               </center>
+               
+           </footer>
     
  
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -317,5 +319,7 @@ if (!isset($_SESSION['loggedin']))
             document.getElementById('productImageTitle').innerText = event.target.files[0]['name'];
         };
     </script>
+
+    
 </body>
 </html>

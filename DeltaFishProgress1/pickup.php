@@ -62,48 +62,38 @@
             unset($_SESSION['error']);
           }
           ?>
-    <form action="add_products.php" method="post" class="form-horizontal" enctype="multipart/form-data">
+    <form action="pickup.php" method="post" class="form-horizontal" enctype="multipart/form-data">
 
-
-      <div class="form-group">
-          <label for="productid" class="col-sm-3 control-label">Order ID</label>
-          <div class="col-sm-9">
-          <!-- <input name="pid" type="text" class="form-control" id="productid" placeholder="Product ID" value="<?php if(isset($_GET['edit'])) echo $editrow['OID']; ?>" required > -->
-           <input name="pid" type="text" class="form-control" value="<?php if(isset($_GET['edit'])) echo $editrow['ID']; else echo $num; ?>" required readonly>
-        </div>
-        </div>
-
-        
         <div class="form-group">
-          <label for="productname" class="col-sm-3 control-label">Full Name</label>
+          <label for="name" class="col-sm-3 control-label">Full Name</label>
           <div class="col-sm-9">
-          <input name="name" type="text" class="form-control" id="productname" placeholder="Ahmad bin Ahmed" value="<?php if(isset($_GET['edit'])) echo $editrow['FNAME']; ?>" required>
+          <input name="name" type="text" class="form-control" id="name" placeholder="Ahmad bin Ahmed" value="<?php if(isset($_GET['edit'])) echo $editrow['NAME']; ?>" required>
         </div>
         </div>
  
 
         <div class="form-group">
-          <label for="productprice" class="col-sm-3 control-label">Phone Number</label>
+          <label for="phone" class="col-sm-3 control-label">Phone Number</label>
           <div class="col-sm-9">
-          <input name="price" type="number" class="form-control" id="productprice" placeholder="+60-123456789" value="<?php if(isset($_GET['edit'])) echo $editrow['PNUMBER']; ?>" min="0.0" step="0.01" required>
+          <input name="phone" type="text" class="form-control" id="phone" placeholder="+60123456789" value="<?php if(isset($_GET['edit'])) echo $editrow['PHONE']; ?>" required>
         </div>
         </div>
 
         <div class="form-group">
-          <label for="time" class="col-sm-3 control-label">Pickup Date:</label>
+          <label for="date_pickup" class="col-sm-3 control-label">Pickup Date:</label>
           <div class="col-sm-9">
-          <input name="pdate" type="date" class="form-control" id="pickupdate" value="<?php if(isset($_GET['edit'])) echo $editrow['PNUMBER']; ?>" min="2022-01-26" max="2023-02-15" required>
+          <input name="date_pickup" type="date" class="form-control" id="date_pickup" value="<?php if(isset($_GET['edit'])) echo $editrow['DATE_PICKUP']; ?>" min="2022-01-26" max="2023-02-15" required>
         </div>
         </div>
 
         <div class="form-group">
-          <label for="time" class="col-sm-3 control-label">Payment Method:</label>
+          <label for="payment" class="col-sm-3 control-label">Payment Method:</label>
           <div class="col-sm-9">
-          <select name="time" class="form-control" id="time" value="<?php if(isset($_GET['edit'])) echo $editrow['TIME']; ?>"  required>
+          <select name="payment" class="form-control" id="payment" value="<?php if(isset($_GET['edit'])) echo $editrow['PAYMENT']; ?>"  required>
             <option value="">--- Choose your payment method---</option>
-            <option value="red">Online Banking</option>
-            <option value="green">e-Wallet</option>
-            <option value="green">Cash</option>
+            <option value="Online Banking">Online Banking</option>
+            <option value="e-Wallet">e-Wallet</option>
+            <option value="Cash">Cash</option>
 </select>
         </div>
         </div>
@@ -128,7 +118,7 @@
 
  
     
-            <br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br>
            <footer class="footer">
                <div class="container">
                <center>

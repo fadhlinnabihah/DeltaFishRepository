@@ -8,7 +8,7 @@ if (!isset($_SESSION['loggedin']))
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="shortcut icon" href="img/fishwallpaper.jpg" />
+         <link rel="shortcut icon" type="image/png" href="deltafish_logo.png" /> 
         <?=template_header('Home')?>    
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +38,7 @@ if (!isset($_SESSION['loggedin']))
             }
             header nav {
               display: flex;
-              flex-grow: 1;
+              /*flex-grow: 1;*/
               flex-basis: 0;
               justify-content: center;
               align-items: center;

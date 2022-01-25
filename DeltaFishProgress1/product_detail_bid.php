@@ -98,14 +98,15 @@
         <div class="form__group field">
           <div class="container">
    <div>
-        <div>
+        <div id="disablebid">
           <form method="POST" action="product_detail_bid.php">
             <input type="hidden" name="oldpid" value="<?php echo $readrow['ID']; ?>">  
             <p class="pb-1 username">Amount bid</p> 
            
             <input type="number" class=" name form-control mb-4" placeholder="RM" name="highestbid" min="<?php echo $readrow['HIGHESTBID'] ?>" >
-            <!-- get seller name -->
+            <!-- get buyer name -->
           <input type="hidden" name="highestbidder" value="<?php echo $_SESSION['user']['USERNAME']?>">
+          <input type="hidden" name="seller" value="<?php echo $readrow['SELLER'] ?>">
             <div class="form-group">
 
                <center><button class="bid-btn" name="update">Bid Now</button></center>
@@ -147,8 +148,13 @@
       // If the count down is finished, write some text 
       if (distance < 0) 
       {
+        var childNodes = document.getElementById("disablebid").getElementsByTagName('*');
+        for (var node of childNodes) {
+            node.disabled = true;
+        }
         clearInterval(x);
         document.getElementById("time_left").innerHTML = "BID CLOSED";
+
       }
       }
     </script>

@@ -4,8 +4,6 @@ if (!isset($_SESSION['loggedin']))
     header("LOCATION: login.php");
 ?>
 
-
-?>
 <?php
     try {
       //ada dua quary, satu untuk data buyer, satu untuk data seller

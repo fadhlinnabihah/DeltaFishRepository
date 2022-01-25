@@ -2,6 +2,7 @@
 include_once 'index.php';
 if (!isset($_SESSION['loggedin']))
     header("LOCATION: login.php");
+$_SESSION['orderid'] = array();
 ?>
 <?php
 // If the user clicked the add to cart button on the product page we can check for the form data
@@ -86,6 +87,7 @@ if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION[
                    
                 $oid = uniqid('O', true);
                 $soid = $oid;
+                array_push($_SESSION['orderid'], $soid);
                 $sid = $product['SELLER'];
                 $cid = $cidu;
                  
@@ -205,7 +207,7 @@ header nav a:hover {
 }
 header .link-icons {
     display: flex;
-    flex-grow: 1;
+   /* flex-grow: 1;*/
     flex-basis: 0;
     justify-content: flex-end;
     align-items: center;

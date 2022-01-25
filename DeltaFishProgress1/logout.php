@@ -32,7 +32,7 @@ require 'db.php';
     <div style="padding:;border-radius: 5px;">
         <h1>Logged Out</h1>
         <p> You have been log out from DFOBB</p>
-        <a class="btn btn-primary" href="login.php" role="button">Okey</a>
+        <a class="btn btn-primary" href="login.php" role="button">Okay</a>
     </div>
 
 </div>
