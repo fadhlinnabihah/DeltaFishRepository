@@ -205,7 +205,7 @@ header nav a:hover {
 }
 header .link-icons {
     display: flex;
-    flex-grow: 1;
+   /* flex-grow: 1;*/
     flex-basis: 0;
     justify-content: flex-end;
     align-items: center;

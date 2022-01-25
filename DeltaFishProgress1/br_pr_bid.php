@@ -1,4 +1,4 @@
-wa<?php
+<?php
 include_once 'db.php';
 if (!isset($_SESSION['loggedin']))
     header("LOCATION: login.php");
@@ -8,14 +8,16 @@ if (!isset($_SESSION['loggedin']))
 <html>
 <head>
   <meta charset="utf-8">
+   <link rel="shortcut icon" type="image/png" href="deltafish_logo.png" /> 
+        <?=template_header('br_pr_bid')?>    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>Delta Fish  : Products</title>
   <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="shortcut icon" type="image/jpg" href="logo.jpg" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css"/>
+     <link rel="stylesheet" href="css/style3.css" type="text/css">
      <style type="text/css">
         
         input[type="file"] {
@@ -23,7 +25,7 @@ if (!isset($_SESSION['loggedin']))
         }
         body {
           background-color: #74E1F5;
-          padding: 30px 10px;
+          padding: 0px 0px;
           justify-content: center;
         }
       </style>
@@ -138,6 +140,72 @@ if (!isset($_SESSION['loggedin']))
 }
 
 </style>
+ <style type="text/css">
+            header {
+              border-bottom: 1px solid #EEEEEE;
+            }
+            header .content-wrapper {
+              display: flex;
+            }
+            header h1 {
+              display: flex;
+              flex-grow: 1;
+              flex-basis: 0;
+              font-size: 20px;
+              margin: 0;
+              padding: 24px 0;
+            }
+            header nav {
+              display: flex;
+              /*flex-grow: 1;*/
+              flex-basis: 0;
+              justify-content: center;
+              align-items: center;
+            }
+            header nav a {
+              text-decoration: none;
+              color: #555555;
+              padding: 10px 10px;
+              margin: 0 10px;
+            }
+            header nav a:hover {
+              border-bottom: 1px solid #aaa;
+            }
+            header .link-icons {
+              display: flex;
+              flex-grow: 1;
+              flex-basis: 0;
+              justify-content: flex-end;
+              align-items: center;
+              position: relative;
+            }
+            header .link-icons a {
+              text-decoration: none;
+              color: #394352;
+              padding: 0 10px;
+            }
+            header .link-icons a:hover {
+              color: #4e5c70;
+            }
+            header .link-icons a i {
+              font-size: 18px;
+            }
+            header .link-icons a span {
+              display: inline-block;
+              text-align: center;
+              background-color: #63748e;
+              border-radius: 50%;
+              color: #FFFFFF;
+              font-size: 12px;
+              line-height: 16px;
+              width: 16px;
+              height: 16px;
+              font-weight: bold;
+              position: absolute;
+              top: 22px;
+              right: 0;
+            }
+        </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -162,6 +230,9 @@ if (!isset($_SESSION['loggedin']))
 </div>
     
   </center>
+</div>
+</div>
+</div>
 
 
     <div class="row">
@@ -222,7 +293,18 @@ if (!isset($_SESSION['loggedin']))
           ?>
             </div>
       </div>
-        </div>
+      
+
+
+         <br><br><br><br><br><br><br><br>
+   <footer class="footer"> 
+               
+               <center>
+                   <p>Copyright &copy DFOBB. All Rights Reserved. | Contact Us: +05 40000 00000</p>
+                   <p>This website is developed by Delta Group</p>
+               </center>
+               
+           </footer>
       
  
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
