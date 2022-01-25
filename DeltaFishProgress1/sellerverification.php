@@ -8,27 +8,27 @@ if(isset($_SESSION['user']['BANKNO']) &&  isset($_SESSION['user']['BANKNAME']))
     header("LOCATION: sellerhome.php");
 
 
-// $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-// $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// if (isset($_POST['submit_btn'])) {
-//     $stmt = $conn->prepare("INSERT INTO tbl_user_delta(BANKNO, BANKNAME) VALUES (:bankno, :bankname)");
+if (isset($_POST['submit_btn'])) {
+    $stmt = $conn->prepare("INSERT INTO tbl_user_delta(BANKNO, BANKNAME) VALUES (:bankno, :bankname)");
 
-//     $stmt->bindParam(':bankno', $pass, PDO::PARAM_INT);
-//     $stmt->bindParam(':bankname', $name, PDO::PARAM_STR);
+    $stmt->bindParam(':bankno', $bankno, PDO::PARAM_INT);
+    $stmt->bindParam(':bankname', $bankname, PDO::PARAM_STR);
 
 
-//      $bankno = $_POST['bankno'];
-//       $bankname = $_POST['bankname'];
+     $bankno = $_POST['bankno'];
+      $bankname = $_POST['bankname'];
 
-//        $stmt->execute();
+       $stmt->execute();
 
-//        echo "<script>
-//       alert('Successfully Register!');
-//       window.location.href='login.php';
-//       </script>";
+       echo "<script>
+      alert('Successfully Register!');
+      window.location.href='login.php';
+      </script>";
 
-?> -->
+?>
 
 <!DOCTYPE html>
 <html>
