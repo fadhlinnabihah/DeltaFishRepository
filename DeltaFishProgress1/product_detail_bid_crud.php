@@ -10,6 +10,7 @@ if (!isset($_SESSION['loggedin']))
 <?php
 if (isset($_POST['update'])) {
  
+ if( $_POST['highestbidder'] != $_POST['seller']){
   try {
        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
@@ -38,15 +39,19 @@ if (isset($_POST['update'])) {
              $stmt->execute();
     //      }
               
-     
-    
- 
-
-
         
         }  catch (Exception $e) {
             $_SESSION['error'] = "Update Error *beep* *boop* :Update Error *beep* *boop* :" . $e->getMessage();
+        } 
+    } else{
+          $_SESSION['error'] = "*blurp* *blurp* Seller cannot bid their own product *blurp* *blurp* ";
+          echo '<script>alert("*blurp* *blurp* Seller cannot bid their own product *blurp* *blurp*")</script>';
+
         }
+     if (isset($_SESSION['error'])) {
+        header("LOCATION: br_pr_bid.php");
+      
+      }
 
         header("Location: br_pr_bid.php");
 
