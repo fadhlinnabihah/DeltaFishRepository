@@ -51,6 +51,7 @@ echo <<<EOT
                 <nav>
                     <a href="index.php">Home</a>
                     <a href="index.php?page=br_pr">Products</a>
+                    <a href="ship.php"> Shipping</a>
                 </nav>
                 <div class="link-icons">
                     <a href="index.php?page=cart">

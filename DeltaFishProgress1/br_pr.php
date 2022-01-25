@@ -159,7 +159,7 @@ if (!isset($_SESSION['loggedin']))
       }
       header nav {
         display: flex;
-        flex-grow: 1;
+        /*flex-grow: 1;*/
         flex-basis: 0;
         justify-content: center;
         align-items: center;
