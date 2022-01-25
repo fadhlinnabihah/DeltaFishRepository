@@ -305,7 +305,7 @@ if (!isset($_SESSION['loggedin']))
    <footer class="footer"> 
                
                <center>
-                   <p>Copyright &copy DFOBB. All Rights Reserved. | Contact Us: +05 40000 00000</p>
+                   <p>Copyright &copy DFOBB. All Rights Reserved. </p>
                    <p>This website is developed by Delta Group</p>
                </center>
                
