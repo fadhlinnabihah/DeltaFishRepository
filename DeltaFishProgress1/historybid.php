@@ -1,6 +1,8 @@
 <?php
 
-  include_once 'historybid_crud.php';
+  include_once 'db.php';
+if (!isset($_SESSION['loggedin']))
+    header("LOCATION: login.php");
 ?>
 
 <!DOCTYPE html>
@@ -141,7 +143,7 @@
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
 
-            $stmt = $conn->prepare("SELECT * FROM tbl_productbid_delta WHERE HIGHESTBIDDER='$id'");
+            $stmt = $conn->prepare("SELECT * FROM tbl_productbid_delta WHERE HIGHESTBIDDER='$id' && DUEDATE <= NOW()");
             $stmt->execute();
             $result = $stmt->fetchAll();
           }
@@ -149,12 +151,13 @@
             echo "Error: " . $e->getMessage();
           }
           foreach($result as $readrow) {
-            ?>   
+            ?>  
+           <form action="historybid.php" method="post" class="form-horizontal" enctype="multipart/form-data"> 
             <tr>
-              <td><?php echo $readrow['ID'];?></td>
-              <td><?php echo $readrow['NAME']; ?></td>
-              <td><?php echo $readrow['DESCRIPTION']; ?></td>
-              <td><?php echo 'RM'.$readrow['HIGHESTBID']; ?></td>
+              <td name="id"><?php echo $readrow['ID'];?></td>
+              <td name="name"><?php echo $readrow['NAME']; ?></td>
+              <td><?php echo $readrow['DESCRIPTION'];?></td>
+              <td name="highestbid"><?php echo 'RM'.$readrow['HIGHESTBID'];?></td>
               
               <?php if(file_exists('pictures_bid/'. $readrow['PICTURE']) && isset($readrow['PICTURE'])){
                 $img = 'pictures_bid/'.$readrow['PICTURE'];
@@ -170,17 +173,18 @@
                   <img src="<?php echo $img ?>" class="img-responsive">
                 </div>
               </div>
-
-
+              <input type="hidden" name="name" value="<?php echo $readrow['NAME'];?>">
+              <input type="hidden" name="seller" value="<?php echo $readrow['SELLER'];?>">
+              <input type="hidden" name="highestbid" value="<?php echo $readrow['HIGHESTBID'];?>">
+              <input type="hidden" name="highestbidder" value="<? php echo $readrow['HIGHESTBIDDER'];?>">
               <td>
                 <a href="product_detail_bid_seller.php?pid=<?php echo $readrow['ID']; ?>" class="btn btn-warning btn-xs" role="button">Details</a>
-                <a href="deliverytype.php?pid=<?php echo $readrow['ID']; ?>" class="btn btn-warning btn-xs" role="button">PAYMENT</a> 
-
-               
-                
+                <a href="deliverytype.php?id=<?php echo $readrow['ID']; ?>" class="" role="submit" name="create">PAYMENT</a> 
+                <button class="btn btn-warning btn-xs" type="submit" name="create" id="create">Payment</button>
               </td>
             </tr>
-
+          </form>
+               
             <?php
           }
           $conn = null;
@@ -196,7 +200,7 @@
            <footer class="footer">
                <div class="container">
                <center>
-                   <p>Copyright &copy DFOBB. All Rights Reserved. | Contact Us: +05 4099 9999</p>
+                   <p>Copyright &copy DFOBB. All Rights Reserved.</p>
                    <p>This website is developed by Delta Group</p>
                </center>
                </div>

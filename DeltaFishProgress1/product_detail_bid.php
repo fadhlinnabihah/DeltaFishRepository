@@ -177,7 +177,7 @@
           <h2> RM <?php echo $readrow['HIGHESTBID'] ?></h2>
         </center>
         </div>
-        <div> <h5> Current Bidder: <?php echo $readrow['HIGHESTBIDDER'] ?></h5></div>
+        <div> <h5> Current Bidder: <?php echo $readrow['HIGHESTBIDDER']; ?></h5></div>
         <div class="form__group field">
           <div class="container">
    <div>
@@ -191,10 +191,19 @@
           <input type="hidden" name="highestbidder" value="<?php echo $_SESSION['user']['USERNAME']?>">
           <input type="hidden" name="seller" value="<?php echo $readrow['SELLER'] ?>">
             <div class="form-group">
-
                <center><button class="bid-btn" name="update">Bid Now</button></center>
       </div>        
   </div>
+      <input type="hidden" name="name" value="<?php echo $readrow['NAME'];?>">
+      <input type="hidden" name="sellerr" value="<?php echo $readrow['SELLER'];?>">
+      <input type="hidden" name="highestbidderr" value="<?php echo $readrow['HIGHESTBIDDER'];?>">
+  <?php if( $readrow['HIGHESTBIDDER'] == $_SESSION['user']['USERNAME']) { ?>
+  <div id="payment">
+      <center><h5  style="color:white; background-color:#ffdf79 ;">WINNER!!!</h5></center>
+      <center><button class="btn btn-warning btn-xs" name="payment" >Payment</button></center>
+  </div>
+<?php } ?>
+</form>
   </div>
 
 
@@ -208,7 +217,7 @@
 
     <!-- Scripts for the timer-->
     <script type="text/javascript">
-      
+      document.getElementById("payment").style.visibility="hidden";
       //To set refresh every second
       setInterval(myTimer, 1000);
       var x= "<?php echo"$rem"?>" + "000";
@@ -231,6 +240,7 @@
       // If the count down is finished, write some text 
       if (distance < 0) 
       {
+        document.getElementById("payment").style.visibility="visible";
         var childNodes = document.getElementById("disablebid").getElementsByTagName('*');
         for (var node of childNodes) {
             node.disabled = true;
