@@ -123,22 +123,31 @@ header("LOCATION: accounttype.php");
                     <p class="pb-1 username">Username</p> <input type="text" class=" name form-control mb-4" name="username" id="username" placeholder="Username" value="<?php if(isset($_GET['edit'])) echo $editrow['USERNAME']; ?>" required>
                 </div>
             </div>
-            <div class="col-12"> <input type="password" class="form-control mb-4" name="pass" id="pass" value="<?php if(isset($_GET['edit'])) echo $editrow['PASS']; ?>" placeholder="Password" required> </div>
+
+            <div class="col-12"> <p class="pb-1 password">Password</p>  <input type="password" class="form-control mb-4" name="pass" id="pass" value="<?php if(isset($_GET['edit'])) echo $editrow['PASS']; ?>" placeholder="Password" required> </div>
+            
             <div class="col-12 create">
                 <div class="btn btn-primary py-3 ">
                      <div class="input-group">                     
                         <input  type="submit" name="login_btn" value="LOGIN" class="btn btn-primary"/> 
+             
+
 
                               <?php if (isset($_GET['edit'])) {?>
                                 <div class="d-flex align-items-center justify-content-between"></div>
                              <?php } ?>  
-                    </div>                    
+                    </div> 
+
                 </div>
             </div>
         </form>
         </div>
- 
-                <p><a href="ForgotPassword.php">Forgot Password ?</a></p> 
+        <br>
+ <div class="text-center pt-3">
+           <small class="d-flex align-items-center justify-content-center mb-3">
+                <div> <a href="ForgotPassword.php" class="btn btn-primary">Forgot Password?</a></div>
+            </small>
+        </div>
             </div>
         </div>
     </form>

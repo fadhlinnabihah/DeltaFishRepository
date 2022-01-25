@@ -66,7 +66,7 @@ if (isset($_POST['fpass_login'])) {
                 <option value="fcolour" <?php if(isset($_GET['edit'])) if($editrow['FPASSQ']=="What is your favourite colour?") echo "selected"; ?>>What is your favourite colour?</option>
             </select>
         </div>
-         <div class="col-12">Forgot Password Answer<input type="text" class="form-control mb-4" name="fpass" id="fpass" placeholder="answer" value="<?php if(isset($_GET['edit'])) echo $editrow['FPASS']; ?>" required></div>
+         <div class="col-12">Forgot Password Answer<input type="text" class="form-control mb-4" name="fpass" id="fpass" placeholder="Answer" value="<?php if(isset($_GET['edit'])) echo $editrow['FPASS']; ?>" required></div>
             </div>
             <div class="col-12 create">
                 <div class="btn btn-primary py-3 ">
