@@ -33,7 +33,7 @@ if (!isset($_SESSION['loggedin']))
       <style>
 
          body {
-          background-color: #74E1F5;
+          background-color: rgb(37, 150, 190);
           padding: 0px 0px;
           justify-content: center;
         }
