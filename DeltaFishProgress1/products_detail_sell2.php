@@ -268,13 +268,13 @@
         
         
       </table>
-     <!--  <div >
+      <div >
          <form action="index.php?page=cart" method="post">
             <center><input type="number" name="quantity" value="1" min="1" max="<?=$readrow['STOCK']?>" placeholder="Quantity"  required>
             <input type="hidden" name="product_id" value="<?=$readrow['ID']?>">
             <input type="submit" value="Add To Cart"></center>
             <br>
-          </div>  -->
+          </div> 
       </div>
     </div>
   </div>
