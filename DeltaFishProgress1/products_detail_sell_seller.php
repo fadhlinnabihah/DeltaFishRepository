@@ -11,7 +11,7 @@
 <html>
 <head>
    <meta charset="utf-8">
-   <?=template_header('br_pr')?>  
+   
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -207,7 +207,10 @@
       
 </head>
 <body>
-
+<div>
+            <?php
+                require 'header.php';
+            ?></div>
  <div style="margin-top: 40px;">
          
    <?php

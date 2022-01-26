@@ -291,7 +291,7 @@
             <input type="hidden" name="oldpid" value="<?php echo $readrow['ID']; ?>">  
             <p class="pb-1 username">Amount bid</p> 
            
-            <input type="number" class=" name form-control mb-4" placeholder="RM" name="highestbid" min="<?php echo $readrow['HIGHESTBID'] ?>" >
+            <input type="number" class=" name form-control mb-4" placeholder="RM" name="highestbid" min="<?php echo $readrow['HIGHESTBID'] ?>" required>
             <!-- get buyer name -->
           <input type="hidden" name="highestbidder" value="<?php echo $_SESSION['user']['USERNAME']?>">
           <input type="hidden" name="seller" value="<?php echo $readrow['SELLER'] ?>">
@@ -305,8 +305,8 @@
       <input type="hidden" name="highestbidderr" value="<?php echo $readrow['HIGHESTBIDDER'];?>">
   <?php if( $readrow['HIGHESTBIDDER'] == $_SESSION['user']['USERNAME']) { ?>
   <div id="payment">
-      <center><h5  style="color:white; background-color:#ffdf79 ;">WINNER!!!</h5></center>
-      <center><button class="btn btn-warning btn-xs" name="payment" >Payment</button></center>
+      <center><h1  style="color:white; background-color:#ffdf79 ;">WINNER!!!</h1></center>
+      <center><h4><button class="btn btn-warning btn-xs" name="payment" >Payment</button></h4></center>
   </div>
 <?php } ?>
 </form>
@@ -316,7 +316,8 @@
           
         
       </div>
-      <br>
+     
+
     
      
     </main>
@@ -361,6 +362,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" charset="utf-8"></script>
     <script src="script.js" charset="utf-8"></script>
     
-
+<br><br><br><br><br><br><br><br>
+           <footer class="footer">
+               <div class="container">
+               <center>
+                   <p>Copyright &copy DFOBB. All Rights Reserved. </p>
+                   <p>This website is developed by Delta Group</p>
+               </center>
+               </div>
+           </footer>
   </body>
 </html>

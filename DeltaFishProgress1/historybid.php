@@ -107,7 +107,7 @@ if (!isset($_SESSION['loggedin']))
             <div class="container">
                 <div class="jumbotron">
                     <h1>Hi <?php echo $_SESSION['user']['USERNAME']?>!</h1>
-                    <p>See your past bidding.</p>
+                    <p>See your past winning bidding.</p>
                   
                 </div>
 
@@ -178,9 +178,9 @@ if (!isset($_SESSION['loggedin']))
               <input type="hidden" name="highestbid" value="<?php echo $readrow['HIGHESTBID'];?>">
               <input type="hidden" name="highestbidder" value="<? php echo $readrow['HIGHESTBIDDER'];?>">
               <td>
-                <a href="product_detail_bid_seller.php?pid=<?php echo $readrow['ID']; ?>" class="btn btn-warning btn-xs" role="button">Details</a>
-                <a href="deliverytype.php?id=<?php echo $readrow['ID']; ?>" class="" role="submit" name="create">PAYMENT</a> 
-                <button class="btn btn-warning btn-xs" type="submit" name="create" id="create">Payment</button>
+                <a href="product_detail_bid.php?pid=<?php echo $readrow['ID']; ?>" class="btn btn-warning btn-xs" role="button">Details</a>
+                <!-- <a href="deliverytype.php?id=<?php echo $readrow['ID']; ?>" class="" role="submit" name="create">PAYMENT</a> 
+                <button class="btn btn-warning btn-xs" type="submit" name="create" id="create">Payment</button> -->
               </td>
             </tr>
           </form>
