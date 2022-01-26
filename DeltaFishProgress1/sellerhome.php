@@ -83,7 +83,7 @@
 
 
               <td>
-                <a href="product_detail_bid_seller.php?pid=<?php echo $readrow['ID']; ?>" class="btn btn-warning btn-xs" role="button">Details</a>
+                <a href="productdetailbidseller.php?pid=<?php echo $readrow['ID']; ?>" class="btn btn-warning btn-xs" role="button">Details</a>
 
                 
                 <a href="sellerhome.php?delete1=<?php echo $readrow['ID']; ?>" onclick="return confirm('Are you sure to delete the bidding?');" class="btn btn-danger btn-xs" role="button">Delete</a> 
@@ -174,7 +174,7 @@
            <footer class="footer">
                <div class="container">
                <center>
-                   <p>Copyright &copy DFOBB. All Rights Reserved. | Contact Us: +05 4099 9999</p>
+                   <p>Copyright &copy DFOBB. All Rights Reserved. </p>
                    <p>This website is developed by Delta Group</p>
                </center>
                </div>

@@ -171,7 +171,7 @@ $(".nav2").click(function(){
            <footer class="footer">
                <div class="container">
                <center>
-                   <p>Copyright &copy DFOBB. All Rights Reserved. | Contact Us: +05 4099 9999</p>
+                   <p>Copyright &copy DFOBB. All Rights Reserved. </p>
                    <p>This website is developed by Delta Group</p>
                </center>
                </div>
