@@ -283,13 +283,11 @@
   </div>
 </div>
  <br><br><br><br><br><br><br><br>
-  <footer class="footer"> 
+  <footer class="footer" style="padding-top: 0rem;padding-bottom: 20px;background-color: #7666FA;">
                
                <center>
-
-                   <p>Copyright &copy DFOBB. All Rights Reserved.</p>
-
-                   <p>This website is developed by Delta Group</p>
+                   <p style="color: white">Copyright &copy DFOBB. All Rights Reserved.</p>
+                   <p style="color: white">This website is developed by Delta Group</p>
                </center>
                
            </footer>
