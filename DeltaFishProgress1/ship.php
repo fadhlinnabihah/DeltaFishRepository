@@ -143,7 +143,7 @@
 											 foreach($result as $readrow) {
 											 		$subtotal += (float)$readrow['PRICE']*(int)$readrow['fld_order_detail_quantity'];
 											 		$total += (float)$readrow['PRICE']*(int)$readrow['fld_order_detail_quantity'];
-											 		$orderid=$readrow['fld_order_num'] ?? 'default value'; 
+											 		$orderid=$readrow['fld_order_num']; 
 											 		?>
 										</thead>
 											<tbody>

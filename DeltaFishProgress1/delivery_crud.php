@@ -21,7 +21,7 @@ if (isset($_POST['create'])) {
       $stmt->bindParam(':user', $user, PDO::PARAM_STR);
       
       $name = $_POST['name'];
-      $phone = $_POST['phone']?? 'any default value, but probably null';
+      $phone = $_POST['phone'];
       $address =  $_POST['address'];
       $user = $_SESSION['user']['USERNAME'];
       $stmt->execute();
@@ -32,7 +32,7 @@ if (isset($_POST['create'])) {
       $stmt->bindParam(':payment', $payment, PDO::PARAM_STR);
       $stmt->bindParam(':soid', $soid, PDO::PARAM_STR);
 
-      $deli_time = $_POST['deli_time']?? 'any default value, but probably null';
+      $deli_time = $_POST['deli_time'];
       $payment = $_POST['payment'];
       $soid = $oid;
       $stmt->execute();
