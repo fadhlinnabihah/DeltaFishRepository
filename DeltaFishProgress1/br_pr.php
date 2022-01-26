@@ -277,12 +277,12 @@ if (!isset($_SESSION['loggedin']))
 
         <p><?php echo $readrow['NAME']; ?></p>
         <p><?php echo $readrow['SELLER']; ?></p>
-        <p><?php echo $readrow['PRICE']; ?></p>
+        <h3><p>RM<?php echo $readrow['PRICE']; ?></p></h3>
         
        
         
         <td>
-          <a href="index.php?page=products_detail_sell&pid=<?=$readrow['ID']?>" class="btn btn-warning btn-xs" role="button" >Details</a>
+          <a href="index.php?page=products_detail_sell2&pid=<?=$readrow['ID']?>" class="btn btn-warning btn-xs" role="button" >Details</a>
           
         </td>
       </div>
