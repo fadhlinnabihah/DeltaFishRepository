@@ -261,7 +261,7 @@
         <tr>
           <td><strong>Time Left to Bid</strong></td>
           <td>
-               <h1>
+               
                 <?php
                 
                 /* To read the duedate of the product **/
@@ -269,10 +269,10 @@
 
                 $rem = strtotime($duedate);
                 ?>
-                   <span class='blue' id='time_left'></span>
-                 </h1>
+               <span id='time_left'></span>
+                 
 
-                </td>
+          </td>
         </tr>
         <tr>
           <td><strong>Highest Bidder</strong></td>
@@ -337,10 +337,6 @@
       // If the count down is finished, write some text 
       if (distance < 0) 
       {
-        var childNodes = document.getElementById("disablebid").getElementsByTagName('*');
-        for (var node of childNodes) {
-            node.disabled = true;
-        }
         clearInterval(x);
         document.getElementById("time_left").innerHTML = "BID CLOSED";
 
