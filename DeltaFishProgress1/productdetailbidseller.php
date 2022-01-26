@@ -339,7 +339,6 @@
       {
         clearInterval(x);
         document.getElementById("time_left").innerHTML = "BID CLOSED";
-
       }
       }
     </script>

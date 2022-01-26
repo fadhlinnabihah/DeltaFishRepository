@@ -1,6 +1,6 @@
 
 <?php
-  include 'product_detail_bid_crud.php';
+  include_once 'product_detail_bid_crud.php';
 ?>
 
 <!DOCTYPE html>
@@ -250,23 +250,19 @@
           <td><?php echo $readrow['DESCRIPTION'] ?></td>
         </tr>
         <tr>
-          <td><strong>Seller namme</strong></td>
+          <td><strong>Seller name</strong></td>
           <td><?php echo $readrow['SELLER'] ?></td>
         </tr>
         <tr>
           <td><strong>Time Left to Bid</strong></td>
           <td>
-               <h1> <?php
-                
+               <?php
                 /* To read the duedate of the product **/
                 $duedate = $readrow['DUEDATE'];
-
                 $rem = strtotime($duedate);
                 ?>
-                   <span class='blue' id='time_left'></span>
-                 </h1>
-
-                </td>
+                <span id="time_left"></span>   
+          </td>
         </tr>
         
       </table>
@@ -301,8 +297,9 @@
           <input type="hidden" name="seller" value="<?php echo $readrow['SELLER'] ?>">
             <div class="form-group">
                <center><button class="bid-btn" name="update">Bid Now</button></center>
-      </div>        
+          </div>        
   </div>
+</div>
       <input type="hidden" name="name" value="<?php echo $readrow['NAME'];?>">
       <input type="hidden" name="sellerr" value="<?php echo $readrow['SELLER'];?>">
       <input type="hidden" name="highestbidderr" value="<?php echo $readrow['HIGHESTBIDDER'];?>">
@@ -326,11 +323,11 @@
 
     <!-- Scripts for the timer-->
     <script type="text/javascript">
-      document.getElementById("payment").style.visibility="hidden";
+      
       //To set refresh every second
       setInterval(myTimer, 1000);
       var x= "<?php echo"$rem"?>" + "000";
-
+      document.getElementById("payment").style.visibility="hidden";
 
       function myTimer() {
         /* get current date and due date to compare **/
@@ -343,20 +340,21 @@
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       // Display the result in the element with id="demo"
-      document.getElementById("time_left").innerHTML = days + "d " + hours + "h "
+      document.getElementById('time_left').innerHTML = days + "d " + hours + "h "
       + minutes + "m " + seconds + "s ";
 
       // If the count down is finished, write some text 
-      if (distance < 0) 
-      {
-        document.getElementById("payment").style.visibility="visible";
+      if (distance < 0) {
         var childNodes = document.getElementById("disablebid").getElementsByTagName('*');
         for (var node of childNodes) {
             node.disabled = true;
         }
         clearInterval(x);
-        document.getElementById("time_left").innerHTML = "BID CLOSED";
+        document.getElementById('time_left').innerHTML = "BID CLOSED";
 
+      }
+      if(distance < 0){
+         document.getElementById("payment").style.visibility="visible";
       }
       }
     </script>
