@@ -19,12 +19,34 @@
         <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
         <!-- External CSS -->
         <link rel="stylesheet" href="css/style3.css" type="text/css">
+
+        <style type="text/css">
+            footer{
+                background-color: #7666FA;
+                color:white;
+                font-size:14px;
+                font-weight:bold;
+                padding:10px;    
+                bottom:0;
+            }
+            .footer { 
+                background-color: #7666FA;
+                position: absolute; 
+                bottom:0; 
+                right:0;
+                left:0;
+            }
+        </style>
     </head>
+
+
     <body>
         <div>
             <?php
                 require 'header.php';
             ?></div>
+
+            <br><br><br>
             <div class="container">
                 <div class="jumbotron">
                     <h1>Hi <?php echo $_SESSION['user']['USERNAME']?>!</h1>
@@ -171,13 +193,13 @@
  
 
             <br><br><br><br><br><br><br><br>
-           <footer class="footer">
-               <div class="container">
+           <footer class="footer" style="padding-top: 5px;padding-bottom: 0rem;background-color: #7666FA;">
+               
                <center>
-                   <p>Copyright &copy DFOBB. All Rights Reserved. </p>
-                   <p>This website is developed by Delta Group</p>
+                   <p style="color: white">Copyright &copy DFOBB. All Rights Reserved.</p>
+                   <p style="color: white">This website is developed by Delta Group</p>
                </center>
-               </div>
+               
            </footer>
         </div>
 

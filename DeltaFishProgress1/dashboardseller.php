@@ -40,10 +40,10 @@ if (!isset($_SESSION['loggedin']))
 
 
 <body>
-  <div>
+<div>
             <?php
                 require 'header.php';
-            ?></div>
+            ?></div> 
 	
 <!-- 	<div id="mySidenav" class="sidenav">
 	<p class="logo"><span>Delta</span> Fish</p>

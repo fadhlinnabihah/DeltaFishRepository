@@ -9,14 +9,16 @@
 <html>
 <head>
 	 <link rel="shortcut icon" type="image/png" href="deltafish_logo.png" /> 
-        
+	  <?=template_headers('reports')?>  
 	<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-	<title>Home - DFOB</title>
+	<title>Home - DFOBB</title>
 	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
 
-	 <style type="text/css">
+	<style type="text/css">
             header {
               border-bottom: 1px solid #EEEEEE;
+              background-color: #7666FA;
+              color: #FFFFFF;
             }
             header .content-wrapper {
               display: flex;
@@ -28,6 +30,14 @@
               font-size: 20px;
               margin: 0;
               padding: 24px 0;
+              background-color: #7666FA;
+            }
+            a {
+            	color: white;
+            	text-decoration: none;
+            }
+            a: hover {
+            	color: white;
             }
             header nav {
               display: flex;
@@ -35,15 +45,20 @@
               flex-basis: 0;
               justify-content: center;
               align-items: center;
+              background-color: #7666FA;
+              color: #FFFFFF;
             }
             header nav a {
               text-decoration: none;
-              color: #555555;
+              color: #FFFFFF;
               padding: 10px 10px;
               margin: 0 10px;
+              background-color: #7666FA;
             }
             header nav a:hover {
               border-bottom: 1px solid #aaa;
+              background-color: #7666FA;
+              color: #FFFFFF;
             }
             header .link-icons {
               display: flex;
@@ -52,14 +67,18 @@
               justify-content: flex-end;
               align-items: center;
               position: relative;
+              background-color: #7666FA;
             }
             header .link-icons a {
               text-decoration: none;
               color: #394352;
               padding: 0 10px;
+              background-color: #7666FA;
+              color: #FFFFFF;
             }
             header .link-icons a:hover {
               color: #4e5c70;
+              color: #FFFFFF;
             }
             header .link-icons a i {
               font-size: 18px;
@@ -69,7 +88,6 @@
               text-align: center;
               background-color: #63748e;
               border-radius: 50%;
-              color: #FFFFFF;
               font-size: 12px;
               line-height: 16px;
               width: 16px;
@@ -83,16 +101,13 @@
 </head>
 
 <body>
-	 <?php
-                require 'header.php';
-            ?></div>
 
 
-	<nav class="navbar navbar-light navbar-expand bg-light navigation-clean">
+<!-- 	<nav class="navbar navbar-light navbar-expand bg-light navigation-clean">
 	<div class="container">
 		
 		<button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"></button>
-		<div class="collapse navbar-collapse" id="navcol-1"></div></div></nav>
+		<div class="collapse navbar-collapse" id="navcol-1"></div></div></nav> -->
 		<header class="text-center text-white masthead" style="background:url('assets/img/bg-masthead.jpg')no-repeat center center;background-size:cover;">
 			<div class="overlay" style="padding: -4px;margin: 2px;"></div>
 			<div class="container"><div class="row"><div class="col-xl-9 mx-auto position-relative">
@@ -107,9 +122,9 @@
 					</div>
 				</div>
 				</form></div>
-			</div>
+			</header>
 		</div>
-					</header>
+					</div>
 					<section class="text-center bg-light features-icons">
 						
 						
@@ -178,6 +193,7 @@
            						 <h1><span class="price">RM <?=$total?></span></h1>
 										</div>
 									</section>
+						
 												<section class="showcase"></section>
 											
 													<script src="assets/bootstrap/js/bootstrap.min.js">
@@ -185,11 +201,11 @@
 													</script>
 
 
-           <footer class="footer" style="padding-top: 0rem;padding-bottom: 0rem;">
+           <footer class="footer" style="padding-top: 0rem;padding-bottom: 10px;background-color: #7666FA;">
                
                <center>
-                   <p>Copyright &copy DFOBB. All Rights Reserved.</p>
-                   <p>This website is developed by Delta Group</p>
+                   <p style="color: white">Copyright &copy DFOBB. All Rights Reserved.</p>
+                   <p style="color: white">This website is developed by Delta Group</p>
                </center>
                
            </footer>

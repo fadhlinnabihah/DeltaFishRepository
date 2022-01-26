@@ -71,6 +71,37 @@ echo <<<EOT
         <main>
 EOT;
 }
+function template_headers($title) {
+// Get the amount of items in the shopping cart, this will be displayed in the header.
+$num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+echo <<<EOT
+<!DOCTYPE html>
+<html>
+
+	<head>
+		
+
+		<meta charset="utf-8">
+		<title>$title</title>
+		
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+		<link href="style5.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
+        <header>
+        
+            <div class="content-wrapper">
+                <h1><a href="dashboardseller.php">DFOBB</a></h1>
+                <nav>
+                    <a href="sellerhome.php">Products</a>
+      				<a href="shipSeller.php">Reports</a>
+      				<a href="logout.php">Logout</a>
+                </nav>
+        </header>
+
+        <main>
+EOT;
+}
 // Template footer
 function template_footer() {
 $year = date('Y');
