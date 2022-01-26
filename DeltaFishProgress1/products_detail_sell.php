@@ -102,13 +102,13 @@ if (!isset($_SESSION['loggedin']))
                 color:#555555;
                 font-size:14px;
                 font-weight:bold;
-                margin-bottom: auto;
-                padding:0px;    
+                margin-top:0px;  
+                padding:5px;  
                 bottom:0;
             }
             .footer { 
                 background-color: #FFFFFF;
-                position: absolute; 
+                position: relative; 
                 bottom:0; 
                 right:0;
                 left:0;
@@ -135,15 +135,17 @@ if (!isset($_SESSION['loggedin']))
     }
     $conn = null;
     ?>
+    <div>
+    <div>
     <main class="container">
  
       <!-- Left Column / Headphones Image -->
-      <div class="left-column">
+      <div class="left-column" >
         <?php if ($readrow['PICTURE'] == "" ) {
         echo "No image";
       }
       else { ?>
-      <img src="pictures_sell/<?=$readrow['PICTURE'] ?>" class="img-responsive">
+      <img src="pictures_sell/<?=$readrow['PICTURE'] ?>" class="w3-border w3-padding" style="width: 100%;">
       <?php } ?>
       </div>
 
@@ -180,16 +182,17 @@ if (!isset($_SESSION['loggedin']))
         </div>
       </div>
     </div>
-      
-    </main>
-<footer class="footer"> 
-               
-               <center>
-                   <p>Copyright &copy DFOBB. All Rights Reserved. </p>
-                   <p>This website is developed by Delta Group</p>
-               </center>
-               
-           </footer>
+    
+    </div>
+
+<div style="padding-bottom:50px"></div>
+</main>
+
+</div>
+  </div>
+   
+
+
 
     
 
@@ -198,5 +201,16 @@ if (!isset($_SESSION['loggedin']))
     <script src="script.js" charset="utf-8">
       
     </script>
+
+
+<footer class="footer"> 
+               
+               <center>
+                   <p>Copyright &copy DFOBB. All Rights Reserved. </p>
+                   <p>This website is developed by Delta Group</p>
+               </center>
+               
+           </footer>
   </body>
+   
 </html>
