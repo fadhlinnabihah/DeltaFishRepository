@@ -20,7 +20,7 @@ if (isset($_POST['create'])) {
       $stmt->bindParam(':user', $user, PDO::PARAM_STR);
       
       $name = $_POST['name'];
-      $phone = $_POST['phone']?? 'any default value, but probably null';
+      $phone = $_POST['phone'];
       $user = $_SESSION['user']['USERNAME'];
       $stmt->execute();
 

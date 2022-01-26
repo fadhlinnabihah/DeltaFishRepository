@@ -111,7 +111,7 @@
 		<header class="text-center text-white masthead" style="background:url('assets/img/bg-masthead.jpg')no-repeat center center;background-size:cover;">
 			<div class="overlay" style="padding: -4px;margin: 2px;"></div>
 			<div class="container"><div class="row"><div class="col-xl-9 mx-auto position-relative">
-				<center class="mb-5" style="font-size: xx-large;">Shipping Page</center></div>
+				<center class="mb-5" style="font-size: xx-large;">Reports Page</center></div>
 				<div class="col-md-10 col-lg-8 col-xl-7 mx-auto position-relative">
 					<form>
 						<?php echo date("d.m.Y")."<br>";?>

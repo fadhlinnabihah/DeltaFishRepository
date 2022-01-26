@@ -16,13 +16,13 @@
   <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style3.css" type="text/css">
-            
+            <?=template_header('deliverydetail')?>
     <style type="text/css">
       .page-header{
         color: #ffffff;
       }
       .bg-1{
-        background-color:  #74E1F5;
+        background-color:  rgb(37, 150, 190);
     }
 
     
@@ -32,17 +32,73 @@
         .table{
           background-color: #74E1F5;
         }
-
+header {
+              border-bottom: 1px solid #EEEEEE;
+            }
+            header .content-wrapper {
+              display: flex;
+            }
+            header h1 {
+              display: flex;
+              flex-grow: 1;
+              flex-basis: 0;
+              font-size: 20px;
+              margin: 0;
+              padding: 24px 0;
+            }
+            header nav {
+              display: flex;
+              /*flex-grow: 1;*/
+              flex-basis: 0;
+              justify-content: center;
+              align-items: center;
+            }
+            header nav a {
+              text-decoration: none;
+              color: #555555;
+              padding: 10px 10px;
+              margin: 0 10px;
+            }
+            header nav a:hover {
+              border-bottom: 1px solid #aaa;
+            }
+            header .link-icons {
+              display: flex;
+              flex-grow: 1;
+              flex-basis: 0;
+              justify-content: flex-end;
+              align-items: center;
+              position: relative;
+            }
+            header .link-icons a {
+              text-decoration: none;
+              color: #394352;
+              padding: 0 10px;
+            }
+            header .link-icons a:hover {
+              color: #4e5c70;
+            }
+            header .link-icons a i {
+              font-size: 18px;
+            }
+            header .link-icons a span {
+              display: inline-block;
+              text-align: center;
+              background-color: #63748e;
+              border-radius: 50%;
+              font-size: 12px;
+              line-height: 16px;
+              width: 16px;
+              height: 16px;
+              font-weight: bold;
+              position: absolute;
+              top: 22px;
+              right: 0;
+            }
     </style>
 
 </head>
 <body>
-    <div>
-            <?php
-                require 'header2.php';
-            ?>
-          </div>
-   
  <!--  <?php $ulevel=$_SESSION["ulevel"];
   //echo "<script>alert($stafflevel);</script>";
   if ($ulevel == 'Admin') {
