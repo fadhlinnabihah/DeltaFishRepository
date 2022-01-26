@@ -9,7 +9,7 @@
 <html>
 <head>
 	 <link rel="shortcut icon" type="image/png" href="deltafish_logo.png" /> 
-        <?=template_header('shipping')?>    
+        
 	<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 	<title>Home - DFOB</title>
 	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
@@ -83,6 +83,9 @@
 </head>
 
 <body>
+	 <?php
+                require 'header.php';
+            ?></div>
 
 
 	<nav class="navbar navbar-light navbar-expand bg-light navigation-clean">
