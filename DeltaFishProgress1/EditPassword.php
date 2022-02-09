@@ -63,10 +63,10 @@ if (isset($_POST['fpass_change'])) {
     <form method="post" action="EditPassword.php">
        
         <div class="row px-md-4 px-1 m-0">
-          <p class="pb-1 username">Username</p> <input type="text" class=" name form-control mb-4" name="username" id="username" placeholder="Username" value="<?php if(isset($_GET['edit'])) echo $editrow['USERNAME']; ?>" required>
+          <p class="pb-1 username">Username</p> <input maxlength="55" type="text" class=" name form-control mb-4" name="username" id="username" placeholder="Username" value="<?php if(isset($_GET['edit'])) echo $editrow['USERNAME']; ?>" required>
     
-        <div class="col-12">New Password<input type="password" class="form-control mb-4" name="npass" id="npass" placeholder="*********" value="<?php if(isset($_GET['edit'])) echo $editrow['PASS']; ?>" required></div>
-        <div class="col-12">Re-Enter Password<input type="password" class="form-control mb-4" name="repass" id="repass" placeholder="*********" required></div>
+        <div class="col-12">New Password<input maxlength="50" type="password" class="form-control mb-4" name="npass" id="npass" placeholder="*********" value="<?php if(isset($_GET['edit'])) echo $editrow['PASS']; ?>" required></div>
+        <div class="col-12">Re-Enter Password<input maxlength="50" type="password" class="form-control mb-4" name="repass" id="repass" placeholder="*********" required></div>
 
             <div class="col-12 create">
                 <div class="btn btn-primary py-3 ">

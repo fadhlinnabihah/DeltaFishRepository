@@ -120,11 +120,11 @@ header("LOCATION: accounttype.php");
             <div class="col-12">
                 <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
                 <div>
-                    <p class="pb-1 username">Username</p> <input type="text" class=" name form-control mb-4" name="username" id="username" placeholder="Username" value="<?php if(isset($_GET['edit'])) echo $editrow['USERNAME']; ?>" required>
+                    <p class="pb-1 username">Username</p> <input maxlength="55" type="text" class=" name form-control mb-4" name="username" id="username" placeholder="Username" value="<?php if(isset($_GET['edit'])) echo $editrow['USERNAME']; ?>" required>
                 </div>
             </div>
 
-            <div class="col-12"> <p class="pb-1 password">Password</p>  <input type="password" class="form-control mb-4" name="pass" id="pass" value="<?php if(isset($_GET['edit'])) echo $editrow['PASS']; ?>" placeholder="Password" required> </div>
+            <div class="col-12"> <p class="pb-1 password">Password</p>  <input maxlength="50" type="password" class="form-control mb-4" name="pass" id="pass" value="<?php if(isset($_GET['edit'])) echo $editrow['PASS']; ?>" placeholder="Password" required> </div>
             
             <div class="col-12 create">
                 <div class="btn btn-primary py-3 ">
