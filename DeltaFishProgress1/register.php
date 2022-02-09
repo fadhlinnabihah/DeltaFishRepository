@@ -48,7 +48,7 @@ include_once 'signup.php';
 
             <div class="col-6">Full Name <input type="text" class="form-control mb-4" name="name" id="name" placeholder="Full Name" value="<?php if(isset($_GET['edit'])) echo $editrow['NAME']; ?>" required> </div>
 
-            <div class="col-6">Phone Number<input pattern="[0]{1}[0-9]{10}" type="text" class="form-control mb-4" name="phone" id="phone" placeholder="##########" value="<?php if(isset($_GET['edit'])) echo $editrow['PHONE']; ?>" required> </div>
+            <div class="col-6">Phone Number<input pattern="[0]{1}[0-9]{9,10}" type="text" class="form-control mb-4" name="phone" id="phone" placeholder="##########" value="<?php if(isset($_GET['edit'])) echo $editrow['PHONE']; ?>" required> </div>
             
             <div class="col-12">Email<input type="email" class="form-control mb-4" name="email" id="email" placeholder="###@#####.com" value="<?php if(isset($_GET['edit'])) echo $editrow['EMAIL']; ?>" required> </div>
             
