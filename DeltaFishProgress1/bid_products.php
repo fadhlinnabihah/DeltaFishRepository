@@ -92,7 +92,7 @@
         <div class="form-group">
           <label for="productdesc" class="col-sm-3 control-label">Description</label>
           <div class="col-sm-9">
-          <input name="description" type="text" class="form-control" id="productdesc" placeholder="Product Description" value="<?php if(isset($_GET['edit'])) echo $editrow['DESCRIPTION']; ?>" required>
+          <input maxlength="255" name="description" type="text" class="form-control" id="productdesc" placeholder="Product Description" value="<?php if(isset($_GET['edit'])) echo $editrow['DESCRIPTION']; ?>" required>
           <!-- get seller name -->
           <input type="hidden" name="seller" value="<?php echo $_SESSION['user']['USERNAME']?>">
         </div>
