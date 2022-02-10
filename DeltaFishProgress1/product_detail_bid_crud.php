@@ -9,9 +9,11 @@ $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
 
 
+
 if (isset($_POST['update'])) {
- 
+ $oldpid = $_POST['oldpid'];
  if( $_POST['highestbidder'] != $_POST['seller']){
+  
   try {
        
       $stmt = $conn->prepare("UPDATE tbl_productbid_delta SET
