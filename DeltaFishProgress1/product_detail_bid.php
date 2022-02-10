@@ -291,7 +291,7 @@
             <input type="hidden" name="oldpid" value="<?php echo $readrow['ID']; ?>">  
             <p class="pb-1 username">Amount bid</p> 
            
-            <input type="number" pattern="[0-9]{0,9}" class=" name form-control mb-4" placeholder="RM" name="highestbid" min="<?php echo $readrow['HIGHESTBID'] ?>" required>
+            <input type="number" max="999999999" class=" name form-control mb-4" placeholder="RM" name="highestbid" min="<?php echo $readrow['HIGHESTBID'] ?>" required>
             <!-- get buyer name -->
           <input type="hidden" name="highestbidder" value="<?php echo $_SESSION['user']['USERNAME']?>">
           <input type="hidden" name="seller" value="<?php echo $readrow['SELLER'] ?>">
